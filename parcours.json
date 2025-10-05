@@ -1,0 +1,101 @@
+[
+  {
+    "titre": "1991 – 1998 – Coordonnateur & intégrateur IBM/Microsoft",
+    "details": [
+      "Début de carrière sur systèmes IBM AS/400, responsable de la coordination des équipes techniques pour une grande chaîne de restaurants.",
+      "Transition vers les technologies Microsoft, avec intégration IBM ↔ Windows et premières solutions client-serveur.",
+      "Développement d’un leadership technique et d’une approche collaborative inter-équipes."
+    ],
+    "faits_sailants": [
+      "Intégration des environnements IBM AS/400 et Microsoft.",
+      "Pilotage du remplacement des terminaux IBM par des ordinateurs Windows avec gestion du changement.",
+      "Coordination d’équipes hybrides et amélioration de la productivité."
+    ]
+  },
+  {
+    "titre": "1998 – 2003 – Formateur certifié Microsoft/Cisco & consultant en infrastructure des TI",
+    "details": [
+      "Obtention du titre de Microsoft Certified Trainer (MCT) et plus de 30 certifications.",
+      "Participation au Focus Group Microsoft (Seattle) pour le développement de Windows 2000 et Active Directory.",
+      "Consultation pour plus de 50 organisations, incluant la RAMQ, la SAQ, le Cirque du Soleil, et l’Assemblée nationale."
+    ],
+    "faits_sailants": [
+      "Introduction d’Active Directory et de Microsoft Exchange dans plusieurs organisations.",
+      "Coordination à la RAMQ du projet Lotus Notes → Exchange et pilote de la carte à puce santé.",
+      "Formations nationales et vulgarisation des technologies Microsoft et Cisco."
+    ]
+  },
+  {
+    "titre": "2003 – 2007 – Chef d’équipe – Infrastructures Windows (SAQ)",
+    "details": [
+      "Responsable de l’équipe Windows/Intel à la SAQ, supervisant plus de 350 contrôleurs de domaine.",
+      "Déploiement d’un système d’authentification par carte à puce et modernisation de l’architecture Active Directory."
+    ],
+    "faits_sailants": [
+      "Mise en place d’une infrastructure d’identité unifiée et sécurisée.",
+      "Collaboration inter-équipes pour la standardisation des accès."
+    ]
+  },
+  {
+    "titre": "2007 – 2009 – Chef d’équipe – Services techniques bureautiques (Hydro-Québec)",
+    "details": [
+      "Responsable de l’équipe des infrastructures Windows (20 000+ postes et serveurs).",
+      "Initiateur de la première vague d’automatisation TI à Hydro-Québec."
+    ],
+    "faits_sailants": [
+      "Conception et déploiement d’une image automatisée pour les serveurs Windows.",
+      "Réduction du temps d’installation de plusieurs jours à quelques heures.",
+      "Adoption progressive de l’automatisation par les équipes serveurs."
+    ]
+  },
+  {
+    "titre": "2009 – 2015 – Chef d’équipe & intégrateur – Virtualisation et infrastructures (Hydro-Québec)",
+    "details": [
+      "Leadership sur la mise en place du Centre de virtualisation (CDV) – premier cloud interne d’Hydro-Québec.",
+      "Implantation de Puppet pour la gestion de configuration automatisée Linux.",
+      "Participation à plusieurs projets d’envergure (ILM, EMC/Isilon, opTiCT)."
+    ],
+    "faits_sailants": [
+      "Introduction des pratiques d’infonuagique et de libre-service.",
+      "Coordination entre architecture, réseau, exploitation et sécurité.",
+      "Contribution aux appels d’offres et à la définition technique des solutions de stockage."
+    ]
+  },
+  {
+    "titre": "2016 – 2021 – Chef d’équipe / Conseiller principal – Infrastructures de cybersécurité",
+    "details": [
+      "Transition vers la cybersécurité et prise en charge de l’équipe de journalisation (ArcSight).",
+      "Participation à la planification stratégique et à la transformation culturelle Agile."
+    ],
+    "faits_sailants": [
+      "Intégration de près de 200 solutions TI à la plateforme ArcSight.",
+      "Introduction des pratiques Agiles et collaboration à la cellule de transformation culturelle.",
+      "Automatisation progressive des processus de cybersécurité."
+    ]
+  },
+  {
+    "titre": "2021 – 2023 – TPO – Gestion des certificats PKI & produits Venafi",
+    "details": [
+      "Prise en charge du service PKI Hydro-Québec et des produits Venafi.",
+      "Modernisation complète des infrastructures de certificats et gouvernance améliorée."
+    ],
+    "faits_sailants": [
+      "Structuration du backlog agile et gouvernance produit.",
+      "Déploiement d’une infrastructure PKI résiliente dans les zones protégées contre les rançongiciels.",
+      "Automatisation et libre-service des certificats via Venafi Maestro."
+    ]
+  },
+  {
+    "titre": "2023 – Aujourd’hui – Responsable produit d’affaires / Conseiller en cybersécurité II – Identités, annuaires et voûtes",
+    "details": [
+      "Responsable produit pour les équipes Active Directory, Entra ID, ADFS et voûtes (CyberArk, HashiCorp Vault, RSA).",
+      "Supervision des feuilles de route, conformité et trajectoires d’architecture."
+    ],
+    "faits_sailants": [
+      "Responsable du carnet de commande des équipes d’annuaires et voûtes.",
+      "Introduction réussie de la culture Agile dans les équipes d’annuaires et de cybersécurité.",
+      "Contribution architecturale au remplacement des clés RSA par les Yubico.",
+      "Collaboration continue avec les architectes d’entreprise et de solution depuis 2017."
+    ]
+  }
+]

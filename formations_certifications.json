@@ -1,0 +1,119 @@
+[
+  {
+    "categorie": "Formations académiques",
+    "sous_sections": [
+      {
+        "titre": "Baccalauréat en Management (avec distinction) – Athabasca University",
+        "periode": "2009",
+        "details": [
+          "Programme axé sur la gestion stratégique, le leadership et l’efficacité organisationnelle.",
+          "Mention d’excellence pour rendement académique supérieur à la moyenne."
+        ]
+      },
+      {
+        "titre": "Certificat en gestion d’entreprise – HEC Montréal",
+        "periode": "2006",
+        "details": [
+          "Formation de 15 crédits portant sur la gestion, la planification et l’analyse financière."
+        ]
+      },
+      {
+        "titre": "Certificat en informatique de gestion – UQAM",
+        "periode": "1999",
+        "details": [
+          "Spécialisation en intégration des systèmes d’information et gestion des processus d’affaires."
+        ]
+      },
+      {
+        "titre": "D.E.C. en Techniques administratives (Comptabilité / Finance) – Cégep Maisonneuve",
+        "periode": "1997",
+        "details": [
+          "Formation en comptabilité, finance et méthodes quantitatives appliquées à la gestion."
+        ]
+      }
+    ]
+  },
+  {
+    "categorie": "Formations continues",
+    "sous_sections": [
+      {
+        "titre": "Gestion d’équipe, produit et transformation agile – Hydro-Québec",
+        "periode": "2013 – 2024",
+        "details": [
+          "Développement du leadership d’équipe, de la culture produit et de la transformation agile en milieu technologique.",
+          "Application concrète dans les équipes d’identité, de cybersécurité et de modernisation des services TI."
+        ]
+      },
+      {
+        "titre": "Leadership en gestion du changement et santé organisationnelle – Hydro-Québec",
+        "periode": "2018",
+        "details": [
+          "Programme axé sur la gestion du changement, la communication et la mobilisation des équipes dans les contextes de transformation."
+        ]
+      },
+      {
+        "titre": "Formations multiples en intelligence artificielle appliquée",
+        "periode": "2023 – présent",
+        "details": [
+          "Exploration de l’IA appliquée à la cybersécurité, à la gestion opérationnelle et à la prise de décision.",
+          "Autoformation continue via plateformes spécialisées (Microsoft Learn, Udemy, Coursera)."
+        ]
+      },
+      {
+        "titre": "Parcours de formation Microsoft LEARN – Azure AI Foundry",
+        "periode": "2025",
+        "details": [
+          "Formation pratique sur la conception et le déploiement de solutions IA avec Azure AI et OpenAI Services.",
+          "Mise en application des concepts dans un cadre professionnel et expérimental."
+        ]
+      }
+    ]
+  },
+  {
+    "categorie": "Certifications professionnelles",
+    "sous_sections": [
+      {
+        "titre": "CISSP – Certified Information Systems Security Professional (ISC²)",
+        "periode": "2023",
+        "details": [
+          "Certification de référence en sécurité de l’information couvrant gouvernance, architecture, cryptographie et opérations."
+        ]
+      },
+      {
+        "titre": "Professional Scrum Master (PSM)",
+        "periode": "2018",
+        "details": [
+          "Certification reconnue en agilité Scrum, axée sur la facilitation d’équipes et l’amélioration continue."
+        ]
+      },
+      {
+        "titre": "PMP – Project Management Professional (PMI)",
+        "periode": "2007",
+        "details": [
+          "Certification internationale en gestion de projets, basée sur les meilleures pratiques PMBOK."
+        ]
+      },
+      {
+        "titre": "ITIL Foundation v2/v3",
+        "periode": "2006 – 2008",
+        "details": [
+          "Certification en gestion des services TI (ITSM) couvrant les processus de support, livraison et amélioration continue."
+        ]
+      },
+      {
+        "titre": "CCNA – Cisco Certified Network Associate",
+        "periode": "2000",
+        "details": [
+          "Compétences techniques en conception, configuration et dépannage d’infrastructures LAN/WAN Cisco."
+        ]
+      },
+      {
+        "titre": "30+ certifications Microsoft (AD, Sécurité, Windows Server, MCT, MCSE, MOF)",
+        "periode": "1998 – 2023",
+        "details": [
+          "Certifications couvrant l’administration d’Active Directory, la gestion de la sécurité, la conception d’infrastructures et la formation (MCT)."
+        ]
+      }
+    ]
+  }
+]
