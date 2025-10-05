@@ -23,15 +23,15 @@ async function chargerParcoursProfessionnel() {
   try {
     const response = await fetch("parcours.json");
     if (!response.ok) throw new Error("Erreur de chargement du JSON");
-
     const data = await response.json();
 
-    // Génération du contenu
+    // Génération du contenu interactif
     timeline.innerHTML = data.map(item => `
-      <div class="bg-white p-3 rounded shadow-sm border border-gray-200">
-        <h3 class="font-bold text-blue-700 flex justify-between items-center text-sm md:text-base">
+      <div class="bg-white p-3 rounded shadow-sm border border-gray-200 cursor-pointer hover:bg-blue-50 transition"
+           data-titre="${item.titre}">
+        <h3 class="font-bold text-blue-700 flex justify-between items-center text-sm md:text-base select-none">
           <span>${item.titre}</span>
-          <button class="toggle-details text-blue-600 font-bold text-sm" data-titre="${item.titre}">▼</button>
+          <span class="text-blue-600 font-bold text-sm">▼</span>
         </h3>
         <div id="details-${item.titre.replace(/\s+/g, '-')}" class="hidden mt-2 text-sm text-gray-700">
           ${item.details.map(d => `<p class="mb-1">${d}</p>`).join("")}
@@ -50,13 +50,15 @@ async function chargerParcoursProfessionnel() {
   }
 }
 
-// Toggle des blocs de parcours
+// Gestion du clic sur toute la boîte
 document.addEventListener("click", e => {
-  if (e.target.classList.contains("toggle-details")) {
-    const titre = e.target.dataset.titre;
+  const box = e.target.closest("[data-titre]");
+  if (box) {
+    const titre = box.dataset.titre;
     const bloc = document.getElementById(`details-${titre.replace(/\s+/g, '-')}`);
+    const arrow = box.querySelector("span.text-blue-600");
     bloc.classList.toggle("hidden");
-    e.target.textContent = bloc.classList.contains("hidden") ? "▼" : "▲";
+    arrow.textContent = bloc.classList.contains("hidden") ? "▼" : "▲";
   }
 });
 
@@ -74,9 +76,10 @@ async function chargerFormationsCertifications() {
 
     zone.innerHTML = data.map(cat => `
       <div class="border-b pb-2 mb-2">
-        <h4 class="font-semibold text-blue-700 flex justify-between items-center">
+        <h4 class="font-semibold text-blue-700 flex justify-between items-center cursor-pointer hover:text-blue-800"
+            data-cat="${cat.categorie}">
           <span>${cat.categorie}</span>
-          <button class="toggle-sous-section text-blue-600 text-sm" data-cat="${cat.categorie}">▼</button>
+          <span class="text-blue-600 text-sm font-bold">▼</span>
         </h4>
         <div id="sous-${cat.categorie.replace(/\s+/g, '-')}" class="hidden ml-3 mt-1">
           ${cat.sous_sections.map(f => `
@@ -84,7 +87,8 @@ async function chargerFormationsCertifications() {
               <button class="formation-btn text-left w-full hover:text-blue-700"
                       data-titre="${f.titre}" data-periode="${f.periode}"
                       data-details='${JSON.stringify(f.details)}'>
-                <strong>${f.titre}</strong> <span class="text-gray-500 text-xs">(${f.periode})</span>
+                <strong>${f.titre}</strong>
+                <span class="text-gray-500 text-xs">(${f.periode})</span>
               </button>
             </div>`).join("")}
         </div>
@@ -97,13 +101,15 @@ async function chargerFormationsCertifications() {
   }
 }
 
-// Toggle des sous-sections formations
+// Toggle sous-sections formations
 document.addEventListener("click", e => {
-  if (e.target.classList.contains("toggle-sous-section")) {
-    const id = `sous-${e.target.dataset.cat.replace(/\s+/g, '-')}`;
-    const bloc = document.getElementById(id);
+  const catHeader = e.target.closest("[data-cat]");
+  if (catHeader) {
+    const cat = catHeader.dataset.cat;
+    const bloc = document.getElementById(`sous-${cat.replace(/\s+/g, '-')}`);
+    const arrow = catHeader.querySelector("span.text-blue-600");
     bloc.classList.toggle("hidden");
-    e.target.textContent = bloc.classList.contains("hidden") ? "▼" : "▲";
+    arrow.textContent = bloc.classList.contains("hidden") ? "▼" : "▲";
   }
 
   if (e.target.classList.contains("formation-btn")) {
@@ -120,7 +126,7 @@ document.addEventListener("click", e => {
   }
 });
 
-// Toggle global formations
+// Toggle global de la section "Formations et certifications"
 document.getElementById("toggleFormations").addEventListener("click", () => {
   const zone = document.getElementById("formations");
   const bouton = document.getElementById("toggleFormations");
