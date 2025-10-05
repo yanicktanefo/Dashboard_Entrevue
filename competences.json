@@ -1,0 +1,302 @@
+{
+  "metadata": {
+    "source": "Répertoire des compétences Hydro-Québec, édition juin 2022",
+    "version": "2022.06",
+    "lang": "fr-CA",
+    "encoding": "UTF-8-BOM",
+    "categories": 4,
+    "competences_total": 42,
+    "derniere_mise_a_jour": "2025-10-05"
+  },
+  "Compétences d’affaires": [
+    {
+      "id": "C01",
+      "nom": "1- Sens des affaires",
+      "categorie": "Compétences d’affaires",
+      "description": "Capacité de saisir les occasions d’affaires, d’analyser et de gérer les risques.",
+      "comportements": [
+        "Se tient au courant de l’évolution de l’industrie, du marché et de la position de l’entreprise.",
+        "Comprend l’apport que peut avoir son unité quant à l’atteinte des objectifs commerciaux.",
+        "Élabore des stratégies pour acquérir ou conserver un avantage concurrentiel.",
+        "Sait peser le pour et le contre des nouveaux débouchés et projets.",
+        "Est à l’affût des nouveaux créneaux, marchés et partenariats.",
+        "Saisit les bonnes occasions d’affaires lorsqu’elles se présentent."
+      ]
+    },
+    {
+      "id": "C02",
+      "nom": "2- Vision stratégique",
+      "categorie": "Compétences d’affaires",
+      "description": "Capacité d’analyser les tendances du marché et de prévoir les impacts à long terme afin de positionner l’organisation stratégiquement.",
+      "comportements": [
+        "Perçoit les liens entre les tendances, les événements et leurs conséquences futures.",
+        "Comprend et communique la vision globale de l’organisation.",
+        "Anticipe les changements et adapte les stratégies pour maintenir la position concurrentielle.",
+        "Traduit la vision en orientations concrètes pour son unité.",
+        "Encourage la réflexion stratégique chez les membres de son équipe."
+      ]
+    },
+    {
+      "id": "C03",
+      "nom": "3- Orientation client",
+      "categorie": "Compétences d’affaires",
+      "description": "Capacité de reconnaître les besoins des clients internes et externes, et d’y répondre avec professionnalisme et efficacité.",
+      "comportements": [
+        "Écoute activement les besoins des clients et cherche à les comprendre.",
+        "Fait preuve de courtoisie et de respect envers les clients.",
+        "Anticipe les attentes et propose des solutions adaptées.",
+        "S’assure de la satisfaction des clients après la prestation du service.",
+        "Encourage une culture de service dans son équipe."
+      ]
+    },
+    {
+      "id": "C04",
+      "nom": "4- Gestion des priorités et des ressources",
+      "categorie": "Compétences d’affaires",
+      "description": "Capacité d’utiliser efficacement les ressources disponibles pour atteindre les objectifs organisationnels.",
+      "comportements": [
+        "Établit des priorités claires en fonction des objectifs stratégiques.",
+        "Optimise l’utilisation du temps, du budget et des ressources humaines.",
+        "Évite la dispersion des efforts en se concentrant sur les résultats clés.",
+        "Réévalue régulièrement les priorités selon l’évolution du contexte.",
+        "S’assure que les ressources sont alignées avec les besoins de l’organisation."
+      ]
+    }
+  ],
+  "Compétences interpersonnelles": [
+    {
+      "id": "C15",
+      "nom": "15- Communique efficacement",
+      "categorie": "Compétences interpersonnelles",
+      "description": "Exprime clairement ses idées et adapte sa communication à ses interlocuteurs et aux situations.",
+      "comportements": [
+        "S’exprime de façon claire, concise et structurée.",
+        "Adapte son langage, son ton et ses exemples selon le public visé.",
+        "Écoute activement et valide sa compréhension des messages reçus.",
+        "Transmet les informations essentielles au bon moment.",
+        "Fait preuve de transparence et favorise un dialogue ouvert.",
+        "Utilise les bons canaux de communication pour maximiser l’efficacité du message."
+      ]
+    },
+    {
+      "id": "C16",
+      "nom": "16- Influence positivement",
+      "categorie": "Compétences interpersonnelles",
+      "description": "Capacité de convaincre et de rallier les autres à ses idées ou à des décisions dans l’intérêt de l’organisation.",
+      "comportements": [
+        "Présente ses idées de façon constructive et convaincante.",
+        "Écoute les points de vue divergents et cherche un terrain d’entente.",
+        "Utilise des arguments logiques et factuels pour persuader.",
+        "S’appuie sur la crédibilité personnelle et la confiance mutuelle.",
+        "Respecte les décisions prises même lorsqu’elles diffèrent de son opinion initiale.",
+        "Favorise l’adhésion et la mobilisation des autres autour d’objectifs communs."
+      ]
+    },
+    {
+      "id": "C17",
+      "nom": "17- Gère les conflits",
+      "categorie": "Compétences interpersonnelles",
+      "description": "Agit pour résoudre les désaccords de façon constructive et maintenir des relations de travail harmonieuses.",
+      "comportements": [
+        "Identifie rapidement les sources de tension ou de malentendus.",
+        "Aborde les désaccords avec calme et objectivité.",
+        "Favorise la discussion ouverte et la recherche de solutions mutuellement satisfaisantes.",
+        "Aide les personnes concernées à s’exprimer et à écouter les autres.",
+        "Encourage la collaboration même en période de désaccord.",
+        "Intervient avant que les conflits ne s’enveniment."
+      ]
+    },
+    {
+      "id": "C18",
+      "nom": "18- Travaille en équipe",
+      "categorie": "Compétences interpersonnelles",
+      "description": "Collabore avec les autres à la réalisation d’objectifs communs, par opposition au fait de travailler seul, en silo ou en compétition avec d’autres.",
+      "comportements": [
+        "Adopte une attitude positive face à l’apport des autres.",
+        "Collabore activement avec les autres, au-delà des unités, pour atteindre les objectifs de l’organisation.",
+        "Communique au bon moment, à ses collègues et à ses partenaires, l’information nécessaire à la poursuite des objectifs communs.",
+        "Encourage les autres à collaborer entre eux et avec les autres unités.",
+        "Participe activement à la résolution des problèmes du groupe.",
+        "Sait obtenir le soutien et la collaboration des autres pour mieux coopérer au sein de l’organisation.",
+        "Est solidaire des décisions d’équipe et de l’organisation.",
+        "Agit dans le meilleur intérêt de l’organisation et pour le bien commun."
+      ]
+    },
+    {
+      "id": "C19",
+      "nom": "19- Agit avec ouverture et bienveillance",
+      "categorie": "Compétences interpersonnelles",
+      "description": "Capacité d’entretenir de bons rapports avec autrui, d’écouter et de comprendre les réactions des autres et de démontrer de l’ouverture à la diversité des points de vue.",
+      "comportements": [
+        "Démontre un intérêt sincère envers les personnes, leurs réalités et leurs préoccupations.",
+        "Maintient des relations positives avec les autres.",
+        "Accueille le point de vue des autres, adopte une attitude empathique et inclusive.",
+        "Encourage l’expression respectueuse des idées, des opinions et des émotions.",
+        "Démontre de l’ouverture, du respect, de la tolérance et de la patience face aux différences.",
+        "Reconnaît ses préjugés pour prévenir des comportements inappropriés.",
+        "Recherche activement les perspectives différentes, en tirant profit de la richesse et de la diversité des idées.",
+        "Encourage les autres à adopter des comportements favorisant l’inclusion."
+      ]
+    }
+  ],
+  "Compétences personnelles": [
+    {
+      "id": "C25",
+      "nom": "25- Fait preuve d’autonomie",
+      "categorie": "Compétences personnelles",
+      "description": "Capacité de prendre des initiatives et de travailler de façon indépendante tout en respectant les orientations de l’organisation.",
+      "comportements": [
+        "Prend des décisions appropriées sans supervision constante.",
+        "S’organise efficacement pour atteindre les résultats attendus.",
+        "Assume la responsabilité de ses actions et de leurs conséquences.",
+        "Cherche activement des solutions plutôt que d’attendre des directives.",
+        "Démontre une attitude proactive et orientée vers l’action."
+      ]
+    },
+    {
+      "id": "C26",
+      "nom": "26- Fait preuve d’intégrité",
+      "categorie": "Compétences personnelles",
+      "description": "Adopte un comportement honnête, éthique et conforme aux valeurs de l’organisation.",
+      "comportements": [
+        "Respecte la confidentialité et la confiance qui lui sont accordées.",
+        "Agit avec transparence dans ses décisions et ses communications.",
+        "Refuse les pratiques contraires à l’éthique, même sous pression.",
+        "Admet ses erreurs et prend les mesures nécessaires pour les corriger.",
+        "Représente fidèlement les intérêts et les valeurs de l’organisation."
+      ]
+    },
+    {
+      "id": "C27",
+      "nom": "27- Fait preuve de rigueur",
+      "categorie": "Compétences personnelles",
+      "description": "Effectue son travail avec exactitude, précision et souci du détail pour assurer la qualité des résultats.",
+      "comportements": [
+        "Vérifie la qualité et la fiabilité de ses analyses et livrables.",
+        "Respecte les normes, procédures et politiques établies.",
+        "Planifie son travail pour réduire les risques d’erreurs.",
+        "Cherche à comprendre les causes des écarts et les corrige.",
+        "Maintient un haut niveau de professionnalisme dans l’exécution de ses tâches."
+      ]
+    },
+    {
+      "id": "C28",
+      "nom": "28- Gère la pression et le stress",
+      "categorie": "Compétences personnelles",
+      "description": "Capacité de demeurer efficace, calme et centré, même en situation de tension, de changement ou d’incertitude.",
+      "comportements": [
+        "Garde son sang-froid face aux situations difficiles ou urgentes.",
+        "Maintient la qualité de son travail sous pression.",
+        "Utilise des stratégies saines pour gérer le stress et préserver son équilibre.",
+        "S’adapte rapidement aux imprévus et aux changements de priorités.",
+        "Encourage un climat de travail serein autour de lui."
+      ]
+    },
+    {
+      "id": "C29",
+      "nom": "29- Fait preuve d’esprit critique",
+      "categorie": "Compétences personnelles",
+      "description": "Analyse les situations avec objectivité et jugement pour prendre des décisions éclairées.",
+      "comportements": [
+        "Analyse les faits avant de tirer des conclusions.",
+        "Remet en question les hypothèses et les pratiques existantes de manière constructive.",
+        "Évalue les risques et les avantages de plusieurs options avant d’agir.",
+        "Distingue les opinions des données objectives.",
+        "Prend position avec discernement et argumente ses choix."
+      ]
+    }
+  ],
+  "Compétences techniques": [
+    {
+      "id": "C36",
+      "nom": "36- Maitrise les outils numériques",
+      "categorie": "Compétences techniques",
+      "description": "Utilise efficacement les outils informatiques et technologiques pour soutenir son travail et améliorer la productivité.",
+      "comportements": [
+        "Utilise les outils numériques en conformité avec les politiques de sécurité et de confidentialité.",
+        "Se tient à jour sur les nouvelles fonctionnalités et technologies de son domaine.",
+        "Optimise ses méthodes de travail grâce à l’automatisation et aux outils collaboratifs.",
+        "Aide ses collègues à utiliser adéquatement les technologies disponibles.",
+        "Propose des améliorations numériques favorisant l’efficacité et la qualité du travail."
+      ]
+    },
+    {
+      "id": "C37",
+      "nom": "37- Applique les normes et les procédures",
+      "categorie": "Compétences techniques",
+      "description": "Respecte les normes professionnelles, les protocoles et les procédures internes liés à son domaine d’expertise.",
+      "comportements": [
+        "Suit rigoureusement les processus et les directives établis.",
+        "Contribue à l’amélioration continue des procédures existantes.",
+        "S’assure que son travail est conforme aux exigences légales et réglementaires.",
+        "Signale les écarts ou les non-conformités de façon proactive.",
+        "Participe à la diffusion des bonnes pratiques au sein de son équipe."
+      ]
+    },
+    {
+      "id": "C38",
+      "nom": "38- Développe son expertise technique",
+      "categorie": "Compétences techniques",
+      "description": "Acquiert et approfondit continuellement ses connaissances dans son domaine afin d’assurer un haut niveau de compétence.",
+      "comportements": [
+        "Se forme régulièrement pour suivre l’évolution de son domaine.",
+        "Partage ses apprentissages avec ses collègues et son équipe.",
+        "Applique de nouvelles méthodes ou approches pour améliorer ses résultats.",
+        "Démontre une compréhension approfondie des concepts et des technologies propres à son champ d’expertise.",
+        "Cherche activement à perfectionner ses habiletés techniques."
+      ]
+    },
+    {
+      "id": "C39",
+      "nom": "39- Analyse et résout les problèmes techniques",
+      "categorie": "Compétences techniques",
+      "description": "Identifie, analyse et propose des solutions efficaces aux problèmes techniques rencontrés dans son domaine.",
+      "comportements": [
+        "Analyse les causes fondamentales d’un problème avant d’agir.",
+        "Élabore des solutions viables, sécuritaires et durables.",
+        "Documente les problèmes et les solutions pour favoriser le partage de connaissances.",
+        "S’appuie sur les données et l’expérience pour orienter ses décisions.",
+        "Collabore avec les experts d’autres domaines pour résoudre des enjeux complexes."
+      ]
+    },
+    {
+      "id": "C40",
+      "nom": "40- Gère les projets techniques",
+      "categorie": "Compétences techniques",
+      "description": "Planifie, coordonne et exécute des projets techniques en respectant les délais, les coûts et la qualité attendue.",
+      "comportements": [
+        "Définit clairement les objectifs, les livrables et les étapes du projet.",
+        "Établit des échéanciers réalistes et suit leur progression.",
+        "Coordonne efficacement les ressources et les intervenants.",
+        "Surveille les risques et met en place des mesures d’atténuation.",
+        "Fait preuve de leadership dans la gestion des priorités techniques."
+      ]
+    },
+    {
+      "id": "C41",
+      "nom": "41- Partage les connaissances techniques",
+      "categorie": "Compétences techniques",
+      "description": "Transmet son savoir et ses meilleures pratiques afin de favoriser le développement collectif de l’expertise.",
+      "comportements": [
+        "Communique ses connaissances avec clarté et pédagogie.",
+        "Encourage la documentation et la diffusion du savoir au sein de l’équipe.",
+        "Offre du mentorat ou du soutien technique à ses pairs.",
+        "Valorise les apprentissages issus des expériences passées.",
+        "Contribue à bâtir une culture d’apprentissage et de transfert de savoirs."
+      ]
+    },
+    {
+      "id": "C42",
+      "nom": "42- Assure la qualité technique",
+      "categorie": "Compétences techniques",
+      "description": "S’assure que les livrables techniques respectent les standards de qualité, de sécurité et de performance exigés.",
+      "comportements": [
+        "Contrôle la conformité des résultats par rapport aux exigences techniques.",
+        "Effectue les vérifications et tests nécessaires avant la livraison.",
+        "Corrige rapidement les écarts détectés et en identifie les causes.",
+        "Documente les résultats pour assurer la traçabilité et la transparence.",
+        "Participe à la mise en place d’une culture de qualité technique au sein de l’organisation."
+      ]
+    }
+  ]
+}

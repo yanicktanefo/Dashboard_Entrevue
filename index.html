@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dashboard Entrevue – Yannick Therrien</title>
+  <title>Dashboard Entrevue – Yanick Therien</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-100 text-gray-800 min-h-screen">
   <header class="bg-blue-900 text-white p-4 shadow">
     <h1 class="text-2xl font-bold">Dashboard Entrevue</h1>
-    <p class="text-sm text-blue-100">Préparation – Yannick Therrien</p>
+    <p class="text-sm text-blue-100">Préparation – Yanick Therien</p>
   </header>
 
   <main class="flex flex-row p-4 gap-4">
@@ -32,6 +32,7 @@
 
     <!-- Colonne droite -->
     <aside class="w-1/3 space-y-4">
+      <!-- Section : Compétences techniques -->
       <section>
         <h3 class="text-xl font-semibold mb-2">Compétences techniques</h3>
         <div id="keywords" class="flex flex-wrap gap-2">
@@ -41,6 +42,18 @@
         </div>
       </section>
 
+      <!-- Section : Compétences comportementales -->
+      <section>
+        <h3 class="text-xl font-semibold mb-2 flex justify-between items-center">
+          <span>Compétences comportementales</span>
+          <button id="toggleComportementales" class="text-blue-600 text-sm font-bold">▼</button>
+       </h3>
+       <div id="competencesComportementales" class="bg-white p-3 rounded shadow text-sm">
+          <p class="text-gray-600 italic">Chargement des compétences comportementales...</p>
+       </div>
+      </section>
+
+      <!-- Section : Formations et certifications -->
       <section>
         <h3 class="text-xl font-semibold mb-2 flex justify-between items-center">
           <span>Formations et certifications</span>
