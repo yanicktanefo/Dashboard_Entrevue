@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard Entrevue - Yann</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-900 min-h-screen flex">
+  <!-- Section gauche (70%) -->
+  <main class="w-2/3 p-6 overflow-y-auto border-r border-gray-300">
+    <!-- Parcours -->
+    <section id="parcours" class="mb-8">
+      <h2 class="text-2xl font-bold mb-4">Parcours</h2>
+      <div id="timeline" class="space-y-4"></div>
+    </section>
+
+    <!-- Zone d’analyse dynamique -->
+    <section id="analyse" class="grid grid-cols-2 gap-4">
+      <div id="colonne1" class="bg-white p-4 rounded shadow min-h-[200px]"></div>
+      <div id="colonne2" class="bg-white p-4 rounded shadow min-h-[200px]"></div>
+    </section>
+  </main>
+
+  <!-- Panneau droit (30%) -->
+  <aside class="w-1/3 p-6 bg-gray-50 flex flex-col space-y-6">
+    <!-- Boutons mots-clés -->
+    <section>
+      <h3 class="text-xl font-semibold mb-2">Mots-clés techniques</h3>
+      <div id="keywords" class="flex flex-wrap gap-2">
+        <button class="px-3 py-1 bg-blue-600 text-white rounded">Active Directory</button>
+        <button class="px-3 py-1 bg-blue-600 text-white rounded">CyberArk</button>
+        <button class="px-3 py-1 bg-blue-600 text-white rounded">Venafi</button>
+      </div>
+    </section>
+
+    <!-- Compétences comportementales -->
+    <section>
+      <h3 class="text-xl font-semibold mb-2">Compétences comportementales</h3>
+      <div id="competencesComportementales" class="bg-white p-3 rounded shadow text-sm">
+        <p class="text-gray-600 italic">Zone prévue pour les 42 compétences (JSON)</p>
+      </div>
+    </section>
+
+    <!-- Formations -->
+    <section>
+      <h3 class="text-xl font-semibold mb-2">Formations</h3>
+      <div id="formations" class="bg-white p-3 rounded shadow text-sm">
+        <p class="text-gray-600 italic">Zone prévue pour les formations académiques et professionnelles</p>
+      </div>
+    </section>
+  </aside>
+
+  <script src="script.js"></script>
+</body>
+</html>
