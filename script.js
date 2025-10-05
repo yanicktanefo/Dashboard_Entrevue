@@ -25,7 +25,6 @@ async function chargerParcoursProfessionnel() {
     if (!response.ok) throw new Error("Erreur de chargement du JSON");
     const data = await response.json();
 
-    // Génération du contenu interactif
     timeline.innerHTML = data.map(item => `
       <div class="bg-white p-3 rounded shadow-sm border border-gray-200 cursor-pointer hover:bg-blue-50 transition"
            data-titre="${item.titre}">
@@ -50,18 +49,6 @@ async function chargerParcoursProfessionnel() {
   }
 }
 
-// Gestion du clic sur toute la boîte
-document.addEventListener("click", e => {
-  const box = e.target.closest("[data-titre]");
-  if (box) {
-    const titre = box.dataset.titre;
-    const bloc = document.getElementById(`details-${titre.replace(/\s+/g, '-')}`);
-    const arrow = box.querySelector("span.text-blue-600");
-    bloc.classList.toggle("hidden");
-    arrow.textContent = bloc.classList.contains("hidden") ? "▼" : "▲";
-  }
-});
-
 // =========================
 // COMPÉTENCES COMPORTEMENTALES
 // =========================
@@ -74,69 +61,35 @@ async function chargerCompetencesComportementales() {
     if (!response.ok) throw new Error("Erreur de chargement du JSON");
     const data = await response.json();
 
-    // Fusionne toutes les catégories sauf "Compétences techniques"
-    const categories = Object.keys(data).filter(cat => cat !== "Compétences techniques");
-
-    zone.innerHTML = categories.map(cat => `
-      <div class="border-b pb-2 mb-2">
-        <h4 class="font-semibold text-blue-700 flex justify-between items-center cursor-pointer hover:text-blue-800"
-            data-cat="${cat}">
-          <span>${cat}</span>
-          <span class="text-blue-600 text-sm font-bold">▼</span>
-        </h4>
-        <div id="bloc-${cat.replace(/\s+/g, '-')}" class="hidden ml-3 mt-1">
-          ${data[cat].map(c => `
-            <div class="mb-2 bg-gray-50 p-2 rounded hover:bg-blue-50 cursor-pointer"
-                 data-id="${c.id}" data-nom="${c.nom}" data-description="${c.description}"
-                 data-comportements='${JSON.stringify(c.comportements)}'>
-              <p class="font-medium">${c.nom}</p>
-              <p class="text-xs text-gray-600">${c.description}</p>
-            </div>`).join("")}
+    const categories = Object.keys(data).filter(cat => Array.isArray(data[cat]));
+    zone.innerHTML = categories.map(cat => {
+      const filtered = data[cat].filter(c => c.actif && c.actif.toLowerCase() === "oui");
+      if (filtered.length === 0) return "";
+      return `
+        <div class="border-b pb-2 mb-2">
+          <h4 class="font-semibold text-blue-700 flex justify-between items-center cursor-pointer hover:text-blue-800"
+              data-cat="${cat}">
+            <span>${cat}</span>
+            <span class="text-blue-600 text-sm font-bold">▼</span>
+          </h4>
+          <div id="bloc-${cat.replace(/\s+/g, '-')}" class="hidden ml-3 mt-1">
+            ${filtered.map(c => `
+              <div class="mb-2 bg-gray-50 p-2 rounded hover:bg-blue-50 cursor-pointer"
+                   data-id="${c.id}" data-nom="${c.nom}" data-description="${c.description}"
+                   data-comportements='${JSON.stringify(c.comportements)}'>
+                <p class="font-medium">${c.nom}</p>
+                <p class="text-xs text-gray-600">${c.description}</p>
+              </div>`).join("")}
+          </div>
         </div>
-      </div>
-    `).join('');
+      `;
+    }).join('');
 
   } catch (error) {
     console.error("Erreur chargement compétences comportementales:", error);
     zone.innerHTML = `<p class="text-red-500">Erreur de chargement des compétences comportementales.</p>`;
   }
 }
-
-// Interaction : ouvrir/fermer catégories
-document.addEventListener("click", e => {
-  const catHeader = e.target.closest("[data-cat]");
-  if (catHeader) {
-    const cat = catHeader.dataset.cat;
-    const bloc = document.getElementById(`bloc-${cat.replace(/\s+/g, '-')}`);
-    const arrow = catHeader.querySelector("span.text-blue-600");
-    bloc.classList.toggle("hidden");
-    arrow.textContent = bloc.classList.contains("hidden") ? "▼" : "▲";
-  }
-
-  // Clic sur une compétence individuelle
-  if (e.target.closest("[data-id]")) {
-    const bloc = e.target.closest("[data-id]");
-    const nom = bloc.dataset.nom;
-    const description = bloc.dataset.description;
-    const comportements = JSON.parse(bloc.dataset.comportements);
-    afficherDansColonnes(
-      nom,
-      `<p class="text-xs text-gray-500">${description}</p>
-       <ul class="list-disc ml-5 mt-2 text-sm text-gray-700">
-         ${comportements.map(c => `<li>${c}</li>`).join("")}
-       </ul>`
-    );
-  }
-});
-
-// Toggle global de la section "Compétences comportementales"
-document.getElementById("toggleComportementales").addEventListener("click", () => {
-  const zone = document.getElementById("competencesComportementales");
-  const bouton = document.getElementById("toggleComportementales");
-  zone.classList.toggle("hidden");
-  bouton.textContent = zone.classList.contains("hidden") ? "▲" : "▼";
-});
-
 
 // =========================
 // FORMATIONS ET CERTIFICATIONS
@@ -177,15 +130,42 @@ async function chargerFormationsCertifications() {
   }
 }
 
-// Toggle sous-sections formations
+// =========================
+// INTERACTIONS GLOBALES
+// =========================
 document.addEventListener("click", e => {
+  const box = e.target.closest("[data-titre]");
+  if (box) {
+    const titre = box.dataset.titre;
+    const bloc = document.getElementById(`details-${titre.replace(/\s+/g, '-')}`);
+    const arrow = box.querySelector("span.text-blue-600");
+    bloc.classList.toggle("hidden");
+    arrow.textContent = bloc.classList.contains("hidden") ? "▼" : "▲";
+  }
+
   const catHeader = e.target.closest("[data-cat]");
   if (catHeader) {
     const cat = catHeader.dataset.cat;
-    const bloc = document.getElementById(`sous-${cat.replace(/\s+/g, '-')}`);
-    const arrow = catHeader.querySelector("span.text-blue-600");
-    bloc.classList.toggle("hidden");
-    arrow.textContent = bloc.classList.contains("hidden") ? "▼" : "▲";
+    const bloc = document.getElementById(`bloc-${cat.replace(/\s+/g, '-')}`) || document.getElementById(`sous-${cat.replace(/\s+/g, '-')}`);
+    if (bloc) {
+      const arrow = catHeader.querySelector("span.text-blue-600");
+      bloc.classList.toggle("hidden");
+      arrow.textContent = bloc.classList.contains("hidden") ? "▼" : "▲";
+    }
+  }
+
+  if (e.target.closest("[data-id]")) {
+    const bloc = e.target.closest("[data-id]");
+    const nom = bloc.dataset.nom;
+    const description = bloc.dataset.description;
+    const comportements = JSON.parse(bloc.dataset.comportements);
+    afficherDansColonnes(
+      nom,
+      `<p class="text-xs text-gray-500">${description}</p>
+       <ul class="list-disc ml-5 mt-2 text-sm text-gray-700">
+         ${comportements.map(c => `<li>${c}</li>`).join("")}
+       </ul>`
+    );
   }
 
   if (e.target.classList.contains("formation-btn")) {
@@ -202,7 +182,23 @@ document.addEventListener("click", e => {
   }
 });
 
-// Toggle global de la section "Formations et certifications"
+// =========================
+// TOGGLES DES SECTIONS
+// =========================
+document.getElementById("toggleParcours").addEventListener("click", () => {
+  const zone = document.getElementById("timeline");
+  const bouton = document.getElementById("toggleParcours");
+  zone.classList.toggle("hidden");
+  bouton.textContent = zone.classList.contains("hidden") ? "▲" : "▼";
+});
+
+document.getElementById("toggleComportementales").addEventListener("click", () => {
+  const zone = document.getElementById("competencesComportementales");
+  const bouton = document.getElementById("toggleComportementales");
+  zone.classList.toggle("hidden");
+  bouton.textContent = zone.classList.contains("hidden") ? "▲" : "▼";
+});
+
 document.getElementById("toggleFormations").addEventListener("click", () => {
   const zone = document.getElementById("formations");
   const bouton = document.getElementById("toggleFormations");
@@ -215,6 +211,6 @@ document.getElementById("toggleFormations").addEventListener("click", () => {
 // =========================
 window.addEventListener("DOMContentLoaded", () => {
   chargerParcoursProfessionnel();
-  chargerFormationsCertifications();
   chargerCompetencesComportementales();
+  chargerFormationsCertifications();
 });
