@@ -1,0 +1,46 @@
+{
+    "competences_strategiques": [
+    {
+      "bouton": "Vision",
+      "titre": "Vision stratégique et trajectoires technologiques",
+      "description": "Alignement des trajectoires technologiques avec les orientations d’entreprise, notamment en lien avec le Plan d’action 2035 d’Hydro-Québec.",
+      "depuis": 2021,
+      "etat": "validé"
+    },
+    {
+      "bouton": "Leadership",
+      "titre": "Leadership et gouvernance Agile",
+      "description": "Gestion d’équipes pluridisciplinaires (jusqu’à 22 ressources) selon Scrum, SAFe et Jira Roadmap, en tant que Responsable Produit d’Affaires (RPA).",
+      "depuis": 2020,
+      "etat": "validé"
+    },
+    {
+      "bouton": "Collab",
+      "titre": "Collaboration et influence",
+      "description": "Mobilisation des parties prenantes via ateliers d’architecture, vulgarisation et recherche de consensus.",
+      "depuis": 2018,
+      "etat": "validé"
+    },
+    {
+      "bouton": "Client",
+      "titre": "Orientation client et conformité",
+      "description": "Approche centrée sur la valeur d’affaires, la réduction des risques et la continuité opérationnelle.",
+      "depuis": 2019,
+      "etat": "validé"
+    },
+    {
+      "bouton": "Architecture",
+      "titre": "Architecture d’entreprise et sécurité",
+      "description": "Participation à la définition des architectures cibles, cadres de référence et trajectoires technologiques en cybersécurité.",
+      "depuis": 2021,
+      "etat": "à_valider"
+    },
+    {
+      "bouton": "Communication",
+      "titre": "Communication stratégique",
+      "description": "Vulgarisation et présentation de sujets techniques complexes auprès de directions, comités de gouvernance et partenaires externes.",
+      "depuis": 2020,
+      "etat": "à_valider"
+    }
+  ]
+}

@@ -7,9 +7,24 @@
       "Développement d’un leadership technique et d’une approche collaborative inter-équipes."
     ],
     "faits_sailants": [
-      "Intégration des environnements IBM AS/400 et Microsoft.",
-      "Pilotage du remplacement des terminaux IBM par des ordinateurs Windows avec gestion du changement.",
-      "Coordination d’équipes hybrides et amélioration de la productivité."
+      {
+        "texte": "Intégration des environnements IBM AS/400 et Microsoft.",
+        "liens_comportements": [
+          "C18"
+        ]
+      },
+      {
+        "texte": "Pilotage du remplacement des terminaux IBM par des ordinateurs Windows avec gestion du changement.",
+        "liens_comportements": [
+          "C26"
+        ]
+      },
+      {
+        "texte": "Coordination d’équipes hybrides et amélioration de la productivité.",
+        "liens_comportements": [
+          "C18"
+        ]
+      }
     ]
   },
   {
@@ -20,9 +35,24 @@
       "Consultation pour plus de 50 organisations, incluant la RAMQ, la SAQ, le Cirque du Soleil, et l’Assemblée nationale."
     ],
     "faits_sailants": [
-      "Introduction d’Active Directory et de Microsoft Exchange dans plusieurs organisations.",
-      "Coordination à la RAMQ du projet Lotus Notes → Exchange et pilote de la carte à puce santé.",
-      "Formations nationales et vulgarisation des technologies Microsoft et Cisco."
+      {
+        "texte": "Introduction d’Active Directory et de Microsoft Exchange dans plusieurs organisations.",
+        "liens_comportements": [
+          "C26"
+        ]
+      },
+      {
+        "texte": "Coordination à la RAMQ du projet Lotus Notes → Exchange et pilote de la carte à puce santé.",
+        "liens_comportements": [
+          "C18"
+        ]
+      },
+      {
+        "texte": "Formations nationales et vulgarisation des technologies Microsoft et Cisco.",
+        "liens_comportements": [
+          "C26"
+        ]
+      }
     ]
   },
   {
@@ -32,8 +62,18 @@
       "Déploiement d’un système d’authentification par carte à puce et modernisation de l’architecture Active Directory."
     ],
     "faits_sailants": [
-      "Mise en place d’une infrastructure d’identité unifiée et sécurisée.",
-      "Collaboration inter-équipes pour la standardisation des accès."
+      {
+        "texte": "Mise en place d’une infrastructure d’identité unifiée et sécurisée.",
+        "liens_comportements": [
+          "C18"
+        ]
+      },
+      {
+        "texte": "Collaboration inter-équipes pour la standardisation des accès.",
+        "liens_comportements": [
+          "C26"
+        ]
+      }
     ]
   },
   {
@@ -43,9 +83,24 @@
       "Initiateur de la première vague d’automatisation TI à Hydro-Québec."
     ],
     "faits_sailants": [
-      "Conception et déploiement d’une image automatisée pour les serveurs Windows.",
-      "Réduction du temps d’installation de plusieurs jours à quelques heures.",
-      "Adoption progressive de l’automatisation par les équipes serveurs."
+      {
+        "texte": "Conception et déploiement d’une image automatisée pour les serveurs Windows.",
+        "liens_comportements": [
+          "C18"
+        ]
+      },
+      {
+        "texte": "Réduction du temps d’installation de plusieurs jours à quelques heures.",
+        "liens_comportements": [
+          "C26"
+        ]
+      },
+      {
+        "texte": "Adoption progressive de l’automatisation par les équipes serveurs.",
+        "liens_comportements": [
+          "C18"
+        ]
+      }
     ]
   },
   {
@@ -56,9 +111,24 @@
       "Participation à plusieurs projets d’envergure (ILM, EMC/Isilon, opTiCT)."
     ],
     "faits_sailants": [
-      "Introduction des pratiques d’infonuagique et de libre-service.",
-      "Coordination entre architecture, réseau, exploitation et sécurité.",
-      "Contribution aux appels d’offres et à la définition technique des solutions de stockage."
+      {
+        "texte": "Introduction des pratiques d’infonuagique et de libre-service.",
+        "liens_comportements": [
+          "C26"
+        ]
+      },
+      {
+        "texte": "Coordination entre architecture, réseau, exploitation et sécurité.",
+        "liens_comportements": [
+          "C18"
+        ]
+      },
+      {
+        "texte": "Contribution aux appels d’offres et à la définition technique des solutions de stockage.",
+        "liens_comportements": [
+          "C26"
+        ]
+      }
     ]
   },
   {
@@ -68,9 +138,24 @@
       "Participation à la planification stratégique et à la transformation culturelle Agile."
     ],
     "faits_sailants": [
-      "Intégration de près de 200 solutions TI à la plateforme ArcSight.",
-      "Introduction des pratiques Agiles et collaboration à la cellule de transformation culturelle.",
-      "Automatisation progressive des processus de cybersécurité."
+      {
+        "texte": "Intégration de près de 200 solutions TI à la plateforme ArcSight.",
+        "liens_comportements": [
+          "C18"
+        ]
+      },
+      {
+        "texte": "Introduction des pratiques Agiles et collaboration à la cellule de transformation culturelle.",
+        "liens_comportements": [
+          "C26"
+        ]
+      },
+      {
+        "texte": "Automatisation progressive des processus de cybersécurité.",
+        "liens_comportements": [
+          "C18"
+        ]
+      }
     ]
   },
   {
@@ -80,9 +165,24 @@
       "Modernisation complète des infrastructures de certificats et gouvernance améliorée."
     ],
     "faits_sailants": [
-      "Structuration du backlog agile et gouvernance produit.",
-      "Déploiement d’une infrastructure PKI résiliente dans les zones protégées contre les rançongiciels.",
-      "Automatisation et libre-service des certificats via Venafi Maestro."
+      {
+        "texte": "Structuration du backlog agile et gouvernance produit.",
+        "liens_comportements": [
+          "C26"
+        ]
+      },
+      {
+        "texte": "Déploiement d’une infrastructure PKI résiliente dans les zones protégées contre les rançongiciels.",
+        "liens_comportements": [
+          "C18"
+        ]
+      },
+      {
+        "texte": "Automatisation et libre-service des certificats via Venafi Maestro.",
+        "liens_comportements": [
+          "C26"
+        ]
+      }
     ]
   },
   {
@@ -92,10 +192,30 @@
       "Supervision des feuilles de route, conformité et trajectoires d’architecture."
     ],
     "faits_sailants": [
-      "Responsable du carnet de commande des équipes d’annuaires et voûtes.",
-      "Introduction réussie de la culture Agile dans les équipes d’annuaires et de cybersécurité.",
-      "Contribution architecturale au remplacement des clés RSA par les Yubico.",
-      "Collaboration continue avec les architectes d’entreprise et de solution depuis 2017."
+      {
+        "texte": "Responsable du carnet de commande des équipes d’annuaires et voûtes.",
+        "liens_comportements": [
+          "C18"
+        ]
+      },
+      {
+        "texte": "Introduction réussie de la culture Agile dans les équipes d’annuaires et de cybersécurité.",
+        "liens_comportements": [
+          "C26"
+        ]
+      },
+      {
+        "texte": "Contribution architecturale au remplacement des clés RSA par les Yubico.",
+        "liens_comportements": [
+          "C18"
+        ]
+      },
+      {
+        "texte": "Collaboration continue avec les architectes d’entreprise et de solution depuis 2017.",
+        "liens_comportements": [
+          "C26"
+        ]
+      }
     ]
   }
 ]

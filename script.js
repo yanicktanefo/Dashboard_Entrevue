@@ -3,14 +3,21 @@
 ========================================================= */
 const $  = (sel) => document.querySelector(sel);
 const $$ = (sel) => document.querySelectorAll(sel);
+
+function escapeCSS(s) {
+  if (typeof CSS !== "undefined" && typeof CSS.escape === "function") return CSS.escape(s);
+  return String(s).replace(/[\0-\x1F\x7F-\uFFFF]/g, (ch) => "\\" + ch.charCodeAt(0).toString(16) + " ");
+}
+
 const sanitizeId = (s="") =>
   s.toString().trim().toLowerCase().replace(/\s+/g,"-").replace(/[^\w-]/g,"");
+
 const enc = (obj) => encodeURIComponent(JSON.stringify(obj ?? []));
-const dec = (str) => JSON.parse(decodeURIComponent(str || "[]"));
+const dec = (str) => { try { return JSON.parse(decodeURIComponent(str || "[]")); } catch { return []; } };
 
 async function loadJSON(url) {
   try {
-    const r = await fetch(url);
+    const r = await fetch(url, { cache: "no-store" });
     if (!r.ok) throw new Error(`HTTP ${r.status}`);
     return await r.json();
   } catch (e) {
@@ -20,12 +27,12 @@ async function loadJSON(url) {
 }
 
 /* =========================================================
-   État global (sélections + surbrillance)
+   État global (sélections + UI)
 ========================================================= */
 let competencesSelectionnees = [];   // [{id, nom, description, comportements[]}]
 let expertisesSelectionnees  = [];   // [{nom, titre, depuis, description}]
 
-/* Zones d’affichage (colonne 1, 2 pour les cartes de gauche) */
+/* Zones d’affichage (colonne 1, 2) */
 const col1 = $("#colonne1");
 const col2 = $("#colonne2");
 const exp1 = $("#expertise1");
@@ -81,7 +88,7 @@ function renderExpertises() {
 }
 
 /* =========================================================
-   Surbrillance du parcours selon expertises
+   Surbrillance du parcours selon expertises (optionnel)
 ========================================================= */
 function clearTimelineHighlight() {
   $$("#timeline > div").forEach(d => d.classList.remove("bg-yellow-100","border-yellow-400"));
@@ -102,6 +109,7 @@ function recomputeTimelineHighlight() {
 
 /* =========================================================
    Parcours professionnel (parcours.json)
+   - Supporte faits_sailants : string OU { texte, liens_comportements }
 ========================================================= */
 async function chargerParcours() {
   const timeline = $("#timeline");
@@ -117,38 +125,50 @@ async function chargerParcours() {
   const items = Array.isArray(data) ? data : [];
   timeline.innerHTML = items.map(it => {
     const titre = it.titre || `${it.periode ?? ""} - ${it.role ?? ""}`.replace(/ - $/,"");
-    const detailsArr =
-      Array.isArray(it.details) ? it.details :
-      it.details ? [it.details] : [];
-    const faits =
-      Array.isArray(it.faits_sailants) ? it.faits_sailants :
-      Array.isArray(it.faitsSaillants) ? it.faitsSaillants : [];
+    const detailsArr = Array.isArray(it.details) ? it.details : (it.details ? [it.details] : []);
+    const faits = Array.isArray(it.faits_sailants) ? it.faits_sailants :
+                  Array.isArray(it.faitsSaillants) ? it.faitsSaillants : [];
+
+    const faitsNorm = faits.map(f => {
+      if (typeof f === "string") return { texte: f, liens_comportements: [] };
+      const texte = f.texte ?? f.text ?? "";
+      const liens = Array.isArray(f.liens_comportements) ? f.liens_comportements : [];
+      return { texte, liens_comportements: liens };
+    });
 
     return `
-      <div class="bg-white p-3 rounded shadow-sm border border-gray-200 cursor-pointer hover:bg-blue-50 transition">
+      <div class="timeline-card bg-white p-3 rounded shadow-sm border border-gray-200 hover:bg-blue-50 transition">
         <h3 class="font-bold text-blue-700 flex justify-between items-center select-none">
           <span>${titre}</span>
           <span class="text-blue-600 font-bold text-sm">▼</span>
         </h3>
         <div id="details-${sanitizeId(titre)}" class="hidden mt-2 text-sm text-gray-700">
           ${detailsArr.map(d => `<p class="mb-1">${d}</p>`).join("")}
-          ${faits.length ? `
+          ${faitsNorm.length ? `
             <h4 class="font-semibold mt-2 text-gray-800">Faits saillants :</h4>
-            <ul class="list-disc ml-6 mt-1">${faits.map(f => `<li>${f}</li>`).join("")}</ul>
+            <ul class="list-disc ml-6 mt-1">
+              ${faitsNorm.map(f => `
+                <li class="fait-sailant cursor-pointer hover:bg-blue-50 transition p-1 rounded"
+                    data-liens='${JSON.stringify(f.liens_comportements || [])}'>
+                  ${f.texte}
+                </li>`).join("")}
+            </ul>
           ` : ""}
         </div>
       </div>`;
   }).join("");
 
-  // Toggle au clic n'importe où dans la carte
+  // Toggle uniquement au clic sur le header (H3), pas sur tout le bloc
   timeline.addEventListener("click", (e) => {
-    const card = e.target.closest("#timeline > div");
-    if (!card) return;
-    const details = card.querySelector("div[id^='details-']");
-    const arrow   = card.querySelector("h3 span.text-blue-600");
+    const header = e.target.closest(".timeline-card > h3");
+    if (!header) return;
+    const card   = header.closest(".timeline-card");
+    const details= card.querySelector("div[id^='details-']");
+    const arrow  = header.querySelector("span.text-blue-600");
     if (!details || !arrow) return;
     details.classList.toggle("hidden");
     arrow.textContent = details.classList.contains("hidden") ? "▼" : "▲";
+    saveState();
   });
 }
 
@@ -167,7 +187,6 @@ async function chargerCompetencesComportementales() {
     return;
   }
 
-  // --- Construction principale des blocs de catégories ---
   const html = Object.keys(data).map(cat => {
     const arr = Array.isArray(data[cat]) ? data[cat] : [];
     const actifs = arr.filter(c => ((c.actif ?? c.ACTIF) + "").toLowerCase() === "oui");
@@ -325,6 +344,62 @@ async function chargerCompetencesTechniques() {
   });
 }
 
+/*=========================================================
+   Compétences strategique (competences_techniques.json)
+========================================================= */
+
+async function chargerCompetencesStrategiques() {
+  const zone = $("#competencesStrategiques");
+  if (!zone) return;
+  zone.innerHTML = `<p class="text-gray-500 italic">Chargement des compétences stratégiques...</p>`;
+
+  const data = await loadJSON("competences_strategiques.json");
+  if (!data) {
+    zone.innerHTML = `<p class="text-red-500">Erreur de chargement des compétences stratégiques.</p>`;
+    return;
+  }
+
+  const arr = Array.isArray(data) ? data : (data.competences_strategiques ?? []);
+  zone.innerHTML = arr.map((c, i) => {
+    const nom   = c.bouton ?? c.nom ?? `Stratégique ${i+1}`;
+    const titre = typeof c.titre === "string" ? c.titre : "";
+    const depuis= (typeof c.depuis === "string" || typeof c.depuis === "number") ? String(c.depuis) : "";
+    const desc  = typeof c.description === "string" ? c.description : "";
+    return `
+      <button class="strategique-btn bg-purple-100 hover:bg-purple-200 text-purple-800 px-3 py-1 rounded-full text-sm font-medium transition mr-2 mb-2"
+              data-nom="${nom}"
+              data-titre="${titre.replace(/"/g,'&quot;')}"
+              data-depuis="${depuis.replace(/"/g,'&quot;')}"
+              data-description="${desc.replace(/"/g,'&quot;')}">
+        ${nom}
+      </button>`;
+  }).join("");
+
+  zone.addEventListener("click", (e) => {
+    const btn = e.target.closest(".strategique-btn");
+    if (!btn) return;
+    const nom     = btn.dataset.nom;
+    const titre   = btn.dataset.titre.replace(/&quot;/g,'"');
+    const depuis  = btn.dataset.depuis.replace(/&quot;/g,'"');
+    const desc    = btn.dataset.description.replace(/&quot;/g,'"');
+
+    const idx = expertisesSelectionnees.findIndex(x => x.nom === nom);
+    if (idx === -1) {
+      if (expertisesSelectionnees.length < 2) {
+        expertisesSelectionnees.push({ nom, titre, depuis, description: desc });
+        btn.classList.add("bg-purple-300");
+      }
+    } else {
+      expertisesSelectionnees.splice(idx,1);
+      btn.classList.remove("bg-purple-300");
+    }
+    renderExpertises();
+    recomputeTimelineHighlight();
+    saveState();
+  });
+}
+
+
 /* =========================================================
    Formations & certifications (formations_certifications.json)
 ========================================================= */
@@ -382,7 +457,6 @@ async function chargerFormations() {
       const details = dec(btn.dataset.details);
       const id = `formation-${sanitizeId(titre)}`;
 
-      // Ajouter (max 2). Si déjà 2, on remplace la seconde.
       const existing = competencesSelectionnees.findIndex(x => x.id === id);
       if (existing === -1) {
         if (competencesSelectionnees.length < 2) {
@@ -391,7 +465,6 @@ async function chargerFormations() {
           competencesSelectionnees[1] = { id, nom: titre, description: periode, comportements: details };
         }
       } else {
-        // toggle = retirer si re-cliqué
         competencesSelectionnees.splice(existing,1);
       }
       renderComportements();
@@ -401,15 +474,15 @@ async function chargerFormations() {
 }
 
 /* =========================================================
-   Exemples STAR (star_examples.json)
-   ⚠️ Le JSON contient "liens_comportements": ["Cxx", ...]
+   Exemples STAR (star_examples.json avec liens_comportements)
+   - Accepte objet par catégories OU tableau plat
 ========================================================= */
 async function chargerExemplesSTAR() {
   const zone = $("#exemplesSTAR");
   if (!zone) return;
   zone.innerHTML = `<p class="text-gray-500 italic">Chargement des exemples STAR...</p>`;
 
-  const data = await loadJSON("star_examples.json"); // on garde le nom d'origine
+  const data = await loadJSON("star_examples.json");
   if (!data) {
     zone.innerHTML = `<p class="text-red-500">Erreur de chargement des exemples STAR.</p>`;
     return;
@@ -417,8 +490,8 @@ async function chargerExemplesSTAR() {
 
   zone.innerHTML = "";
 
-  // Cas 1: objet par catégories (recommandé)
   if (!Array.isArray(data)) {
+    // Objet catégorisé
     Object.keys(data).forEach(cat => {
       const catId = sanitizeId(cat);
       const wrap = document.createElement("div");
@@ -434,9 +507,10 @@ async function chargerExemplesSTAR() {
 
       const content = wrap.querySelector(`#star-${catId}`);
       (data[cat] || []).forEach(ex => {
+        const liens = Array.isArray(ex.liens_comportements) ? ex.liens_comportements : [];
         const card = document.createElement("div");
         card.className = "star-card border-l-4 border-blue-300 bg-gray-50 p-3 my-2 rounded cursor-pointer hover:bg-blue-50 transition";
-        card.dataset.liens = JSON.stringify(ex.liens_comportements || []); // 🔗 IDs Cxx
+        card.dataset.liens = JSON.stringify(liens);
         card.innerHTML = `
           <p class="font-semibold text-gray-800">${ex.titre}</p>
           <p><strong>S :</strong> ${ex.situation}</p>
@@ -445,12 +519,13 @@ async function chargerExemplesSTAR() {
           <p><strong>R :</strong> ${ex.resultat}</p>
           <button class="mt-2 text-sm text-blue-600 font-semibold hover:underline">→ Utiliser cet exemple</button>
         `;
-        // Sélection visuelle locale (bleu) + bouton focus
+        // Sélection visuelle locale (bleu)
         card.addEventListener("click", (e) => {
           if (e.target.tagName.toLowerCase() === "button") return;
           $$("#exemplesSTAR .selected").forEach(el => el.classList.remove("bg-blue-100","selected"));
           card.classList.add("bg-blue-100","selected");
         });
+        // Focus situation (si #starFocus existe)
         card.querySelector("button").addEventListener("click", (e) => {
           e.stopPropagation();
           const focus = $("#starFocus");
@@ -467,7 +542,7 @@ async function chargerExemplesSTAR() {
       });
     });
 
-    // Toggle catégories STAR (+ save)
+    // Toggle catégories STAR
     zone.addEventListener("click", (e) => {
       const head = e.target.closest(".star-header");
       if (!head) return;
@@ -481,7 +556,7 @@ async function chargerExemplesSTAR() {
     });
 
   } else {
-    // Cas 2: tableau plat d'exemples (supporté)
+    // Tableau plat
     zone.innerHTML = data.map(ex => `
       <div class="bg-white border rounded shadow-sm mb-2">
         <div class="flex justify-between items-center cursor-pointer px-3 py-2 hover:bg-blue-50 star-item">
@@ -498,7 +573,7 @@ async function chargerExemplesSTAR() {
       </div>
     `).join("");
 
-    // Délégation: toggle + focus
+    // Toggle + focus
     zone.addEventListener("click", (e) => {
       const head = e.target.closest("div.star-item");
       if (head) {
@@ -531,21 +606,18 @@ async function chargerExemplesSTAR() {
    Suppressions (icônes ❌ dans les colonnes de gauche)
 ========================================================= */
 document.addEventListener("click", (e) => {
-  // Retirer une compétence comportementale (❌)
   if (e.target.classList.contains("remove-btn")) {
     const id = e.target.dataset.id;
     competencesSelectionnees = competencesSelectionnees.filter(x => x.id !== id);
-    const src = document.querySelector(`.competence-item[data-id="${CSS.escape(id)}"]`);
+    const src = document.querySelector(`.competence-item[data-id="${escapeCSS(id)}"]`);
     if (src) src.classList.remove("bg-blue-100","border","border-blue-400");
     renderComportements();
     saveState();
   }
-
-  // Retirer une expertise (❌)
   if (e.target.classList.contains("remove-exp")) {
     const nom = e.target.dataset.nom;
     expertisesSelectionnees = expertisesSelectionnees.filter(x => x.nom !== nom);
-    const btn = $(`#competencesTechniques .tech-btn[data-nom="${CSS.escape(nom)}"]`);
+    const btn = $(`#competencesTechniques .tech-btn[data-nom="${escapeCSS(nom)}"]`);
     if (btn) btn.classList.remove("bg-blue-300");
     renderExpertises();
     recomputeTimelineHighlight();
@@ -554,7 +626,7 @@ document.addEventListener("click", (e) => {
 });
 
 /* =========================================================
-   Ouvrir TOUT sur clic des titres principaux (H2)
+   Ouvrir TOUT par clic sur H2 principaux
 ========================================================= */
 function openAllInZone(zoneId, prefix) {
   const zone = document.getElementById(zoneId);
@@ -568,7 +640,6 @@ function openAllInZone(zoneId, prefix) {
     }
   });
 }
-
 function openAllCompetencesComportementales() {
   const zone = $("#competencesComportementales");
   if (!zone) return;
@@ -579,7 +650,6 @@ function openAllCompetencesComportementales() {
       bloc.classList.remove("hidden");
       const arrow = head.querySelector("span.text-blue-500");
       if (arrow) arrow.textContent = "▴";
-      // Assure la visibilité des éléments internes
       bloc.querySelectorAll(".competence-item, div[id^='sous-']").forEach(el => {
         el.classList.remove("hidden");
         el.style.display = "block";
@@ -587,7 +657,6 @@ function openAllCompetencesComportementales() {
     }
   });
 }
-
 document.addEventListener("click", (e) => {
   const h = e.target.closest("h2");
   if (!h) return;
@@ -600,10 +669,14 @@ document.addEventListener("click", (e) => {
     openAllInZone("formations","sous-");
     saveState();
   }
+  if (txt.toLowerCase().includes("exemples star")) {
+    openAllInZone("exemplesSTAR","star-");
+    saveState();
+  }
 });
 
 /* =========================================================
-   🔄 Sauvegarde automatique (localStorage)
+   🔄 Sauvegarde/restauration (localStorage)
 ========================================================= */
 const ETAT_KEY = "etatDashboardEntrevue";
 
@@ -617,18 +690,11 @@ function showSaveIndicator() {
 
 function computeSectionsOuvertes() {
   const opened = [];
-  // Compétences comportementales (bloc-*)
-  document.querySelectorAll('[id^="bloc-"]').forEach(div => {
-    if (!div.classList.contains("hidden")) opened.push(div.id);
-  });
-  // Formations (sous-*)
-  document.querySelectorAll('[id^="sous-"]').forEach(div => {
-    if (!div.classList.contains("hidden")) opened.push(div.id);
-  });
-  // STAR (star-*) — uniquement pour la variante catégorisée
-  document.querySelectorAll('[id^="star-"]').forEach(div => {
-    if (!div.classList.contains("hidden")) opened.push(div.id);
-  });
+  document.querySelectorAll('[id^="bloc-"]').forEach(div => { if (!div.classList.contains("hidden")) opened.push(div.id); });
+  document.querySelectorAll('[id^="sous-"]').forEach(div => { if (!div.classList.contains("hidden")) opened.push(div.id); });
+  document.querySelectorAll('[id^="star-"]').forEach(div => { if (!div.classList.contains("hidden")) opened.push(div.id); });
+  // Parcours : on mémorise les details-* ouverts
+  document.querySelectorAll('[id^="details-"]').forEach(div => { if (!div.classList.contains("hidden")) opened.push(div.id); });
   return opened;
 }
 
@@ -642,7 +708,7 @@ function saveState() {
     localStorage.setItem(ETAT_KEY, JSON.stringify(etat));
     showSaveIndicator();
   } catch (e) {
-    console.warn("Impossible d'écrire dans localStorage:", e);
+    console.warn("Erreur sauvegarde", e);
   }
 }
 
@@ -673,29 +739,27 @@ function restoreState() {
 
   // Ré-applique l’état visuel sur les listes/boutons source
   competencesSelectionnees.forEach(c => {
-    const el = document.querySelector(`.competence-item[data-id="${CSS.escape(c.id)}"]`);
+    const el = document.querySelector(`.competence-item[data-id="${escapeCSS(c.id)}"]`);
     if (el) el.classList.add("bg-blue-100","border","border-blue-400");
   });
   expertisesSelectionnees.forEach(e => {
-    const btn = document.querySelector(`#competencesTechniques .tech-btn[data-nom="${CSS.escape(e.nom)}"]`);
+    const btn = document.querySelector(`#competencesTechniques .tech-btn[data-nom="${escapeCSS(e.nom)}"]`);
     if (btn) btn.classList.add("bg-blue-300");
   });
 }
 
 /* =========================================================
-   🔗 Liaison bidirectionnelle : Compétences ↔ Exemples STAR
-   (surbrillance rose pâle)
+   🔗 Liaison bidirectionnelle : Compétences ↔ STAR ↔ Parcours
+   - Inclut surbrillance du BLOC DE PARCOURS parent
+   - 2e clic = reset
 ========================================================= */
 function resetHighlights() {
-  $$("#exemplesSTAR .highlighted").forEach(el =>
-    el.classList.remove("highlighted", "bg-pink-100", "border-pink-400")
-  );
-  $$("#competencesComportementales .highlighted").forEach(el =>
-    el.classList.remove("highlighted", "bg-pink-100", "border-pink-400")
+  $$(".highlighted").forEach(el =>
+    el.classList.remove("highlighted","bg-pink-100","bg-pink-50","border-pink-400")
   );
 }
 
-// Clic sur compétence → surligner STAR liés (via IDs Cxx)
+// Clic sur compétence → STAR + Faits saillants + Bloc parcours
 document.addEventListener("click", (e) => {
   const comp = e.target.closest(".competence-item");
   if (!comp) return;
@@ -707,17 +771,28 @@ document.addEventListener("click", (e) => {
   resetHighlights();
   if (wasActive) return;
 
-  comp.classList.add("highlighted", "bg-pink-100", "border-pink-400");
+  comp.classList.add("highlighted","bg-pink-100","border-pink-400");
 
+  // STAR
   $$("#exemplesSTAR .star-card").forEach(star => {
     const liens = star.dataset.liens ? JSON.parse(star.dataset.liens) : [];
     if (liens.includes(compId)) {
-      star.classList.add("highlighted", "bg-pink-100", "border-pink-400");
+      star.classList.add("highlighted","bg-pink-100","border-pink-400");
+    }
+  });
+
+  // Parcours → faits saillants + bloc parent
+  $$("#timeline .fait-sailant").forEach(fs => {
+    const liens = fs.dataset.liens ? JSON.parse(fs.dataset.liens) : [];
+    if (liens.includes(compId)) {
+      fs.classList.add("highlighted","bg-pink-100","border-pink-400");
+      const parent = fs.closest(".timeline-card");
+      if (parent) parent.classList.add("highlighted","bg-pink-50","border-pink-400");
     }
   });
 });
 
-// Clic sur STAR → surligner compétences liées (Cxx)
+// Clic sur STAR → compétences
 document.addEventListener("click", (e) => {
   const star = e.target.closest(".star-card");
   if (!star) return;
@@ -729,11 +804,34 @@ document.addEventListener("click", (e) => {
   resetHighlights();
   if (wasActive) return;
 
-  star.classList.add("highlighted", "bg-pink-100", "border-pink-400");
+  star.classList.add("highlighted","bg-pink-100","border-pink-400");
 
   liens.forEach(cid => {
-    const comp = document.querySelector(`.competence-item[data-id="${CSS.escape(cid)}"]`);
-    if (comp) comp.classList.add("highlighted", "bg-pink-100", "border-pink-400");
+    const comp = document.querySelector(`.competence-item[data-id="${escapeCSS(cid)}"]`);
+    if (comp) comp.classList.add("highlighted","bg-pink-100","border-pink-400");
+  });
+});
+
+// Clic sur Fait saillant → compétences + bloc parent
+document.addEventListener("click", (e) => {
+  const fs = e.target.closest(".fait-sailant");
+  if (!fs) return;
+
+  const liens = fs.dataset.liens ? JSON.parse(fs.dataset.liens) : [];
+  if (!liens.length) return;
+
+  const wasActive = fs.classList.contains("highlighted");
+  resetHighlights();
+  if (wasActive) return;
+
+  fs.classList.add("highlighted","bg-pink-100","border-pink-400");
+
+  const parent = fs.closest(".timeline-card");
+  if (parent) parent.classList.add("highlighted","bg-pink-50","border-pink-400");
+
+  liens.forEach(cid => {
+    const comp = document.querySelector(`.competence-item[data-id="${escapeCSS(cid)}"]`);
+    if (comp) comp.classList.add("highlighted","bg-pink-100","border-pink-400");
   });
 });
 
@@ -741,13 +839,11 @@ document.addEventListener("click", (e) => {
    Init
 ========================================================= */
 window.addEventListener("DOMContentLoaded", async () => {
-  // Charger toutes les zones (ordre important pour restauration)
   await chargerParcours();
   await chargerCompetencesComportementales();
   await chargerCompetencesTechniques();
+  await chargerCompetencesStrategiques();
   await chargerFormations();
   await chargerExemplesSTAR();
-
-  // Restaure l’état utilisateur (sélections + sections)
   restoreState();
 });
