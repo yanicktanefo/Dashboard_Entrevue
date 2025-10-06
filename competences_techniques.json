@@ -1,0 +1,118 @@
+{
+  "expertises_techniques": [
+    {
+      "bouton": "GIA",
+      "titre": "Gouvernance et gestion des identités (GIA)",
+      "description": "Conception, intégration et administration d’environnements hybrides d'identité incluant Entra ID, Active Directory (40+ domaines), SIGA, SSO, MFA et FIDO2.",
+      "depuis": 2017,
+      "etat": "validé"
+    },
+    {
+      "bouton": "PAM",
+      "titre": "Privileged Access Management (PAM)",
+      "description": "Déploiement et exploitation de solutions de gestion des accès à privilèges telles que CyberArk, Netwrix, HashiCorp Vault, RSA SecureID et Yubico.",
+      "depuis": 2018,
+      "etat": "validé"
+    },
+    {
+      "bouton": "PKI",
+      "titre": "Infrastructure à clé publique (PKI / Public Key Infrastructure)",
+      "description": "Gestion complète du cycle de vie des certificats avec Venafi, Entrust et ADCS, incluant standardisation et conformité cryptographique.",
+      "depuis": 2019,
+      "etat": "validé"
+    },
+    {
+      "bouton": "InfraHybrid",
+      "titre": "Infrastructures hybrides et intégration cloud",
+      "description": "Orchestration d’environnements cloud et sur site incluant ForgeRock, ADFS et Amazon Managed AD.",
+      "depuis": 2018,
+      "etat": "validé"
+    },
+    {
+      "bouton": "Sécurité",
+      "titre": "Sécurité et conformité",
+      "description": "Application des pratiques et cadres normatifs tels que Nessus, Tripwire, ITIL, NERC et DECI.",
+      "depuis": 2016,
+      "etat": "validé"
+    },
+    {
+      "bouton": "IAMFederation",
+      "titre": "Fédération d’identités (IAM Federation)",
+      "description": "Mise en œuvre de liaisons inter-domaines et d’intégrations SSO via les protocoles SAML, OAuth2 et OpenID Connect.",
+      "depuis": 2018,
+      "etat": "à_valider"
+    },
+    {
+      "bouton": "Automatisation",
+      "titre": "Automatisation et intégration (Ansible, Terraform, PowerShell)",
+      "description": "Développement de scripts et d’automatisations pour la gestion des comptes, certificats et configurations d’accès.",
+      "depuis": 2020,
+      "etat": "à_valider"
+    },
+    {
+      "bouton": "AzureGov",
+      "titre": "Gouvernance et sécurité Azure",
+      "description": "Mise en œuvre de stratégies de gouvernance (Policy, Blueprint, RBAC) et de conformité dans Entra ID et Azure AD.",
+      "depuis": 2021,
+      "etat": "à_valider"
+    },
+    {
+      "bouton": "VaultOps",
+      "titre": "Gestion des secrets et clés (VaultOps)",
+      "description": "Centralisation et rotation automatisée des secrets et clés via HashiCorp Vault et intégration API.",
+      "depuis": 2020,
+      "etat": "à_valider"
+    },
+    {
+      "bouton": "AuditSec",
+      "titre": "Audit et supervision de la sécurité",
+      "description": "Intégration des outils d’audit tels que Netwrix Auditor, Microsoft Sentinel ou SIEM pour la conformité et la détection d’anomalies.",
+      "depuis": 2019,
+      "etat": "à_valider"
+    }
+  ],
+  "competences_strategiques": [
+    {
+      "bouton": "Vision",
+      "titre": "Vision stratégique et trajectoires technologiques",
+      "description": "Alignement des trajectoires technologiques avec les orientations d’entreprise, notamment en lien avec le Plan d’action 2035 d’Hydro-Québec.",
+      "depuis": 2021,
+      "etat": "validé"
+    },
+    {
+      "bouton": "Leadership",
+      "titre": "Leadership et gouvernance Agile",
+      "description": "Gestion d’équipes pluridisciplinaires (jusqu’à 22 ressources) selon Scrum, SAFe et Jira Roadmap, en tant que Responsable Produit d’Affaires (RPA).",
+      "depuis": 2020,
+      "etat": "validé"
+    },
+    {
+      "bouton": "Collab",
+      "titre": "Collaboration et influence",
+      "description": "Mobilisation des parties prenantes via ateliers d’architecture, vulgarisation et recherche de consensus.",
+      "depuis": 2018,
+      "etat": "validé"
+    },
+    {
+      "bouton": "Client",
+      "titre": "Orientation client et conformité",
+      "description": "Approche centrée sur la valeur d’affaires, la réduction des risques et la continuité opérationnelle.",
+      "depuis": 2019,
+      "etat": "validé"
+    },
+    {
+      "bouton": "Architecture",
+      "titre": "Architecture d’entreprise et sécurité",
+      "description": "Participation à la définition des architectures cibles, cadres de référence et trajectoires technologiques en cybersécurité.",
+      "depuis": 2021,
+      "etat": "à_valider"
+    },
+    {
+      "bouton": "Communication",
+      "titre": "Communication stratégique",
+      "description": "Vulgarisation et présentation de sujets techniques complexes auprès de directions, comités de gouvernance et partenaires externes.",
+      "depuis": 2020,
+      "etat": "à_valider"
+    }
+  ]
+}
