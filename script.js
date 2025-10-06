@@ -223,6 +223,41 @@ async function chargerFormationsCertifications() {
 }
 
 // =========================
+// EXEMPLES STAR
+// =========================
+async function chargerExemplesSTAR() {
+  const zone = document.getElementById("exemplesSTAR");
+  zone.innerHTML = `<p class="text-gray-500 italic">Chargement des exemples STAR...</p>`;
+
+  try {
+    const response = await fetch("star_examples.json");
+    const data = await response.json();
+
+    zone.innerHTML = Object.keys(data).map(cat => `
+      <div class="border-b pb-2 mb-2">
+        <h4 class="font-semibold text-blue-700 flex justify-between items-center cursor-pointer" data-cat="${cat}">
+          <span>${cat}</span><span class="text-blue-600 text-sm font-bold">▼</span>
+        </h4>
+        <div id="star-${cat.replace(/\s+/g, '-')}" class="hidden ml-3 mt-1">
+          ${data[cat].map(ex => `
+            <div class="bg-gray-50 p-2 rounded hover:bg-blue-50 transition">
+              <p class="font-semibold text-blue-800">${ex.titre}</p>
+              <p class="text-sm"><strong>S:</strong> ${ex.situation}</p>
+              <p class="text-sm"><strong>T:</strong> ${ex.tache}</p>
+              <p class="text-sm"><strong>A:</strong> ${ex.action}</p>
+              <p class="text-sm"><strong>R:</strong> ${ex.resultat}</p>
+            </div>
+          `).join("")}
+        </div>
+      </div>
+    `).join("");
+  } catch {
+    zone.innerHTML = `<p class="text-red-500">Erreur de chargement des exemples STAR.</p>`;
+  }
+}
+
+
+// =========================
 // GESTION DES CLICS GLOBAUX
 // =========================
 document.addEventListener("click", (e) => {
@@ -299,4 +334,5 @@ window.addEventListener("DOMContentLoaded", () => {
   chargerCompetencesComportementales();
   chargerCompetencesTechniques();
   chargerFormationsCertifications();
+  chargerExemplesSTAR(); // 🆕
 });
