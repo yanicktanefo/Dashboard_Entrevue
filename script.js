@@ -579,3 +579,55 @@ window.addEventListener("DOMContentLoaded", () => {
   chargerFormations();
   chargerExemplesSTAR();
 });
+
+/****************************
+ * 🔄 Sauvegarde automatique
+ ****************************/
+
+// Sauvegarde des sélections
+function sauvegarderEtat() {
+  const etat = {
+    competencesComportementales: Array.from(document.querySelectorAll('#zoneComportements .competence.active')).map(el => el.dataset.id),
+    competencesTechniques: Array.from(document.querySelectorAll('#zoneExpertises .expertise-item')).map(el => el.textContent.trim()),
+    sectionsOuvertes: Array.from(document.querySelectorAll('.toggle.open')).map(el => el.dataset.section)
+  };
+  localStorage.setItem('etatDashboard', JSON.stringify(etat));
+}
+
+// Restauration au chargement
+function restaurerEtat() {
+  const etat = JSON.parse(localStorage.getItem('etatDashboard'));
+  if (!etat) return;
+
+  // Restaurer compétences comportementales
+  etat.competencesComportementales?.forEach(id => {
+    const el = document.querySelector(`[data-id="${id}"]`);
+    if (el) el.classList.add('active');
+  });
+
+  // Restaurer compétences techniques
+  etat.competencesTechniques?.forEach(tech => {
+    const el = document.querySelector(`#zoneExpertises .expertise-item`);
+    if (el && el.textContent.includes(tech)) el.classList.add('highlight');
+  });
+
+  // Restaurer sections ouvertes
+  etat.sectionsOuvertes?.forEach(sec => {
+    const section = document.querySelector(`[data-section="${sec}"]`);
+    if (section) section.classList.add('open');
+  });
+}
+
+// Écoute des clics pour mise à jour auto
+document.addEventListener('click', (e) => {
+  if (
+    e.target.classList.contains('competence') ||
+    e.target.classList.contains('expertise-item') ||
+    e.target.classList.contains('toggle')
+  ) {
+    setTimeout(sauvegarderEtat, 200);
+  }
+});
+
+// Restaurer à l’ouverture de la page
+window.addEventListener('DOMContentLoaded', restaurerEtat);
