@@ -5,7 +5,10 @@
       "situation": "Lors d’un projet d’intégration entre les équipes AD et Réseau...",
       "tache": "Coordonner les efforts et clarifier les responsabilités entre les deux unités.",
       "action": "J’ai mis en place des rencontres hebdomadaires et un tableau JIRA partagé...",
-      "resultat": "Livraison du projet 3 semaines plus tôt, réduction des incidents post-migration de 40 %."
+      "resultat": "Livraison du projet 3 semaines plus tôt, réduction des incidents post-migration de 40 %.",
+      "liens_comportements": [
+        "C18"
+      ]
     }
   ],
   "Transformation Agile - Leadership": [
@@ -14,7 +17,10 @@
       "situation": "L’équipe vivait une résistance forte au changement Agile.",
       "tache": "Améliorer l’adoption sans imposer.",
       "action": "J’ai coanimé des ateliers, fait témoigner d’autres équipes, et instauré une rétrospective de confiance.",
-      "resultat": "Engagement accru, 100 % de l’équipe a participé activement après 2 sprints."
+      "resultat": "Engagement accru, 100 % de l’équipe a participé activement après 2 sprints.",
+      "liens_comportements": [
+        "C35"
+      ]
     }
   ]
 }

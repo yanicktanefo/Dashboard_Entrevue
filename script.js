@@ -20,12 +20,12 @@ async function loadJSON(url) {
 }
 
 /* =========================================================
-   État global (sélections)
+   État global (sélections + surbrillance)
 ========================================================= */
 let competencesSelectionnees = [];   // [{id, nom, description, comportements[]}]
 let expertisesSelectionnees  = [];   // [{nom, titre, depuis, description}]
 
-/* Zones d’affichage (colonne 1, 2) */
+/* Zones d’affichage (colonne 1, 2 pour les cartes de gauche) */
 const col1 = $("#colonne1");
 const col2 = $("#colonne2");
 const exp1 = $("#expertise1");
@@ -186,7 +186,7 @@ async function chargerCompetencesComportementales() {
                  data-id="${c.id ?? `${catId}-${i}`}"
                  data-nom="${c.nom ?? "Sans titre"}"
                  data-description="${(c.description ?? "").replace(/"/g,'&quot;')}"
-                 data-comportements="${enc(c.comportements)}">
+                 data-comportements='${enc(c.comportements)}'>
               <p class="font-medium">${c.nom ?? "Sans titre"}</p>
               ${c.description ? `<p class="text-xs text-gray-600">${c.description}</p>` : ""}
             </div>
@@ -197,8 +197,9 @@ async function chargerCompetencesComportementales() {
 
   zone.innerHTML = html || `<p class="text-gray-400 italic">Aucune compétence active trouvée.</p>`;
 
-  // Délégation : ouvrir/fermer chaque catégorie
+  // Délégation : ouvrir/fermer catégories + (dé)sélection items
   zone.addEventListener("click", (e) => {
+    // Toggle catégorie
     const head = e.target.closest(".cat-header");
     if (head) {
       const bloc = $(`#bloc-${head.dataset.cat}`);
@@ -210,7 +211,8 @@ async function chargerCompetencesComportementales() {
       }
       return;
     }
-    // Délégation : (dé)sélection d'une compétence → affiche dans colonnes de gauche
+
+    // Sélection d'une compétence
     const item = e.target.closest(".competence-item");
     if (!item) return;
     const id = item.dataset.id;
@@ -232,14 +234,9 @@ async function chargerCompetencesComportementales() {
     saveState();
   });
 
-  /* =========================================================
-     🔍 FILTRAGE : texte + catégorie
-     (les éléments HTML d’entrée existent dans index.html)
-  ========================================================== */
+  /* === 🔍 Filtrage dynamique === */
   const input = $("#filtreCompetences");
   const select = $("#filtreCategorie");
-
-  // Remplit le menu déroulant avec les catégories réelles
   if (select) {
     select.innerHTML = `<option value="">Toutes les catégories</option>` +
       Object.keys(data).map(c => `<option value="${sanitizeId(c)}">${c}</option>`).join("");
@@ -248,17 +245,12 @@ async function chargerCompetencesComportementales() {
   function appliquerFiltreCompetences() {
     const texte = (input?.value || "").toLowerCase();
     const catSel = (select?.value || "");
-
     $$("#competencesComportementales > div").forEach(catBloc => {
       const header = catBloc.querySelector(".cat-header");
       const blocId = header?.dataset.cat;
-      const bloc   = $(`#bloc-${blocId}`);
+      const bloc = $(`#bloc-${blocId}`);
       if (!bloc) return;
-
-      // Filtrage par catégorie
       const visibleCat = !catSel || blocId === catSel;
-
-      // Filtrage par texte
       const items = bloc.querySelectorAll(".competence-item");
       let anyVisible = false;
       items.forEach(it => {
@@ -268,8 +260,6 @@ async function chargerCompetencesComportementales() {
         it.style.display = visible ? "block" : "none";
         if (visible) anyVisible = true;
       });
-
-      // Cache la catégorie si rien ne passe le filtre
       catBloc.style.display = anyVisible ? "block" : "none";
     });
   }
@@ -337,10 +327,6 @@ async function chargerCompetencesTechniques() {
 
 /* =========================================================
    Formations & certifications (formations_certifications.json)
-   Format attendu:
-   [
-     { categorie: "Formations académiques", sous_sections:[{titre, periode, details?[]}] }, ...
-   ]
 ========================================================= */
 async function chargerFormations() {
   const zone = $("#formations");
@@ -366,7 +352,7 @@ async function chargerFormations() {
             <button class="formation-btn text-left w-full hover:text-blue-700"
                     data-titre="${(f.titre ?? "").replace(/"/g,'&quot;')}"
                     data-periode="${(f.periode ?? "").replace(/"/g,'&quot;')}"
-                    data-details="${enc(f.details)}">
+                    data-details='${enc(f.details)}'>
               <strong>${f.titre}</strong> <span class="text-gray-500 text-xs">(${f.periode})</span>
             </button>
           `).join("")}
@@ -416,16 +402,14 @@ async function chargerFormations() {
 
 /* =========================================================
    Exemples STAR (star_examples.json)
-   Formats tolérés:
-   - { "Catégorie": [ {titre, situation, tache, action, resultat} ] }
-   - ou [ {theme, situation, tache, action, resultat} ]
+   ⚠️ Le JSON contient "liens_comportements": ["Cxx", ...]
 ========================================================= */
 async function chargerExemplesSTAR() {
   const zone = $("#exemplesSTAR");
   if (!zone) return;
   zone.innerHTML = `<p class="text-gray-500 italic">Chargement des exemples STAR...</p>`;
 
-  const data = await loadJSON("star_examples.json");
+  const data = await loadJSON("star_examples.json"); // on garde le nom d'origine
   if (!data) {
     zone.innerHTML = `<p class="text-red-500">Erreur de chargement des exemples STAR.</p>`;
     return;
@@ -433,7 +417,7 @@ async function chargerExemplesSTAR() {
 
   zone.innerHTML = "";
 
-  // Cas 1: objet par catégories
+  // Cas 1: objet par catégories (recommandé)
   if (!Array.isArray(data)) {
     Object.keys(data).forEach(cat => {
       const catId = sanitizeId(cat);
@@ -451,7 +435,8 @@ async function chargerExemplesSTAR() {
       const content = wrap.querySelector(`#star-${catId}`);
       (data[cat] || []).forEach(ex => {
         const card = document.createElement("div");
-        card.className = "border-l-4 border-blue-300 bg-gray-50 p-3 my-2 rounded cursor-pointer hover:bg-blue-50 transition";
+        card.className = "star-card border-l-4 border-blue-300 bg-gray-50 p-3 my-2 rounded cursor-pointer hover:bg-blue-50 transition";
+        card.dataset.liens = JSON.stringify(ex.liens_comportements || []); // 🔗 IDs Cxx
         card.innerHTML = `
           <p class="font-semibold text-gray-800">${ex.titre}</p>
           <p><strong>S :</strong> ${ex.situation}</p>
@@ -460,13 +445,12 @@ async function chargerExemplesSTAR() {
           <p><strong>R :</strong> ${ex.resultat}</p>
           <button class="mt-2 text-sm text-blue-600 font-semibold hover:underline">→ Utiliser cet exemple</button>
         `;
-        // Sélection visuelle
+        // Sélection visuelle locale (bleu) + bouton focus
         card.addEventListener("click", (e) => {
           if (e.target.tagName.toLowerCase() === "button") return;
           $$("#exemplesSTAR .selected").forEach(el => el.classList.remove("bg-blue-100","selected"));
           card.classList.add("bg-blue-100","selected");
         });
-        // Focus situation vers #starFocus
         card.querySelector("button").addEventListener("click", (e) => {
           e.stopPropagation();
           const focus = $("#starFocus");
@@ -483,7 +467,7 @@ async function chargerExemplesSTAR() {
       });
     });
 
-    // Toggle catégories STAR
+    // Toggle catégories STAR (+ save)
     zone.addEventListener("click", (e) => {
       const head = e.target.closest(".star-header");
       if (!head) return;
@@ -497,14 +481,14 @@ async function chargerExemplesSTAR() {
     });
 
   } else {
-    // Cas 2: tableau plat d'exemples
+    // Cas 2: tableau plat d'exemples (supporté)
     zone.innerHTML = data.map(ex => `
       <div class="bg-white border rounded shadow-sm mb-2">
         <div class="flex justify-between items-center cursor-pointer px-3 py-2 hover:bg-blue-50 star-item">
           <span class="font-semibold text-blue-700">${ex.theme ?? ex.titre ?? "Exemple"}</span>
           <span class="text-blue-500">▾</span>
         </div>
-        <div class="hidden px-4 pb-2">
+        <div class="hidden px-4 pb-2 star-card" data-liens='${JSON.stringify(ex.liens_comportements || [])}'>
           <p><strong>S :</strong> ${ex.situation}</p>
           <p><strong>T :</strong> ${ex.tache}</p>
           <p><strong>A :</strong> ${ex.action}</p>
@@ -516,7 +500,7 @@ async function chargerExemplesSTAR() {
 
     // Délégation: toggle + focus
     zone.addEventListener("click", (e) => {
-      const head = e.target.closest(".star-item");
+      const head = e.target.closest("div.star-item");
       if (head) {
         const bloc = head.nextElementSibling;
         bloc.classList.toggle("hidden");
@@ -547,6 +531,7 @@ async function chargerExemplesSTAR() {
    Suppressions (icônes ❌ dans les colonnes de gauche)
 ========================================================= */
 document.addEventListener("click", (e) => {
+  // Retirer une compétence comportementale (❌)
   if (e.target.classList.contains("remove-btn")) {
     const id = e.target.dataset.id;
     competencesSelectionnees = competencesSelectionnees.filter(x => x.id !== id);
@@ -555,6 +540,8 @@ document.addEventListener("click", (e) => {
     renderComportements();
     saveState();
   }
+
+  // Retirer une expertise (❌)
   if (e.target.classList.contains("remove-exp")) {
     const nom = e.target.dataset.nom;
     expertisesSelectionnees = expertisesSelectionnees.filter(x => x.nom !== nom);
@@ -568,8 +555,6 @@ document.addEventListener("click", (e) => {
 
 /* =========================================================
    Ouvrir TOUT sur clic des titres principaux (H2)
-   - Compétences comportementales → ouvre toutes les catégories + sous-parties
-   - Formations et certifications → ouvre toutes les catégories
 ========================================================= */
 function openAllInZone(zoneId, prefix) {
   const zone = document.getElementById(zoneId);
@@ -674,35 +659,83 @@ function openBlockById(id) {
 
 function restoreState() {
   let data = null;
-  try {
-    data = JSON.parse(localStorage.getItem(ETAT_KEY) || "{}");
-  } catch { /* no-op */ }
+  try { data = JSON.parse(localStorage.getItem(ETAT_KEY) || "{}"); } catch {}
   if (!data) return;
 
-  // Restaure sélections en mémoire
   competencesSelectionnees = Array.isArray(data.competences) ? data.competences : [];
   expertisesSelectionnees  = Array.isArray(data.expertises)  ? data.expertises  : [];
 
-  // Rendu colonnes
   renderComportements();
   renderExpertises();
   recomputeTimelineHighlight();
 
-  // Ouvre les sections sauvegardées
   (data.sectionsOuvertes || []).forEach(openBlockById);
 
   // Ré-applique l’état visuel sur les listes/boutons source
-  // Compétences comportementales
   competencesSelectionnees.forEach(c => {
     const el = document.querySelector(`.competence-item[data-id="${CSS.escape(c.id)}"]`);
     if (el) el.classList.add("bg-blue-100","border","border-blue-400");
   });
-  // Compétences techniques
   expertisesSelectionnees.forEach(e => {
     const btn = document.querySelector(`#competencesTechniques .tech-btn[data-nom="${CSS.escape(e.nom)}"]`);
     if (btn) btn.classList.add("bg-blue-300");
   });
 }
+
+/* =========================================================
+   🔗 Liaison bidirectionnelle : Compétences ↔ Exemples STAR
+   (surbrillance rose pâle)
+========================================================= */
+function resetHighlights() {
+  $$("#exemplesSTAR .highlighted").forEach(el =>
+    el.classList.remove("highlighted", "bg-pink-100", "border-pink-400")
+  );
+  $$("#competencesComportementales .highlighted").forEach(el =>
+    el.classList.remove("highlighted", "bg-pink-100", "border-pink-400")
+  );
+}
+
+// Clic sur compétence → surligner STAR liés (via IDs Cxx)
+document.addEventListener("click", (e) => {
+  const comp = e.target.closest(".competence-item");
+  if (!comp) return;
+
+  const compId = comp.dataset.id;
+  if (!compId) return;
+
+  const wasActive = comp.classList.contains("highlighted");
+  resetHighlights();
+  if (wasActive) return;
+
+  comp.classList.add("highlighted", "bg-pink-100", "border-pink-400");
+
+  $$("#exemplesSTAR .star-card").forEach(star => {
+    const liens = star.dataset.liens ? JSON.parse(star.dataset.liens) : [];
+    if (liens.includes(compId)) {
+      star.classList.add("highlighted", "bg-pink-100", "border-pink-400");
+    }
+  });
+});
+
+// Clic sur STAR → surligner compétences liées (Cxx)
+document.addEventListener("click", (e) => {
+  const star = e.target.closest(".star-card");
+  if (!star) return;
+
+  const liens = star.dataset.liens ? JSON.parse(star.dataset.liens) : [];
+  if (!liens.length) return;
+
+  const wasActive = star.classList.contains("highlighted");
+  resetHighlights();
+  if (wasActive) return;
+
+  star.classList.add("highlighted", "bg-pink-100", "border-pink-400");
+
+  liens.forEach(cid => {
+    const comp = document.querySelector(`.competence-item[data-id="${CSS.escape(cid)}"]`);
+    if (comp) comp.classList.add("highlighted", "bg-pink-100", "border-pink-400");
+  });
+});
 
 /* =========================================================
    Init
