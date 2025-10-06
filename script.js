@@ -225,36 +225,62 @@ async function chargerFormationsCertifications() {
 // =========================
 // EXEMPLES STAR
 // =========================
+// === CHARGEMENT DES EXEMPLES STAR ===
 async function chargerExemplesSTAR() {
-  const zone = document.getElementById("exemplesSTAR");
-  zone.innerHTML = `<p class="text-gray-500 italic">Chargement des exemples STAR...</p>`;
-
   try {
-    const response = await fetch("star_examples.json");
-    const data = await response.json();
+    const r = await fetch("star_examples.json");
+    if (!r.ok) throw new Error("Erreur de chargement du fichier STAR");
+    const data = await r.json();
 
-    zone.innerHTML = Object.keys(data).map(cat => `
-      <div class="border-b pb-2 mb-2">
-        <h4 class="font-semibold text-blue-700 flex justify-between items-center cursor-pointer" data-cat="${cat}">
-          <span>${cat}</span><span class="text-blue-600 text-sm font-bold">▼</span>
-        </h4>
-        <div id="star-${cat.replace(/\s+/g, '-')}" class="hidden ml-3 mt-1">
-          ${data[cat].map(ex => `
-            <div class="bg-gray-50 p-2 rounded hover:bg-blue-50 transition">
-              <p class="font-semibold text-blue-800">${ex.titre}</p>
-              <p class="text-sm"><strong>S:</strong> ${ex.situation}</p>
-              <p class="text-sm"><strong>T:</strong> ${ex.tache}</p>
-              <p class="text-sm"><strong>A:</strong> ${ex.action}</p>
-              <p class="text-sm"><strong>R:</strong> ${ex.resultat}</p>
-            </div>
-          `).join("")}
-        </div>
-      </div>
-    `).join("");
-  } catch {
-    zone.innerHTML = `<p class="text-red-500">Erreur de chargement des exemples STAR.</p>`;
+    const container = document.getElementById("exemplesSTAR");
+    container.innerHTML = "";
+
+    Object.keys(data).forEach(cat => {
+      // Crée un conteneur pour chaque catégorie
+      const section = document.createElement("div");
+      section.className = "bg-white rounded shadow-sm border";
+
+      // En-tête cliquable
+      const header = document.createElement("div");
+      header.className =
+        "flex justify-between items-center cursor-pointer p-2 hover:bg-blue-50";
+      header.innerHTML = `<span class="font-semibold text-blue-700">${cat}</span><span class="text-blue-500">▾</span>`;
+
+      // Contenu caché par défaut
+      const content = document.createElement("div");
+      content.className = "hidden px-4 pb-2";
+
+      // Ajoute les exemples à l’intérieur
+      data[cat].forEach(ex => {
+        const card = document.createElement("div");
+        card.className =
+          "border-l-4 border-blue-300 bg-gray-50 p-3 my-2 rounded";
+        card.innerHTML = `
+          <p class="font-semibold text-gray-800">${ex.titre}</p>
+          <p><strong>S :</strong> ${ex.situation}</p>
+          <p><strong>T :</strong> ${ex.tache}</p>
+          <p><strong>A :</strong> ${ex.action}</p>
+          <p><strong>R :</strong> ${ex.resultat}</p>
+        `;
+        content.appendChild(card);
+      });
+
+      // Toggle du contenu au clic
+      header.addEventListener("click", () => {
+        content.classList.toggle("hidden");
+      });
+
+      section.appendChild(header);
+      section.appendChild(content);
+      container.appendChild(section);
+    });
+  } catch (e) {
+    console.error("Erreur chargement STAR :", e);
+    document.getElementById("exemplesSTAR").innerHTML =
+      `<p class="text-red-500 text-sm">Erreur de chargement des exemples STAR.</p>`;
   }
 }
+
 
 
 // =========================
