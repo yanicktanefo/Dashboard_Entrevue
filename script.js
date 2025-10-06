@@ -25,7 +25,7 @@ async function loadJSON(url) {
 let competencesSelectionnees = [];   // [{id, nom, description, comportements[]}]
 let expertisesSelectionnees  = [];   // [{nom, titre, depuis, description}]
 
-/* Zones d’affichage gauche */
+/* Zones d’affichage (colonne 1, 2) */
 const col1 = $("#colonne1");
 const col2 = $("#colonne2");
 const exp1 = $("#expertise1");
@@ -102,9 +102,6 @@ function recomputeTimelineHighlight() {
 
 /* =========================================================
    Parcours professionnel (parcours.json)
-   Attendus possibles:
-   - [{titre, details[], faits_sailants[]}]
-   - ou {periode, role, details(string), faitsSaillants[]}
 ========================================================= */
 async function chargerParcours() {
   const timeline = $("#timeline");
@@ -157,8 +154,7 @@ async function chargerParcours() {
 
 /* =========================================================
    Compétences comportementales (competences.json)
-   Format attendu (flexible):
-   { "Catégorie": [ {id?, nom, description?, comportements[]?, actif|"ACTIF": "oui|non" } ] }
+   + 🔍 Filtrage dynamique par mot-clé et catégorie
 ========================================================= */
 async function chargerCompetencesComportementales() {
   const zone = $("#competencesComportementales");
@@ -171,6 +167,7 @@ async function chargerCompetencesComportementales() {
     return;
   }
 
+  // --- Construction principale des blocs de catégories ---
   const html = Object.keys(data).map(cat => {
     const arr = Array.isArray(data[cat]) ? data[cat] : [];
     const actifs = arr.filter(c => ((c.actif ?? c.ACTIF) + "").toLowerCase() === "oui");
@@ -203,17 +200,17 @@ async function chargerCompetencesComportementales() {
   // Délégation : ouvrir/fermer chaque catégorie
   zone.addEventListener("click", (e) => {
     const head = e.target.closest(".cat-header");
-    if (!head) return;
-    const catId = head.dataset.cat;
-    const bloc = $(`#bloc-${catId}`);
-    if (!bloc) return;
-    bloc.classList.toggle("hidden");
-    const arrow = head.querySelector("span.text-blue-500");
-    if (arrow) arrow.textContent = bloc.classList.contains("hidden") ? "▾" : "▴";
-  });
-
-  // Délégation : (dé)sélection d'une compétence → affiche dans colonnes de gauche
-  zone.addEventListener("click", (e) => {
+    if (head) {
+      const bloc = $(`#bloc-${head.dataset.cat}`);
+      if (bloc) {
+        bloc.classList.toggle("hidden");
+        const arrow = head.querySelector("span.text-blue-500");
+        if (arrow) arrow.textContent = bloc.classList.contains("hidden") ? "▾" : "▴";
+        saveState();
+      }
+      return;
+    }
+    // Délégation : (dé)sélection d'une compétence → affiche dans colonnes de gauche
     const item = e.target.closest(".competence-item");
     if (!item) return;
     const id = item.dataset.id;
@@ -232,13 +229,59 @@ async function chargerCompetencesComportementales() {
       item.classList.remove("bg-blue-100","border","border-blue-400");
     }
     renderComportements();
+    saveState();
   });
+
+  /* =========================================================
+     🔍 FILTRAGE : texte + catégorie
+     (les éléments HTML d’entrée existent dans index.html)
+  ========================================================== */
+  const input = $("#filtreCompetences");
+  const select = $("#filtreCategorie");
+
+  // Remplit le menu déroulant avec les catégories réelles
+  if (select) {
+    select.innerHTML = `<option value="">Toutes les catégories</option>` +
+      Object.keys(data).map(c => `<option value="${sanitizeId(c)}">${c}</option>`).join("");
+  }
+
+  function appliquerFiltreCompetences() {
+    const texte = (input?.value || "").toLowerCase();
+    const catSel = (select?.value || "");
+
+    $$("#competencesComportementales > div").forEach(catBloc => {
+      const header = catBloc.querySelector(".cat-header");
+      const blocId = header?.dataset.cat;
+      const bloc   = $(`#bloc-${blocId}`);
+      if (!bloc) return;
+
+      // Filtrage par catégorie
+      const visibleCat = !catSel || blocId === catSel;
+
+      // Filtrage par texte
+      const items = bloc.querySelectorAll(".competence-item");
+      let anyVisible = false;
+      items.forEach(it => {
+        const txt = it.textContent.toLowerCase();
+        const visibleTxt = !texte || txt.includes(texte);
+        const visible = visibleCat && visibleTxt;
+        it.style.display = visible ? "block" : "none";
+        if (visible) anyVisible = true;
+      });
+
+      // Cache la catégorie si rien ne passe le filtre
+      catBloc.style.display = anyVisible ? "block" : "none";
+    });
+  }
+
+  if (input && select) {
+    input.addEventListener("input", appliquerFiltreCompetences);
+    select.addEventListener("change", appliquerFiltreCompetences);
+  }
 }
 
 /* =========================================================
    Compétences techniques (competences_techniques.json)
-   Format flexible: tableau ou {expertises_techniques:[...]}
-   Élément: { nom|bouton, titre?, depuis?, description? }
 ========================================================= */
 async function chargerCompetencesTechniques() {
   const zone = $("#competencesTechniques");
@@ -253,21 +296,19 @@ async function chargerCompetencesTechniques() {
 
   const arr = Array.isArray(data) ? data : (data.expertises_techniques ?? []);
   zone.innerHTML = arr.map((c, i) => {
-  const nom = c.bouton ?? c.nom ?? `Expertise ${i+1}`;
-  const titre = typeof c.titre === "string" ? c.titre : "";
-  const depuis = typeof c.depuis === "string" || typeof c.depuis === "number" ? String(c.depuis) : "";
-  const desc = typeof c.description === "string" ? c.description : "";
-
-  return `
-    <button class="tech-btn bg-blue-100 hover:bg-blue-200 text-blue-800 px-3 py-1 rounded-full text-sm font-medium transition mr-2 mb-2"
-            data-nom="${nom}"
-            data-titre="${titre.replace(/"/g,'&quot;')}"
-            data-depuis="${depuis.replace(/"/g,'&quot;')}"
-            data-description="${desc.replace(/"/g,'&quot;')}">
-      ${nom}
-    </button>`;
-}).join("");
-
+    const nom   = c.bouton ?? c.nom ?? `Expertise ${i+1}`;
+    const titre = typeof c.titre === "string" ? c.titre : "";
+    const depuis= (typeof c.depuis === "string" || typeof c.depuis === "number") ? String(c.depuis) : "";
+    const desc  = typeof c.description === "string" ? c.description : "";
+    return `
+      <button class="tech-btn bg-blue-100 hover:bg-blue-200 text-blue-800 px-3 py-1 rounded-full text-sm font-medium transition mr-2 mb-2"
+              data-nom="${nom}"
+              data-titre="${titre.replace(/"/g,'&quot;')}"
+              data-depuis="${depuis.replace(/"/g,'&quot;')}"
+              data-description="${desc.replace(/"/g,'&quot;')}">
+        ${nom}
+      </button>`;
+  }).join("");
 
   // Délégation : clic sur un bouton technique
   zone.addEventListener("click", (e) => {
@@ -283,21 +324,21 @@ async function chargerCompetencesTechniques() {
       if (expertisesSelectionnees.length < 2) {
         expertisesSelectionnees.push({ nom, titre, depuis, description: desc });
         btn.classList.add("bg-blue-300");
-        renderExpertises();
-        recomputeTimelineHighlight();
       }
     } else {
       expertisesSelectionnees.splice(idx,1);
       btn.classList.remove("bg-blue-300");
-      renderExpertises();
-      recomputeTimelineHighlight();
     }
+    renderExpertises();
+    recomputeTimelineHighlight();
+    saveState();
   });
 }
 
 /* =========================================================
    Formations & certifications (formations_certifications.json)
-   Format attendu: [
+   Format attendu:
+   [
      { categorie: "Formations académiques", sous_sections:[{titre, periode, details?[]}] }, ...
    ]
 ========================================================= */
@@ -333,7 +374,7 @@ async function chargerFormations() {
       </div>`;
   }).join("");
 
-  // Délégation : open/close catégories
+  // Délégation : open/close catégories + injection vers colonnes de gauche
   zone.addEventListener("click", (e) => {
     const head = e.target.closest(".formation-header");
     if (head) {
@@ -343,10 +384,11 @@ async function chargerFormations() {
         bloc.classList.toggle("hidden");
         const arrow = head.querySelector("span.text-blue-500");
         if (arrow) arrow.textContent = bloc.classList.contains("hidden") ? "▾" : "▴";
+        saveState();
       }
       return;
     }
-    // Clic sur une formation → injecte dans Détails des comportements
+
     const btn = e.target.closest(".formation-btn");
     if (btn) {
       const titre   = btn.dataset.titre.replace(/&quot;/g,'"');
@@ -367,6 +409,7 @@ async function chargerFormations() {
         competencesSelectionnees.splice(existing,1);
       }
       renderComportements();
+      saveState();
     }
   });
 }
@@ -423,7 +466,7 @@ async function chargerExemplesSTAR() {
           $$("#exemplesSTAR .selected").forEach(el => el.classList.remove("bg-blue-100","selected"));
           card.classList.add("bg-blue-100","selected");
         });
-        // Focus situation
+        // Focus situation vers #starFocus
         card.querySelector("button").addEventListener("click", (e) => {
           e.stopPropagation();
           const focus = $("#starFocus");
@@ -450,6 +493,7 @@ async function chargerExemplesSTAR() {
       bloc.classList.toggle("hidden");
       const arrow = head.querySelector("span.text-blue-500");
       if (arrow) arrow.textContent = bloc.classList.contains("hidden") ? "▾" : "▴";
+      saveState();
     });
 
   } else {
@@ -506,21 +550,24 @@ document.addEventListener("click", (e) => {
   if (e.target.classList.contains("remove-btn")) {
     const id = e.target.dataset.id;
     competencesSelectionnees = competencesSelectionnees.filter(x => x.id !== id);
+    const src = document.querySelector(`.competence-item[data-id="${CSS.escape(id)}"]`);
+    if (src) src.classList.remove("bg-blue-100","border","border-blue-400");
     renderComportements();
+    saveState();
   }
   if (e.target.classList.contains("remove-exp")) {
     const nom = e.target.dataset.nom;
     expertisesSelectionnees = expertisesSelectionnees.filter(x => x.nom !== nom);
-    // retirer l'état visuel du bouton si présent
     const btn = $(`#competencesTechniques .tech-btn[data-nom="${CSS.escape(nom)}"]`);
     if (btn) btn.classList.remove("bg-blue-300");
     renderExpertises();
     recomputeTimelineHighlight();
+    saveState();
   }
 });
 
 /* =========================================================
-   Ouvrir TOUT sur clic des titres principaux
+   Ouvrir TOUT sur clic des titres principaux (H2)
    - Compétences comportementales → ouvre toutes les catégories + sous-parties
    - Formations et certifications → ouvre toutes les catégories
 ========================================================= */
@@ -540,7 +587,6 @@ function openAllInZone(zoneId, prefix) {
 function openAllCompetencesComportementales() {
   const zone = $("#competencesComportementales");
   if (!zone) return;
-  // Ouvre tous les blocs de catégories
   zone.querySelectorAll("[data-cat]").forEach(head => {
     const catId = head.dataset.cat;
     const bloc = $(`#bloc-${catId}`);
@@ -548,7 +594,7 @@ function openAllCompetencesComportementales() {
       bloc.classList.remove("hidden");
       const arrow = head.querySelector("span.text-blue-500");
       if (arrow) arrow.textContent = "▴";
-      // S'assure que tout inside est visible
+      // Assure la visibilité des éléments internes
       bloc.querySelectorAll(".competence-item, div[id^='sous-']").forEach(el => {
         el.classList.remove("hidden");
         el.style.display = "block";
@@ -563,71 +609,112 @@ document.addEventListener("click", (e) => {
   const txt = (h.textContent || "").trim();
   if (txt.includes("Compétences comportementales")) {
     openAllCompetencesComportementales();
+    saveState();
   }
   if (txt.includes("Formations et certifications")) {
     openAllInZone("formations","sous-");
+    saveState();
   }
 });
 
 /* =========================================================
+   🔄 Sauvegarde automatique (localStorage)
+========================================================= */
+const ETAT_KEY = "etatDashboardEntrevue";
+
+function showSaveIndicator() {
+  const el = document.getElementById("saveIndicator");
+  if (!el) return;
+  el.classList.remove("hidden");
+  clearTimeout(el._timer);
+  el._timer = setTimeout(() => el.classList.add("hidden"), 1000);
+}
+
+function computeSectionsOuvertes() {
+  const opened = [];
+  // Compétences comportementales (bloc-*)
+  document.querySelectorAll('[id^="bloc-"]').forEach(div => {
+    if (!div.classList.contains("hidden")) opened.push(div.id);
+  });
+  // Formations (sous-*)
+  document.querySelectorAll('[id^="sous-"]').forEach(div => {
+    if (!div.classList.contains("hidden")) opened.push(div.id);
+  });
+  // STAR (star-*) — uniquement pour la variante catégorisée
+  document.querySelectorAll('[id^="star-"]').forEach(div => {
+    if (!div.classList.contains("hidden")) opened.push(div.id);
+  });
+  return opened;
+}
+
+function saveState() {
+  const etat = {
+    competences: competencesSelectionnees,
+    expertises: expertisesSelectionnees,
+    sectionsOuvertes: computeSectionsOuvertes()
+  };
+  try {
+    localStorage.setItem(ETAT_KEY, JSON.stringify(etat));
+    showSaveIndicator();
+  } catch (e) {
+    console.warn("Impossible d'écrire dans localStorage:", e);
+  }
+}
+
+function openBlockById(id) {
+  const bloc = document.getElementById(id);
+  if (!bloc) return;
+  bloc.classList.remove("hidden");
+  const header = bloc.previousElementSibling;
+  if (header) {
+    const arrow = header.querySelector("span.text-blue-500");
+    if (arrow) arrow.textContent = "▴";
+  }
+}
+
+function restoreState() {
+  let data = null;
+  try {
+    data = JSON.parse(localStorage.getItem(ETAT_KEY) || "{}");
+  } catch { /* no-op */ }
+  if (!data) return;
+
+  // Restaure sélections en mémoire
+  competencesSelectionnees = Array.isArray(data.competences) ? data.competences : [];
+  expertisesSelectionnees  = Array.isArray(data.expertises)  ? data.expertises  : [];
+
+  // Rendu colonnes
+  renderComportements();
+  renderExpertises();
+  recomputeTimelineHighlight();
+
+  // Ouvre les sections sauvegardées
+  (data.sectionsOuvertes || []).forEach(openBlockById);
+
+  // Ré-applique l’état visuel sur les listes/boutons source
+  // Compétences comportementales
+  competencesSelectionnees.forEach(c => {
+    const el = document.querySelector(`.competence-item[data-id="${CSS.escape(c.id)}"]`);
+    if (el) el.classList.add("bg-blue-100","border","border-blue-400");
+  });
+  // Compétences techniques
+  expertisesSelectionnees.forEach(e => {
+    const btn = document.querySelector(`#competencesTechniques .tech-btn[data-nom="${CSS.escape(e.nom)}"]`);
+    if (btn) btn.classList.add("bg-blue-300");
+  });
+}
+
+/* =========================================================
    Init
 ========================================================= */
-window.addEventListener("DOMContentLoaded", () => {
-  chargerParcours();
-  chargerCompetencesComportementales();
-  chargerCompetencesTechniques();
-  chargerFormations();
-  chargerExemplesSTAR();
+window.addEventListener("DOMContentLoaded", async () => {
+  // Charger toutes les zones (ordre important pour restauration)
+  await chargerParcours();
+  await chargerCompetencesComportementales();
+  await chargerCompetencesTechniques();
+  await chargerFormations();
+  await chargerExemplesSTAR();
+
+  // Restaure l’état utilisateur (sélections + sections)
+  restoreState();
 });
-
-/****************************
- * 🔄 Sauvegarde automatique
- ****************************/
-
-// Sauvegarde des sélections
-function sauvegarderEtat() {
-  const etat = {
-    competencesComportementales: Array.from(document.querySelectorAll('#zoneComportements .competence.active')).map(el => el.dataset.id),
-    competencesTechniques: Array.from(document.querySelectorAll('#zoneExpertises .expertise-item')).map(el => el.textContent.trim()),
-    sectionsOuvertes: Array.from(document.querySelectorAll('.toggle.open')).map(el => el.dataset.section)
-  };
-  localStorage.setItem('etatDashboard', JSON.stringify(etat));
-}
-
-// Restauration au chargement
-function restaurerEtat() {
-  const etat = JSON.parse(localStorage.getItem('etatDashboard'));
-  if (!etat) return;
-
-  // Restaurer compétences comportementales
-  etat.competencesComportementales?.forEach(id => {
-    const el = document.querySelector(`[data-id="${id}"]`);
-    if (el) el.classList.add('active');
-  });
-
-  // Restaurer compétences techniques
-  etat.competencesTechniques?.forEach(tech => {
-    const el = document.querySelector(`#zoneExpertises .expertise-item`);
-    if (el && el.textContent.includes(tech)) el.classList.add('highlight');
-  });
-
-  // Restaurer sections ouvertes
-  etat.sectionsOuvertes?.forEach(sec => {
-    const section = document.querySelector(`[data-section="${sec}"]`);
-    if (section) section.classList.add('open');
-  });
-}
-
-// Écoute des clics pour mise à jour auto
-document.addEventListener('click', (e) => {
-  if (
-    e.target.classList.contains('competence') ||
-    e.target.classList.contains('expertise-item') ||
-    e.target.classList.contains('toggle')
-  ) {
-    setTimeout(sauvegarderEtat, 200);
-  }
-});
-
-// Restaurer à l’ouverture de la page
-window.addEventListener('DOMContentLoaded', restaurerEtat);

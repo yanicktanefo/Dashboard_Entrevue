@@ -48,6 +48,16 @@
       <!-- Focus STAR -->
       <section id="starFocus" class="mb-2"></section>
 
+      <div class="flex items-center gap-2 mb-2">
+      <input id="filtreCompetences" type="text"
+             placeholder="🔍 Rechercher une compétence ou un mot-clé..."
+            class="flex-1 border rounded px-2 py-1 text-sm focus:ring focus:ring-blue-300"/>
+      <select id="filtreCategorie" class="border rounded px-2 py-1 text-sm">
+        <option value="">Toutes les catégories</option>
+      </select>
+      </div>
+
+
       <!-- Compétences comportementales -->
       <section>
         <h2 class="text-lg font-bold text-blue-700 mb-2">Compétences comportementales</h2>
@@ -86,5 +96,8 @@
   </div>
 
   <script src="script.js"></script>
+  <div id="saveIndicator" class="fixed top-2 right-4 bg-green-600 text-white px-2 py-1 rounded text-xs shadow hidden">
+  💾 Enregistré
+  </div>
 </body>
 </html>
