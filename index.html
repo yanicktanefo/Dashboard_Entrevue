@@ -2,26 +2,19 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dashboard Entrevue – STAR & Compétences</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard Entrevue</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    body {
-      max-width: 2200px;
-      margin: 0 auto;
-      overflow: hidden;
-    }
-    .scrollable {
-      overflow-y: auto;
-      scrollbar-width: thin;
-    }
+    body { max-width: 2200px; margin: 0 auto; overflow: hidden; }
+    .scrollable { overflow-y: auto; scrollbar-width: thin; }
   </style>
 </head>
 
 <body class="bg-gray-100 text-gray-900 font-sans">
   <div class="flex flex-row h-screen">
 
-    <!-- ==================== COLONNE 1 – Parcours & détails (50%) ==================== -->
+    <!-- ==================== COLONNE 1 – 50% : Parcours & Détails ==================== -->
     <div class="w-[50%] flex flex-col scrollable p-4 space-y-6 border-r border-gray-300 bg-white">
 
       <!-- Parcours professionnel -->
@@ -30,7 +23,7 @@
         <div id="timeline" class="space-y-3"></div>
       </section>
 
-      <!-- Détails des comportements -->
+      <!-- Détails des comportements (2 colonnes) -->
       <section>
         <h2 class="text-xl font-bold text-blue-700 mb-2">Détails des comportements</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -39,7 +32,7 @@
         </div>
       </section>
 
-      <!-- Détails des expertises techniques -->
+      <!-- Détails des expertises techniques (2 colonnes) -->
       <section>
         <h2 class="text-xl font-bold text-green-700 mb-2">Détails des expertises techniques</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -49,38 +42,47 @@
       </section>
     </div>
 
-    <!-- ==================== COLONNE 2 – Compétences & STAR (35%) ==================== -->
+    <!-- ==================== COLONNE 2 – 35% : Compétences & STAR ==================== -->
     <div class="w-[35%] flex flex-col scrollable p-4 space-y-6 bg-gray-50 border-r border-gray-300">
 
       <!-- Focus STAR -->
-      <section id="starFocus" class="mb-4"></section>
+      <section id="starFocus" class="mb-2"></section>
 
       <!-- Compétences comportementales -->
       <section>
         <h2 class="text-lg font-bold text-blue-700 mb-2">Compétences comportementales</h2>
-        <div id="competencesComportementales" class="space-y-3"></div>
+        <div id="competencesComportementales" class="space-y-3">
+          <!-- rempli par script.js -->
+        </div>
       </section>
 
       <!-- Compétences techniques -->
       <section>
         <h2 class="text-lg font-bold text-green-700 mb-2">Compétences techniques</h2>
-        <div id="competencesTechniques" class="flex flex-wrap gap-2"></div>
+        <div id="competencesTechniques" class="flex flex-wrap gap-2">
+          <!-- rempli par script.js -->
+        </div>
       </section>
 
       <!-- Exemples STAR -->
       <section>
         <h2 class="text-lg font-bold text-blue-700 mb-2">Exemples STAR</h2>
-        <div id="exemplesSTAR" class="space-y-3"></div>
+        <div id="exemplesSTAR" class="space-y-3">
+          <!-- rempli par script.js -->
+        </div>
       </section>
     </div>
 
-    <!-- ==================== COLONNE 3 – Formations & certifications (15%) ==================== -->
+    <!-- ==================== COLONNE 3 – 15% : Formations ==================== -->
     <div class="w-[15%] flex flex-col scrollable p-4 space-y-6 bg-gray-50">
       <section>
         <h2 class="text-lg font-bold text-blue-700 mb-2">Formations et certifications</h2>
-        <div id="formations" class="space-y-3"></div>
+        <div id="formations" class="space-y-3">
+          <!-- rempli par script.js -->
+        </div>
       </section>
     </div>
+
   </div>
 
   <script src="script.js"></script>
