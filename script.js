@@ -1,364 +1,581 @@
-// =========================
-// ÉTAT GLOBAL
-// =========================
-let competencesSelectionnees = [];
-let expertisesSelectionnees = [];
+/* =========================================================
+   Utils
+========================================================= */
+const $  = (sel) => document.querySelector(sel);
+const $$ = (sel) => document.querySelectorAll(sel);
+const sanitizeId = (s="") =>
+  s.toString().trim().toLowerCase().replace(/\s+/g,"-").replace(/[^\w-]/g,"");
+const enc = (obj) => encodeURIComponent(JSON.stringify(obj ?? []));
+const dec = (str) => JSON.parse(decodeURIComponent(str || "[]"));
 
-const colonne1   = document.getElementById("colonne1");
-const colonne2   = document.getElementById("colonne2");
-const expertise1 = document.getElementById("expertise1");
-const expertise2 = document.getElementById("expertise2");
+async function loadJSON(url) {
+  try {
+    const r = await fetch(url);
+    if (!r.ok) throw new Error(`HTTP ${r.status}`);
+    return await r.json();
+  } catch (e) {
+    console.error("Erreur chargement:", url, e);
+    return null;
+  }
+}
 
-// =========================
-// AFFICHAGE COMPORTEMENTS
-// =========================
-function rafraichirAffichageColonnes() {
-  colonne1.innerHTML = "";
-  colonne2.innerHTML = "";
+/* =========================================================
+   État global (sélections)
+========================================================= */
+let competencesSelectionnees = [];   // [{id, nom, description, comportements[]}]
+let expertisesSelectionnees  = [];   // [{nom, titre, depuis, description}]
 
-  competencesSelectionnees.slice(0, 2).forEach((item, index) => {
-    const cible = index === 0 ? colonne1 : colonne2;
-    cible.innerHTML = `
-      <div class="p-2 bg-white rounded shadow-sm border relative">
-        <button class="absolute top-1 right-1 text-red-500 hover:text-red-700 text-xs remove-btn" data-id="${item.id}">❌</button>
-        <h4 class="font-semibold">${item.nom}</h4>
-        ${item.description ? `<p class="text-xs text-gray-500">${item.description}</p>` : ""}
-        ${Array.isArray(item.comportements) && item.comportements.length
-          ? `<ul class="list-disc ml-5 mt-2 text-sm text-gray-700">${item.comportements.map(c => `<li>${c}</li>`).join("")}</ul>`
-          : ""}
-      </div>`;
+/* Zones d’affichage gauche */
+const col1 = $("#colonne1");
+const col2 = $("#colonne2");
+const exp1 = $("#expertise1");
+const exp2 = $("#expertise2");
+
+/* =========================================================
+   Rendu : Détails des comportements (2 colonnes)
+========================================================= */
+function renderComportements() {
+  if (!col1 || !col2) return;
+  col1.innerHTML = ""; col2.innerHTML = "";
+  competencesSelectionnees.slice(0,2).forEach((item, idx) => {
+    const cible = idx === 0 ? col1 : col2;
+    const ul = (Array.isArray(item.comportements) && item.comportements.length)
+      ? `<ul class="list-disc ml-5 mt-2 text-sm text-gray-700">
+           ${item.comportements.map(c => `<li>${c}</li>`).join("")}
+         </ul>` : "";
+    const card = document.createElement("div");
+    card.className = "p-2 bg-white rounded shadow-sm border relative";
+    card.innerHTML = `
+      <button class="absolute top-1 right-1 text-red-500 hover:text-red-700 text-xs remove-btn" data-id="${item.id}">❌</button>
+      <h4 class="font-semibold">${item.nom}</h4>
+      ${item.description ? `<p class="text-xs text-gray-500">${item.description}</p>` : ""}
+      ${ul}
+    `;
+    cible.appendChild(card);
   });
 }
 
-// =========================
-// AFFICHAGE EXPERTISES
-// =========================
-function rafraichirAffichageExpertises() {
-  expertise1.innerHTML = "";
-  expertise2.innerHTML = "";
-
-  expertisesSelectionnees.slice(0, 2).forEach((exp, index) => {
-    const cible = index === 0 ? expertise1 : expertise2;
-    const titre  = exp.titre  ?? "—";
-    const depuis = exp.depuis ?? "—";
-
-    cible.innerHTML = `
-      <div class="p-2 bg-white rounded shadow-sm border relative">
-        <button class="absolute top-1 right-1 text-red-500 hover:text-red-700 text-xs remove-exp" data-nom="${exp.nom}">❌</button>
-        <p class="font-semibold text-green-700">
-          ${exp.nom}
-          ${titre !== "—" || depuis !== "—"
-            ? `<span class="text-gray-600 text-sm"> — ${titre !== "—" ? titre : ""}${depuis !== "—" ? " — Depuis : " + depuis : ""}</span>`
-            : ""}
-        </p>
-        ${exp.description ? `<p class="text-xs text-gray-600 mt-1">${exp.description}</p>` : ""}
-      </div>`;
+/* =========================================================
+   Rendu : Détails des expertises techniques (2 colonnes)
+========================================================= */
+function renderExpertises() {
+  if (!exp1 || !exp2) return;
+  exp1.innerHTML = ""; exp2.innerHTML = "";
+  expertisesSelectionnees.slice(0,2).forEach((e, idx) => {
+    const cible = idx === 0 ? exp1 : exp2;
+    const ligne1 = `
+      <p class="font-semibold text-green-700">
+        ${e.nom}
+        ${(e.titre || e.depuis) ? `<span class="text-gray-600 text-sm">
+          — ${e.titre || ""}${e.depuis ? ` — Depuis : ${e.depuis}` : ""}</span>` : ""}
+      </p>`;
+    const card = document.createElement("div");
+    card.className = "p-2 bg-white rounded shadow-sm border relative";
+    card.innerHTML = `
+      <button class="absolute top-1 right-1 text-red-500 hover:text-red-700 text-xs remove-exp" data-nom="${e.nom}">❌</button>
+      ${ligne1}
+      ${e.description ? `<p class="text-xs text-gray-600 mt-1">${e.description}</p>` : ""}
+    `;
+    cible.appendChild(card);
   });
 }
 
-function surbrillanceParcours(motCle) {
-  document.querySelectorAll("#timeline > div").forEach(div => {
-    const texte = div.textContent.toLowerCase();
-    if (texte.includes(motCle.toLowerCase())) {
-      div.classList.add("bg-yellow-100", "border-yellow-400");
+/* =========================================================
+   Surbrillance du parcours selon expertises
+========================================================= */
+function clearTimelineHighlight() {
+  $$("#timeline > div").forEach(d => d.classList.remove("bg-yellow-100","border-yellow-400"));
+}
+function highlightTimelineByKeywords(words=[]) {
+  if (!words.length) return;
+  $$("#timeline > div").forEach(d => {
+    const t = d.textContent.toLowerCase();
+    if (words.some(w => w && t.includes(w.toLowerCase()))) {
+      d.classList.add("bg-yellow-100","border-yellow-400");
     }
   });
 }
-function retirerSurbrillance() {
-  document.querySelectorAll("#timeline > div").forEach(div =>
-    div.classList.remove("bg-yellow-100", "border-yellow-400")
-  );
+function recomputeTimelineHighlight() {
+  clearTimelineHighlight();
+  highlightTimelineByKeywords(expertisesSelectionnees.map(e => e.nom));
 }
 
-// =========================
-// PARCOURS PROFESSIONNEL
-// =========================
-async function chargerParcoursProfessionnel() {
-  const timeline = document.getElementById("timeline");
+/* =========================================================
+   Parcours professionnel (parcours.json)
+   Attendus possibles:
+   - [{titre, details[], faits_sailants[]}]
+   - ou {periode, role, details(string), faitsSaillants[]}
+========================================================= */
+async function chargerParcours() {
+  const timeline = $("#timeline");
+  if (!timeline) return;
   timeline.innerHTML = `<p class="text-gray-500 italic">Chargement du parcours professionnel...</p>`;
 
-  try {
-    const response = await fetch("parcours.json");
-    const data = await response.json();
+  const data = await loadJSON("parcours.json");
+  if (!data) {
+    timeline.innerHTML = `<p class="text-red-500">Erreur de chargement du parcours.</p>`;
+    return;
+  }
 
-    timeline.innerHTML = data.map(item => `
+  const items = Array.isArray(data) ? data : [];
+  timeline.innerHTML = items.map(it => {
+    const titre = it.titre || `${it.periode ?? ""} - ${it.role ?? ""}`.replace(/ - $/,"");
+    const detailsArr =
+      Array.isArray(it.details) ? it.details :
+      it.details ? [it.details] : [];
+    const faits =
+      Array.isArray(it.faits_sailants) ? it.faits_sailants :
+      Array.isArray(it.faitsSaillants) ? it.faitsSaillants : [];
+
+    return `
       <div class="bg-white p-3 rounded shadow-sm border border-gray-200 cursor-pointer hover:bg-blue-50 transition">
-        <h3 class="font-bold text-blue-700 flex justify-between items-center text-sm md:text-base select-none">
-          <span>${item.titre}</span>
+        <h3 class="font-bold text-blue-700 flex justify-between items-center select-none">
+          <span>${titre}</span>
           <span class="text-blue-600 font-bold text-sm">▼</span>
         </h3>
-        <div id="details-${item.titre.replace(/\s+/g, '-')}" class="hidden mt-2 text-sm text-gray-700">
-          ${item.details.map(d => `<p class="mb-1">${d}</p>`).join("")}
-          ${item.faits_sailants?.length ? `
+        <div id="details-${sanitizeId(titre)}" class="hidden mt-2 text-sm text-gray-700">
+          ${detailsArr.map(d => `<p class="mb-1">${d}</p>`).join("")}
+          ${faits.length ? `
             <h4 class="font-semibold mt-2 text-gray-800">Faits saillants :</h4>
-            <ul class="list-disc ml-6 mt-1">
-              ${item.faits_sailants.map(f => `<li>${f}</li>`).join("")}
-            </ul>` : ""}
+            <ul class="list-disc ml-6 mt-1">${faits.map(f => `<li>${f}</li>`).join("")}</ul>
+          ` : ""}
         </div>
-      </div>
-    `).join('');
+      </div>`;
+  }).join("");
 
-  } catch {
-    timeline.innerHTML = `<p class="text-red-500">Erreur de chargement du parcours professionnel.</p>`;
-  }
+  // Toggle au clic n'importe où dans la carte
+  timeline.addEventListener("click", (e) => {
+    const card = e.target.closest("#timeline > div");
+    if (!card) return;
+    const details = card.querySelector("div[id^='details-']");
+    const arrow   = card.querySelector("h3 span.text-blue-600");
+    if (!details || !arrow) return;
+    details.classList.toggle("hidden");
+    arrow.textContent = details.classList.contains("hidden") ? "▼" : "▲";
+  });
 }
 
-// =========================
-// COMPÉTENCES COMPORTEMENTALES
-// =========================
+/* =========================================================
+   Compétences comportementales (competences.json)
+   Format attendu (flexible):
+   { "Catégorie": [ {id?, nom, description?, comportements[]?, actif|"ACTIF": "oui|non" } ] }
+========================================================= */
 async function chargerCompetencesComportementales() {
-  const zone = document.getElementById("competencesComportementales");
+  const zone = $("#competencesComportementales");
+  if (!zone) return;
   zone.innerHTML = `<p class="text-gray-500 italic">Chargement des compétences comportementales...</p>`;
 
-  try {
-    const response = await fetch("competences.json");
-    const data = await response.json();
-
-    const html = Object.keys(data).map(cat => {
-      const val = data[cat];
-      if (!Array.isArray(val)) return "";
-      const actifs = val.filter(c => ((c.actif ?? c.ACTIF) || "").toString().toLowerCase() === "oui");
-      if (!actifs.length) return "";
-
-      return `
-        <div class="border-b pb-2 mb-2">
-          <h4 class="font-semibold text-blue-700 flex justify-between items-center cursor-pointer hover:text-blue-800"
-              data-cat="${cat}">
-            <span>${cat}</span><span class="text-blue-600 text-sm font-bold">▼</span>
-          </h4>
-          <div id="bloc-${cat.replace(/\s+/g, '-')}" class="hidden ml-3 mt-1">
-            ${actifs.map((c, i) => `
-              <div class="competence-item mb-2 bg-gray-50 p-2 rounded hover:bg-blue-50 cursor-pointer transition"
-                   data-id="${c.id ?? cat + '-' + i}" data-nom="${c.nom}" data-description="${c.description}"
-                   data-comportements='${JSON.stringify(c.comportements ?? [])}'>
-                <p class="font-medium">${c.nom}</p>
-                <p class="text-xs text-gray-600">${c.description}</p>
-              </div>`).join("")}
-          </div>
-        </div>`;
-    }).join("");
-
-    zone.innerHTML = html || `<p class="text-gray-400 italic">Aucune compétence active trouvée.</p>`;
-
-  } catch {
-    zone.innerHTML = `<p class="text-red-500">Erreur de chargement des compétences comportementales.</p>`;
+  const data = await loadJSON("competences.json");
+  if (!data) {
+    zone.innerHTML = `<p class="text-red-500">Erreur de chargement des compétences.</p>`;
+    return;
   }
+
+  const html = Object.keys(data).map(cat => {
+    const arr = Array.isArray(data[cat]) ? data[cat] : [];
+    const actifs = arr.filter(c => ((c.actif ?? c.ACTIF) + "").toLowerCase() === "oui");
+    if (!actifs.length) return "";
+
+    const catId = sanitizeId(cat);
+    return `
+      <div class="mb-2 border rounded bg-white shadow-sm">
+        <div class="flex justify-between items-center px-3 py-2 cursor-pointer hover:bg-blue-50 cat-header" data-cat="${catId}">
+          <span class="font-semibold text-blue-700">${cat}</span>
+          <span class="text-blue-500">▾</span>
+        </div>
+        <div id="bloc-${catId}" class="hidden px-3 pb-2">
+          ${actifs.map((c, i) => `
+            <div class="competence-item mb-2 bg-gray-50 p-2 rounded hover:bg-blue-50 cursor-pointer transition"
+                 data-id="${c.id ?? `${catId}-${i}`}"
+                 data-nom="${c.nom ?? "Sans titre"}"
+                 data-description="${(c.description ?? "").replace(/"/g,'&quot;')}"
+                 data-comportements="${enc(c.comportements)}">
+              <p class="font-medium">${c.nom ?? "Sans titre"}</p>
+              ${c.description ? `<p class="text-xs text-gray-600">${c.description}</p>` : ""}
+            </div>
+          `).join("")}
+        </div>
+      </div>`;
+  }).join("");
+
+  zone.innerHTML = html || `<p class="text-gray-400 italic">Aucune compétence active trouvée.</p>`;
+
+  // Délégation : ouvrir/fermer chaque catégorie
+  zone.addEventListener("click", (e) => {
+    const head = e.target.closest(".cat-header");
+    if (!head) return;
+    const catId = head.dataset.cat;
+    const bloc = $(`#bloc-${catId}`);
+    if (!bloc) return;
+    bloc.classList.toggle("hidden");
+    const arrow = head.querySelector("span.text-blue-500");
+    if (arrow) arrow.textContent = bloc.classList.contains("hidden") ? "▾" : "▴";
+  });
+
+  // Délégation : (dé)sélection d'une compétence → affiche dans colonnes de gauche
+  zone.addEventListener("click", (e) => {
+    const item = e.target.closest(".competence-item");
+    if (!item) return;
+    const id = item.dataset.id;
+    const nom = item.dataset.nom;
+    const description = item.dataset.description.replace(/&quot;/g,'"');
+    const comportements = dec(item.dataset.comportements);
+
+    const idx = competencesSelectionnees.findIndex(x => x.id === id);
+    if (idx === -1) {
+      if (competencesSelectionnees.length < 2) {
+        competencesSelectionnees.push({ id, nom, description, comportements });
+        item.classList.add("bg-blue-100","border","border-blue-400");
+      }
+    } else {
+      competencesSelectionnees.splice(idx,1);
+      item.classList.remove("bg-blue-100","border","border-blue-400");
+    }
+    renderComportements();
+  });
 }
 
-// =========================
-// COMPÉTENCES TECHNIQUES
-// =========================
+/* =========================================================
+   Compétences techniques (competences_techniques.json)
+   Format flexible: tableau ou {expertises_techniques:[...]}
+   Élément: { nom|bouton, titre?, depuis?, description? }
+========================================================= */
 async function chargerCompetencesTechniques() {
-  const zone = document.getElementById("competencesTechniques");
+  const zone = $("#competencesTechniques");
+  if (!zone) return;
   zone.innerHTML = `<p class="text-gray-500 italic">Chargement des compétences techniques...</p>`;
 
-  try {
-    const response = await fetch("competences_techniques.json");
-    const data = await response.json();
-
-    const arr = Array.isArray(data) ? data : (data.expertises_techniques || []);
-    zone.innerHTML = arr.map((c, i) => `
-      <button class="tech-btn bg-blue-100 hover:bg-blue-200 text-blue-800 px-3 py-1 rounded-full text-sm font-medium transition"
-              data-nom="${c.bouton ?? c.nom ?? `Expertise ${i + 1}`}"
-              data-description="${c.description ?? ""}"
-              data-titre="${c.titre ?? ""}"
-              data-depuis="${c.depuis ?? ""}">
-        ${c.bouton ?? c.nom ?? `Expertise ${i + 1}`}
-      </button>
-    `).join("");
-
-    document.querySelectorAll(".tech-btn").forEach(btn => {
-      btn.addEventListener("click", () => {
-        const nom = btn.dataset.nom;
-        const description = btn.dataset.description;
-        const titre = btn.dataset.titre;
-        const depuis = btn.dataset.depuis;
-        const idx = expertisesSelectionnees.findIndex(e => e.nom === nom);
-
-        if (idx === -1) {
-          if (expertisesSelectionnees.length < 2) {
-            expertisesSelectionnees.push({ nom, description, titre, depuis });
-            btn.classList.add("bg-blue-300");
-            rafraichirAffichageExpertises();
-            surbrillanceParcours(nom);
-          }
-        } else {
-          expertisesSelectionnees.splice(idx, 1);
-          btn.classList.remove("bg-blue-300");
-          rafraichirAffichageExpertises();
-          retirerSurbrillance();
-        }
-      });
-    });
-
-  } catch {
+  const data = await loadJSON("competences_techniques.json");
+  if (!data) {
     zone.innerHTML = `<p class="text-red-500">Erreur de chargement des compétences techniques.</p>`;
+    return;
   }
+
+  const arr = Array.isArray(data) ? data : (data.expertises_techniques ?? []);
+  zone.innerHTML = arr.map((c, i) => {
+  const nom = c.bouton ?? c.nom ?? `Expertise ${i+1}`;
+  const titre = typeof c.titre === "string" ? c.titre : "";
+  const depuis = typeof c.depuis === "string" || typeof c.depuis === "number" ? String(c.depuis) : "";
+  const desc = typeof c.description === "string" ? c.description : "";
+
+  return `
+    <button class="tech-btn bg-blue-100 hover:bg-blue-200 text-blue-800 px-3 py-1 rounded-full text-sm font-medium transition mr-2 mb-2"
+            data-nom="${nom}"
+            data-titre="${titre.replace(/"/g,'&quot;')}"
+            data-depuis="${depuis.replace(/"/g,'&quot;')}"
+            data-description="${desc.replace(/"/g,'&quot;')}">
+      ${nom}
+    </button>`;
+}).join("");
+
+
+  // Délégation : clic sur un bouton technique
+  zone.addEventListener("click", (e) => {
+    const btn = e.target.closest(".tech-btn");
+    if (!btn) return;
+    const nom     = btn.dataset.nom;
+    const titre   = btn.dataset.titre.replace(/&quot;/g,'"');
+    const depuis  = btn.dataset.depuis.replace(/&quot;/g,'"');
+    const desc    = btn.dataset.description.replace(/&quot;/g,'"');
+
+    const idx = expertisesSelectionnees.findIndex(x => x.nom === nom);
+    if (idx === -1) {
+      if (expertisesSelectionnees.length < 2) {
+        expertisesSelectionnees.push({ nom, titre, depuis, description: desc });
+        btn.classList.add("bg-blue-300");
+        renderExpertises();
+        recomputeTimelineHighlight();
+      }
+    } else {
+      expertisesSelectionnees.splice(idx,1);
+      btn.classList.remove("bg-blue-300");
+      renderExpertises();
+      recomputeTimelineHighlight();
+    }
+  });
 }
 
-// =========================
-// FORMATIONS
-// =========================
-async function chargerFormationsCertifications() {
-  const zone = document.getElementById("formations");
-  try {
-    const r = await fetch("formations_certifications.json");
-    const data = await r.json();
-    zone.innerHTML = data.map(cat => `
-      <div class="border-b pb-2 mb-2">
-        <h4 class="font-semibold text-blue-700 flex justify-between items-center cursor-pointer" data-cat="${cat.categorie}">
-          <span>${cat.categorie}</span><span class="text-blue-600 text-sm font-bold">▼</span>
-        </h4>
-        <div id="sous-${cat.categorie.replace(/\s+/g, '-')}" class="hidden ml-3 mt-1">
+/* =========================================================
+   Formations & certifications (formations_certifications.json)
+   Format attendu: [
+     { categorie: "Formations académiques", sous_sections:[{titre, periode, details?[]}] }, ...
+   ]
+========================================================= */
+async function chargerFormations() {
+  const zone = $("#formations");
+  if (!zone) return;
+  zone.innerHTML = `<p class="text-gray-500 italic">Chargement des formations...</p>`;
+
+  const data = await loadJSON("formations_certifications.json");
+  if (!data) {
+    zone.innerHTML = `<p class="text-red-500">Erreur de chargement des formations.</p>`;
+    return;
+  }
+
+  zone.innerHTML = data.map(cat => {
+    const catId = sanitizeId(cat.categorie || "categorie");
+    return `
+      <div class="mb-2 border rounded bg-white shadow-sm">
+        <div class="flex justify-between items-center px-3 py-2 cursor-pointer hover:bg-blue-50 formation-header" data-cat="${catId}">
+          <span class="font-semibold text-blue-700">${cat.categorie}</span>
+          <span class="text-blue-500">▾</span>
+        </div>
+        <div id="sous-${catId}" class="hidden px-3 pb-2">
           ${cat.sous_sections.map(f => `
             <button class="formation-btn text-left w-full hover:text-blue-700"
-                    data-titre="${f.titre}" data-periode="${f.periode}">
+                    data-titre="${(f.titre ?? "").replace(/"/g,'&quot;')}"
+                    data-periode="${(f.periode ?? "").replace(/"/g,'&quot;')}"
+                    data-details="${enc(f.details)}">
               <strong>${f.titre}</strong> <span class="text-gray-500 text-xs">(${f.periode})</span>
-            </button>`).join("")}
+            </button>
+          `).join("")}
         </div>
-      </div>`).join("");
-  } catch {
-    zone.innerHTML = `<p class="text-red-500">Erreur de chargement formations.</p>`;
-  }
+      </div>`;
+  }).join("");
+
+  // Délégation : open/close catégories
+  zone.addEventListener("click", (e) => {
+    const head = e.target.closest(".formation-header");
+    if (head) {
+      const id = head.dataset.cat;
+      const bloc = $(`#sous-${id}`);
+      if (bloc) {
+        bloc.classList.toggle("hidden");
+        const arrow = head.querySelector("span.text-blue-500");
+        if (arrow) arrow.textContent = bloc.classList.contains("hidden") ? "▾" : "▴";
+      }
+      return;
+    }
+    // Clic sur une formation → injecte dans Détails des comportements
+    const btn = e.target.closest(".formation-btn");
+    if (btn) {
+      const titre   = btn.dataset.titre.replace(/&quot;/g,'"');
+      const periode = btn.dataset.periode.replace(/&quot;/g,'"');
+      const details = dec(btn.dataset.details);
+      const id = `formation-${sanitizeId(titre)}`;
+
+      // Ajouter (max 2). Si déjà 2, on remplace la seconde.
+      const existing = competencesSelectionnees.findIndex(x => x.id === id);
+      if (existing === -1) {
+        if (competencesSelectionnees.length < 2) {
+          competencesSelectionnees.push({ id, nom: titre, description: periode, comportements: details });
+        } else {
+          competencesSelectionnees[1] = { id, nom: titre, description: periode, comportements: details };
+        }
+      } else {
+        // toggle = retirer si re-cliqué
+        competencesSelectionnees.splice(existing,1);
+      }
+      renderComportements();
+    }
+  });
 }
 
-// =========================
-// EXEMPLES STAR
-// =========================
-// === CHARGEMENT DES EXEMPLES STAR ===
+/* =========================================================
+   Exemples STAR (star_examples.json)
+   Formats tolérés:
+   - { "Catégorie": [ {titre, situation, tache, action, resultat} ] }
+   - ou [ {theme, situation, tache, action, resultat} ]
+========================================================= */
 async function chargerExemplesSTAR() {
-  try {
-    const r = await fetch("star_examples.json");
-    if (!r.ok) throw new Error("Erreur de chargement du fichier STAR");
-    const data = await r.json();
+  const zone = $("#exemplesSTAR");
+  if (!zone) return;
+  zone.innerHTML = `<p class="text-gray-500 italic">Chargement des exemples STAR...</p>`;
 
-    const container = document.getElementById("exemplesSTAR");
-    container.innerHTML = "";
+  const data = await loadJSON("star_examples.json");
+  if (!data) {
+    zone.innerHTML = `<p class="text-red-500">Erreur de chargement des exemples STAR.</p>`;
+    return;
+  }
 
+  zone.innerHTML = "";
+
+  // Cas 1: objet par catégories
+  if (!Array.isArray(data)) {
     Object.keys(data).forEach(cat => {
-      // Crée un conteneur pour chaque catégorie
-      const section = document.createElement("div");
-      section.className = "bg-white rounded shadow-sm border";
+      const catId = sanitizeId(cat);
+      const wrap = document.createElement("div");
+      wrap.className = "bg-white border rounded shadow-sm mb-2";
+      wrap.innerHTML = `
+        <div class="flex justify-between items-center cursor-pointer px-3 py-2 hover:bg-blue-50 star-header" data-cat="${catId}">
+          <span class="font-semibold text-blue-700">${cat}</span>
+          <span class="text-blue-500">▾</span>
+        </div>
+        <div id="star-${catId}" class="hidden px-4 pb-2"></div>
+      `;
+      zone.appendChild(wrap);
 
-      // En-tête cliquable
-      const header = document.createElement("div");
-      header.className =
-        "flex justify-between items-center cursor-pointer p-2 hover:bg-blue-50";
-      header.innerHTML = `<span class="font-semibold text-blue-700">${cat}</span><span class="text-blue-500">▾</span>`;
-
-      // Contenu caché par défaut
-      const content = document.createElement("div");
-      content.className = "hidden px-4 pb-2";
-
-      // Ajoute les exemples à l’intérieur
-      data[cat].forEach(ex => {
+      const content = wrap.querySelector(`#star-${catId}`);
+      (data[cat] || []).forEach(ex => {
         const card = document.createElement("div");
-        card.className =
-          "border-l-4 border-blue-300 bg-gray-50 p-3 my-2 rounded";
+        card.className = "border-l-4 border-blue-300 bg-gray-50 p-3 my-2 rounded cursor-pointer hover:bg-blue-50 transition";
         card.innerHTML = `
           <p class="font-semibold text-gray-800">${ex.titre}</p>
           <p><strong>S :</strong> ${ex.situation}</p>
           <p><strong>T :</strong> ${ex.tache}</p>
           <p><strong>A :</strong> ${ex.action}</p>
           <p><strong>R :</strong> ${ex.resultat}</p>
+          <button class="mt-2 text-sm text-blue-600 font-semibold hover:underline">→ Utiliser cet exemple</button>
         `;
+        // Sélection visuelle
+        card.addEventListener("click", (e) => {
+          if (e.target.tagName.toLowerCase() === "button") return;
+          $$("#exemplesSTAR .selected").forEach(el => el.classList.remove("bg-blue-100","selected"));
+          card.classList.add("bg-blue-100","selected");
+        });
+        // Focus situation
+        card.querySelector("button").addEventListener("click", (e) => {
+          e.stopPropagation();
+          const focus = $("#starFocus");
+          if (focus) {
+            focus.innerHTML = `
+              <div class="p-3 bg-yellow-50 border-l-4 border-yellow-400 rounded shadow">
+                <p class="font-bold text-gray-800 mb-1">${ex.titre}</p>
+                <p><strong>Situation :</strong> ${ex.situation}</p>
+              </div>`;
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          }
+        });
         content.appendChild(card);
       });
-
-      // Toggle du contenu au clic
-      header.addEventListener("click", () => {
-        content.classList.toggle("hidden");
-      });
-
-      section.appendChild(header);
-      section.appendChild(content);
-      container.appendChild(section);
     });
-  } catch (e) {
-    console.error("Erreur chargement STAR :", e);
-    document.getElementById("exemplesSTAR").innerHTML =
-      `<p class="text-red-500 text-sm">Erreur de chargement des exemples STAR.</p>`;
+
+    // Toggle catégories STAR
+    zone.addEventListener("click", (e) => {
+      const head = e.target.closest(".star-header");
+      if (!head) return;
+      const id = head.dataset.cat;
+      const bloc = $(`#star-${id}`);
+      if (!bloc) return;
+      bloc.classList.toggle("hidden");
+      const arrow = head.querySelector("span.text-blue-500");
+      if (arrow) arrow.textContent = bloc.classList.contains("hidden") ? "▾" : "▴";
+    });
+
+  } else {
+    // Cas 2: tableau plat d'exemples
+    zone.innerHTML = data.map(ex => `
+      <div class="bg-white border rounded shadow-sm mb-2">
+        <div class="flex justify-between items-center cursor-pointer px-3 py-2 hover:bg-blue-50 star-item">
+          <span class="font-semibold text-blue-700">${ex.theme ?? ex.titre ?? "Exemple"}</span>
+          <span class="text-blue-500">▾</span>
+        </div>
+        <div class="hidden px-4 pb-2">
+          <p><strong>S :</strong> ${ex.situation}</p>
+          <p><strong>T :</strong> ${ex.tache}</p>
+          <p><strong>A :</strong> ${ex.action}</p>
+          <p><strong>R :</strong> ${ex.resultat}</p>
+          <button class="mt-2 text-sm text-blue-600 font-semibold hover:underline">→ Utiliser cet exemple</button>
+        </div>
+      </div>
+    `).join("");
+
+    // Délégation: toggle + focus
+    zone.addEventListener("click", (e) => {
+      const head = e.target.closest(".star-item");
+      if (head) {
+        const bloc = head.nextElementSibling;
+        bloc.classList.toggle("hidden");
+        const arrow = head.querySelector("span.text-blue-500");
+        if (arrow) arrow.textContent = bloc.classList.contains("hidden") ? "▾" : "▴";
+        return;
+      }
+      const btn = e.target.closest("button");
+      if (btn) {
+        const wrap = btn.closest("div");
+        const titre = wrap.previousElementSibling.querySelector("span")?.textContent || "Exemple";
+        const situation = (wrap.querySelector("p")?.innerText || "").replace(/^S\s*:\s*/,"");
+        const focus = $("#starFocus");
+        if (focus) {
+          focus.innerHTML = `
+            <div class="p-3 bg-yellow-50 border-l-4 border-yellow-400 rounded shadow">
+              <p class="font-bold text-gray-800 mb-1">${titre}</p>
+              <p><strong>Situation :</strong> ${situation}</p>
+            </div>`;
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+      }
+    });
   }
 }
 
-
-
-// =========================
-// GESTION DES CLICS GLOBAUX
-// =========================
+/* =========================================================
+   Suppressions (icônes ❌ dans les colonnes de gauche)
+========================================================= */
 document.addEventListener("click", (e) => {
-  // Parcours
-  const blocParcours = e.target.closest("#timeline > div");
-  if (blocParcours) {
-    const details = blocParcours.querySelector("div[id^='details-']");
-    const arrow = blocParcours.querySelector("h3 span.text-blue-600");
-    if (details && arrow) {
-      details.classList.toggle("hidden");
-      arrow.textContent = details.classList.contains("hidden") ? "▼" : "▲";
-      blocParcours.classList.toggle("bg-yellow-100");
-      blocParcours.classList.toggle("border-yellow-400");
-    }
-    return;
-  }
-
-  // Ouvrir/fermer catégories (compétences & formations)
-  const catHeader = e.target.closest("[data-cat]");
-  if (catHeader) {
-    const cat = catHeader.dataset.cat;
-    const bloc = document.getElementById(`bloc-${cat.replace(/\s+/g, '-')}`) ||
-                 document.getElementById(`sous-${cat.replace(/\s+/g, '-')}`);
-    if (bloc) {
-      const arrow = catHeader.querySelector("span.text-blue-600");
-      bloc.classList.toggle("hidden");
-      arrow.textContent = bloc.classList.contains("hidden") ? "▼" : "▲";
-    }
-    return;
-  }
-
-  // Sélection compétence comportementale
-  const competenceDiv = e.target.closest(".competence-item");
-  if (competenceDiv) {
-    const id = competenceDiv.dataset.id;
-    const nom = competenceDiv.dataset.nom;
-    const description = competenceDiv.dataset.description;
-    const comportements = JSON.parse(competenceDiv.dataset.comportements || "[]");
-
-    const index = competencesSelectionnees.findIndex(c => c.id === id);
-    if (index === -1) {
-      competencesSelectionnees.push({ id, nom, description, comportements });
-      competenceDiv.classList.add("bg-blue-100", "border", "border-blue-400");
-    } else {
-      competencesSelectionnees.splice(index, 1);
-      competenceDiv.classList.remove("bg-blue-100", "border", "border-blue-400");
-    }
-    rafraichirAffichageColonnes();
-    return;
-  }
-
-  // Suppressions
   if (e.target.classList.contains("remove-btn")) {
     const id = e.target.dataset.id;
-    competencesSelectionnees = competencesSelectionnees.filter(c => c.id !== id);
-    rafraichirAffichageColonnes();
-    return;
+    competencesSelectionnees = competencesSelectionnees.filter(x => x.id !== id);
+    renderComportements();
   }
-
   if (e.target.classList.contains("remove-exp")) {
     const nom = e.target.dataset.nom;
-    expertisesSelectionnees = expertisesSelectionnees.filter(e2 => e2.nom !== nom);
-    rafraichirAffichageExpertises();
-    retirerSurbrillance();
-    return;
+    expertisesSelectionnees = expertisesSelectionnees.filter(x => x.nom !== nom);
+    // retirer l'état visuel du bouton si présent
+    const btn = $(`#competencesTechniques .tech-btn[data-nom="${CSS.escape(nom)}"]`);
+    if (btn) btn.classList.remove("bg-blue-300");
+    renderExpertises();
+    recomputeTimelineHighlight();
   }
 });
 
-// =========================
-// INIT
-// =========================
+/* =========================================================
+   Ouvrir TOUT sur clic des titres principaux
+   - Compétences comportementales → ouvre toutes les catégories + sous-parties
+   - Formations et certifications → ouvre toutes les catégories
+========================================================= */
+function openAllInZone(zoneId, prefix) {
+  const zone = document.getElementById(zoneId);
+  if (!zone) return;
+  zone.querySelectorAll(`div[id^="${prefix}"]`).forEach(bloc => {
+    bloc.classList.remove("hidden");
+    const header = bloc.previousElementSibling;
+    if (header) {
+      const arrow = header.querySelector("span.text-blue-500");
+      if (arrow) arrow.textContent = "▴";
+    }
+  });
+}
+
+function openAllCompetencesComportementales() {
+  const zone = $("#competencesComportementales");
+  if (!zone) return;
+  // Ouvre tous les blocs de catégories
+  zone.querySelectorAll("[data-cat]").forEach(head => {
+    const catId = head.dataset.cat;
+    const bloc = $(`#bloc-${catId}`);
+    if (bloc) {
+      bloc.classList.remove("hidden");
+      const arrow = head.querySelector("span.text-blue-500");
+      if (arrow) arrow.textContent = "▴";
+      // S'assure que tout inside est visible
+      bloc.querySelectorAll(".competence-item, div[id^='sous-']").forEach(el => {
+        el.classList.remove("hidden");
+        el.style.display = "block";
+      });
+    }
+  });
+}
+
+document.addEventListener("click", (e) => {
+  const h = e.target.closest("h2");
+  if (!h) return;
+  const txt = (h.textContent || "").trim();
+  if (txt.includes("Compétences comportementales")) {
+    openAllCompetencesComportementales();
+  }
+  if (txt.includes("Formations et certifications")) {
+    openAllInZone("formations","sous-");
+  }
+});
+
+/* =========================================================
+   Init
+========================================================= */
 window.addEventListener("DOMContentLoaded", () => {
-  chargerParcoursProfessionnel();
+  chargerParcours();
   chargerCompetencesComportementales();
   chargerCompetencesTechniques();
-  chargerFormationsCertifications();
-  chargerExemplesSTAR(); // 🆕
+  chargerFormations();
+  chargerExemplesSTAR();
 });
