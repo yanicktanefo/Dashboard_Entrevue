@@ -12,7 +12,7 @@
     {
       "id": "C01",
       "nom": "Sens des affaires",
-      "categorie": "Compétences d’affaires",
+      "categorie": "01 Compétences d’affaires",
       "actif": "non",
       "description": "Capacité de saisir les occasions d’affaires, d’analyser et de gérer les risques.",
       "comportements": [
@@ -26,9 +26,9 @@
     },
     {
       "id": "C02",
-      "nom": "Vision stratégique (diagnostic et enjeux)",
+      "nom": "02 Vision stratégique (diagnostic et enjeux)",
       "categorie": "Compétences d’affaires",
-      "actif": "non",
+      "actif": "oui",
       "description": "Capacité de saisir la perspective globale et future du contexte d’affaires et d’entreprise et de se focaliser sur les éléments-clés, gages de succès.",
       "comportements": [
         "Sait prendre en considération le contexte social, politique, technologique, environnemental, économique et organisationnel de l’entreprise.",
@@ -41,7 +41,7 @@
     },
     {
       "id": "C03",
-      "nom": "Orientation rentabilité",
+      "nom": "03 Orientation rentabilité",
       "categorie": "Compétences d’affaires",
       "actif": "non",
       "description": "Capacité de comprendre les facteurs déterminant la rentabilité et de tout mettre en œuvre pour l’atteindre.",
@@ -56,9 +56,9 @@
     },
     {
       "id": "C04",
-      "nom": "Centré sur le client",
+      "nom": "04 Centré sur le client",
       "categorie": "Compétences d’affaires",
-      "actif": "non",
+      "actif": "oui",
       "description": "S’efforce d’ajuster son travail et ses façons de faire afin de répondre au mieux aux besoins et attentes des clients de l’entreprise, et ce, même sans être en interaction directe avec eux. Ces comportements s’appliquent également aux clients internes.",
       "comportements": [
         "Porte attention aux besoins des clients, valide sa compréhension de leurs exigences et attentes.",
@@ -72,9 +72,9 @@
     },
     {
       "id": "C05",
-      "nom": "Sens politique",
+      "nom": "05 Sens politique",
       "categorie": "Compétences d’affaires",
-      "actif": "non",
+      "actif": "oui",
       "description": "Compréhension des organisations et des jeux de pouvoir, sensibilité aux réalités des politiques et de la structure dans son organisation et chez les partenaires.",
       "comportements": [
         "Comprend les structures officielles et informelles.",
@@ -90,7 +90,7 @@
     },
     {
       "id": "C06",
-      "nom": "Partenariat d’affaires",
+      "nom": "06 Partenariat d’affaires",
       "categorie": "Compétences d’affaires",
       "actif": "non",
       "description": "Sens de la vente et capacité de développer des ententes client-fournisseur mutuellement avantageuses.",
@@ -106,7 +106,7 @@
     },
     {
   "id": "C07",
-  "nom": "Déploiement des cibles et des objectifs",
+  "nom": "07 Déploiement des cibles et des objectifs",
   "categorie": "Compétences d’affaires",
   "actif": "non",
   "description": "Capacité d’établir des cibles d’amélioration et des objectifs, de les déployer et de mettre en place les actions requises pour les atteindre.",
@@ -124,7 +124,7 @@
 },
 {
   "id": "C08",
-  "nom": "Organisation de l’exécution",
+  "nom": "08 Organisation de l’exécution",
   "categorie": "Compétences d’affaires",
   "actif": "non",
   "description": "Capacité d’organiser le travail pour que chacun soit le plus efficace possible.",
@@ -137,7 +137,7 @@
 },
 {
   "id": "C09",
-  "nom": "Gestion des processus",
+  "nom": "09 Gestion des processus",
   "categorie": "Compétences d’affaires",
   "actif": "non",
   "description": "Capacité d’identifier les activités à valeur ajoutée et de consacrer les efforts nécessaires pour atteindre le niveau de performance exigé.",
@@ -160,7 +160,7 @@
 },
 {
   "id": "C10",
-  "nom": "Gestion de projets",
+  "nom": "10 Gestion de projets",
   "categorie": "Compétences d’affaires",
   "actif": "non",
   "description": "Capacité de gérer le processus de gestion de projets et d’appliquer, à chaque étape, des connaissances, des outils et des méthodes spécifiques à la gestion de la coordination, du contenu, des délais, des coûts, de la qualité, des ressources humaines, de la communication, des risques et des approvisionnements.",
@@ -174,7 +174,7 @@
 },
 {
   "id": "C11",
-  "nom": "Encadrement et mesure",
+  "nom": "11 Encadrement et mesure",
   "categorie": "Compétences d’affaires",
   "actif": "non",
   "description": "Capacité d’encadrer les employés et de suivre les activités ainsi que d’implanter les processus d’encadrement et de suivi.",
@@ -189,7 +189,7 @@
 },
 {
   "id": "C12",
-  "nom": "Aligne sur les enjeux importants",
+  "nom": "12 Aligne sur les enjeux importants",
   "categorie": "Compétences d’affaires",
   "actif": "non",
   "description": "Établit des cibles et reste concentré sur ce qui est essentiel, en cohérence avec les priorités et les orientations d’entreprise.",
@@ -206,7 +206,7 @@
 },
 {
   "id": "C13",
-  "nom": "Responsabilise ses employés",
+  "nom": "13 Responsabilise ses employés",
   "categorie": "Compétences d’affaires",
   "actif": "non",
   "description": "Partage les responsabilités avec ses employés et leur accorde de la marge de manœuvre afin qu’ils contribuent pleinement et de façon volontaire.",
@@ -223,7 +223,7 @@
 },
 {
   "id": "C14",
-  "nom": "Reconnaissance",
+  "nom": "14 Reconnaissance",
   "categorie": "Compétences d’affaires",
   "actif": "non",
   "description": "Capacité de reconnaître adéquatement les bons coups et les contributions individuelles et d’équipe.",
@@ -236,7 +236,7 @@
 },
 {
   "id": "C15",
-  "nom": "Habilitation",
+  "nom": "15 Habilitation",
   "categorie": "Compétences d’affaires",
   "actif": "non",
   "description": "Capacité de favoriser le développement et le perfectionnement des autres.",
@@ -268,7 +268,7 @@
 },
 {
   "id": "C17",
-  "nom": "Agit en leader d’équipe",
+  "nom": "17 Agit en leader d’équipe",
   "categorie": "Compétences d’affaires",
   "actif": "non",
   "description": "Assure la participation de tous à la réalisation d’objectifs communs en misant sur les forces des personnes et en s’investissant dans leur développement.",
@@ -321,7 +321,7 @@
     },
     {
       "id": "C20",
-      "nom": "Négociation et gestion de conflits",
+      "nom": "20 Négociation et gestion de conflits",
       "categorie": "Compétences interpersonnelles",
       "actif": "non",
       "description": "Capacité d’exercer un effet sur les autres, de négocier et de résoudre des conflits.",
@@ -337,7 +337,7 @@
     },
     {
       "id": "C21",
-      "nom": "Authenticité",
+      "nom": "21 Authenticité",
       "categorie": "Compétences interpersonnelles",
       "actif": "non",
       "description": "Capacité d’être sincère et naturel dans ses interactions et ses communications.",
@@ -352,7 +352,7 @@
      "Compétences personnelles": [ 
     {    
       "id": "C22",
-      "nom": "Langage et communication",
+      "nom": "22 Langage et communication",
       "categorie": "Compétences personnelles",
       "actif": "non",
       "description": "Aptitude à s’exprimer, interpréter et transmettre l’information efficacement selon les situations.",
@@ -369,7 +369,7 @@
     },
     {
       "id": "C23",
-      "nom": "Aptitudes cognitives",
+      "nom": "23 Aptitudes cognitives",
       "categorie": "Compétences personnelles",
       "actif": "non",
       "description": "Vivacité, capacité cognitive à traiter des informations complexes et abstraites et capacité d’analyse et de résolution de problèmes.",
@@ -389,7 +389,7 @@
     }    ,
     {
       "id": "C24",
-      "nom": "Recommandation et prise de décision",
+      "nom": "24 Recommandation et prise de décision",
       "categorie": "24 Compétences personnelles",
       "actif": "non",
       "description": "Capacité à formuler des recommandations et à prendre les bonnes décisions dans son champ d’expertise, basées sur le contexte, les enjeux d’affaires et les orientations stratégiques.",
@@ -411,7 +411,7 @@
     },
     {
       "id": "C25",
-      "nom": "Créativité et innovation",
+      "nom": "25 Créativité et innovation",
       "categorie": "25 Compétences personnelles",
       "actif": "non",
       "description": "Capacité d’engendrer des idées nouvelles ou inédites et de mettre en œuvre des solutions nouvelles contribuant à l’atteinte des objectifs d’affaires.",
@@ -431,7 +431,7 @@
       "id": "C26",
       "nom": "26 Agile et orienté vers les résultats",
       "categorie": "Compétences personnelles",
-      "actif": "oui",
+      "actif": "non",
       "description": "Se centre sur l’essentiel afin de livrer les résultats avec vélocité, est proactif et fait avancer les choses.",
       "comportements": [
         "Agit proactivement pour livrer les résultats attendus, en investissant ses efforts sur l’essentiel.",
@@ -445,7 +445,7 @@
     },
     {
       "id": "C27",
-      "nom": "Gestion du temps et des priorités",
+      "nom": "27 Gestion du temps et des priorités",
       "categorie": "Compétences personnelles",
       "actif": "non",
       "description": "Capacité d’utiliser judicieusement son temps et celui des autres pour atteindre les objectifs fixés.",
@@ -459,7 +459,7 @@
     },
     {
       "id": "C28",
-      "nom": "Éthique professionnelle, rigueur, souci de la qualité, de la sécurité et du développement durable",
+      "nom": "28 Éthique professionnelle, rigueur, souci de la qualité, de la sécurité et du développement durable",
       "categorie": "Compétences personnelles",
       "actif": "non",
       "description": "Respect du code de conduite de l’entreprise, du code de déontologie de sa profession, des normes de qualité et de sécurité ainsi que des règles d’éthique dans ses rapports avec les autres et dans son travail.",
@@ -480,7 +480,7 @@
       "id": "C29",
       "nom": "29 Autonomie",
       "categorie": "Compétences personnelles",
-      "actif": "oui",
+      "actif": "non",
       "description": "Capacité d’agir de façon indépendante sans recourir à l’aide des autres.",
       "comportements": [
         "Est capable d’agir sans l’approbation d’autrui.",
@@ -492,7 +492,7 @@
     },
     {
       "id": "C30",
-      "nom": "Maîtrise de soi",
+      "nom": "30 Maîtrise de soi",
       "categorie": "Compétences personnelles",
       "actif": "non",
       "description": "Capacité d’être efficace sous pression, de faire face aux situations inconfortables et de gérer ses émotions.",
@@ -509,7 +509,7 @@
     },
     {
       "id": "C31",
-      "nom": "Confiance en soi",
+      "nom": "31 Confiance en soi",
       "categorie": "Compétences personnelles",
       "actif": "non",
       "description": "Croire en ses capacités d’accomplir une tâche ou de résoudre un problème, se sentir apte à faire face à des situations de plus en plus exigeantes et avoir du courage.",
@@ -523,7 +523,7 @@
     },
     {
       "id": "C32",
-      "nom": "Développement et accomplissement professionnel",
+      "nom": "32 Développement et accomplissement professionnel",
       "categorie": "Compétences personnelles",
       "actif": "non",
       "description": "Capacité de se perfectionner et d’améliorer ses compétences et son expertise en utilisant diverses stratégies. Auto-motivation, volonté de réussir et passion pour son métier.",
@@ -541,7 +541,7 @@
     },
     {
       "id": "C33",
-      "nom": "Capacité d’adaptation",
+      "nom": "33 Capacité d’adaptation",
       "categorie": "Compétences personnelles",
       "actif": "non",
       "description": "Capacité de s’ajuster à son environnement avec souplesse, flexibilité et tolérance face à l’incertitude.",
@@ -559,7 +559,7 @@
   "Compétences techniques": [
     {
       "id": "C34",
-      "nom": "Compétences linguistiques",
+      "nom": "34 Compétences linguistiques",
       "categorie": "Compétences techniques",
       "actif": "non",
       "description": "Capacité de s’exprimer en anglais ou dans d’autres langues que le français à un niveau approprié, selon les besoins.",
@@ -572,7 +572,7 @@
     },
     {
       "id": "C35",
-      "nom": "Communication écrite",
+      "nom": "35 Communication écrite",
       "categorie": "Compétences techniques",
       "actif": "non",
       "description": "Capacité de communiquer par écrit ses idées et l’information de façon à se faire comprendre et en respectant les règles de communication écrite.",
@@ -587,7 +587,7 @@
     },
     {
       "id": "C36",
-      "nom": "Communication d’impact",
+      "nom": "36 Communication d’impact",
       "categorie": "Compétences techniques",
       "actif": "non",
       "description": "Capacité à communiquer efficacement ses idées et à faire valoir son point de vue afin de créer l’impact désiré.",
@@ -602,7 +602,7 @@
     }    ,
     {
       "id": "C37",
-      "nom": "Maîtrise des technologies de l’information et des communications",
+      "nom": "37 Maîtrise des technologies de l’information et des communications",
       "categorie": "Compétences techniques",
       "actif": "non",
       "description": "Capacité de suivre l’évolution technologique en matière d’information, d’acquisition et de partage de connaissances et d’informatique.",
@@ -617,7 +617,7 @@
       "id": "C38",
       "nom": "38 S’engage dans l’évolution",
       "categorie": "ompétences techniques",
-      "actif": "oui",
+      "actif": "non",
       "description": "Questionne le statu quo, propose de nouvelles idées qui améliorent la performance et contribue à mettre en œuvre des solutions innovantes.",
       "comportements": [
         "Remet en question le statu quo, reconnaît la valeur des nouvelles idées et participe à l’évolution.",
@@ -632,7 +632,7 @@
     }    ,
     {
       "id": "C39",
-      "nom": "Techniques d’animation",
+      "nom": "39 Techniques d’animation",
       "categorie": "Compétences techniques",
       "actif": "non",
       "description": "Maîtrise de la conduite de réunions efficaces et productives.",
@@ -646,7 +646,7 @@
     },
     {
       "id": "C40",
-      "nom": "Maîtrise du processus de consultation",
+      "nom": "40 Maîtrise du processus de consultation",
       "categorie": "Compétences techniques",
       "actif": "non",
       "description": "Capacité de gérer le processus de consultation et d’appliquer, à chaque étape, des connaissances, des outils et des méthodes spécifiques à la consultation.",
@@ -661,7 +661,7 @@
     }    ,
     {
       "id": "C41",
-      "nom": "Maîtrise des connaissances organisationnelles",
+      "nom": "41 Maîtrise des connaissances organisationnelles",
       "categorie": "Compétences techniques",
       "actif": "non",
       "description": "Connaissance des encadrements et systèmes de l’entreprise et de son unité d’affaires requis dans l’exercice de ses fonctions.",
@@ -673,7 +673,7 @@
     },
     {
       "id": "C42",
-      "nom": "Maîtrise des compétences techniques spécifiques liées à l’emploi ou au poste",
+      "nom": "42 Maîtrise des compétences techniques spécifiques liées à l’emploi ou au poste",
       "categorie": "Compétences techniques",
       "actif": "non",
       "description": "Maîtrise de l’ensemble de ses tâches et des savoirs et savoir-faire techniques selon le niveau de performance ou d’expertise requis dans l’exercice de son emploi compte tenu du contexte spécifique de son poste.",

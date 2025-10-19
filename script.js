@@ -98,7 +98,7 @@ function highlightTimelineByKeywords(words=[]) {
   $$("#timeline > div").forEach(d => {
     const t = d.textContent.toLowerCase();
     if (words.some(w => w && t.includes(w.toLowerCase()))) {
-      d.classList.add("bg-yellow-100","border-yellow-400");
+     d.classList.add("bg-amber-100","border-amber-400");
     }
   });
 }
@@ -130,10 +130,11 @@ async function chargerParcours() {
                   Array.isArray(it.faitsSaillants) ? it.faitsSaillants : [];
 
     const faitsNorm = faits.map(f => {
-      if (typeof f === "string") return { texte: f, liens_comportements: [] };
+      if (typeof f === "string") return { texte: f, liens_comportements: [], resultat: "" };
       const texte = f.texte ?? f.text ?? "";
       const liens = Array.isArray(f.liens_comportements) ? f.liens_comportements : [];
-      return { texte, liens_comportements: liens };
+      const resultat = f.resultat ?? f.resultant ?? f.résultat ?? "";
+      return { texte, liens_comportements: liens, resultat };
     });
 
     return `
@@ -149,7 +150,8 @@ async function chargerParcours() {
             <ul class="list-disc ml-6 mt-1">
               ${faitsNorm.map(f => `
                 <li class="fait-sailant cursor-pointer hover:bg-blue-50 transition p-1 rounded"
-                    data-liens='${JSON.stringify(f.liens_comportements || [])}'>
+                    data-liens='${JSON.stringify(f.liens_comportements || [])}'
+                    data-resultat="${(f.resultat || '').replace(/"/g, '&quot;')}">
                   ${f.texte}
                 </li>`).join("")}
             </ul>
@@ -243,7 +245,8 @@ async function chargerCompetencesComportementales() {
     if (idx === -1) {
       if (competencesSelectionnees.length < 2) {
         competencesSelectionnees.push({ id, nom, description, comportements });
-        item.classList.add("bg-blue-100","border","border-blue-400");
+        item.classList.add("bg-sky-100","border","border-sky-400");
+
       }
     } else {
       competencesSelectionnees.splice(idx,1);
@@ -261,32 +264,173 @@ async function chargerCompetencesComportementales() {
       Object.keys(data).map(c => `<option value="${sanitizeId(c)}">${c}</option>`).join("");
   }
 
-  function appliquerFiltreCompetences() {
-    const texte = (input?.value || "").toLowerCase();
-    const catSel = (select?.value || "");
-    $$("#competencesComportementales > div").forEach(catBloc => {
-      const header = catBloc.querySelector(".cat-header");
-      const blocId = header?.dataset.cat;
-      const bloc = $(`#bloc-${blocId}`);
-      if (!bloc) return;
-      const visibleCat = !catSel || blocId === catSel;
-      const items = bloc.querySelectorAll(".competence-item");
-      let anyVisible = false;
-      items.forEach(it => {
-        const txt = it.textContent.toLowerCase();
-        const visibleTxt = !texte || txt.includes(texte);
-        const visible = visibleCat && visibleTxt;
-        it.style.display = visible ? "block" : "none";
-        if (visible) anyVisible = true;
-      });
-      catBloc.style.display = anyVisible ? "block" : "none";
+/* =========================================================
+   🔍 Filtrage amélioré + sauvegarde automatique (localStorage)
+========================================================= */
+function normaliserTexte(texte) {
+  return texte
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase();
+}
+
+function appliquerFiltreCompetences() {
+  const texteBrut = input?.value || "";
+  const texte = normaliserTexte(texteBrut);
+  const catSel = (select?.value || "").trim();
+  let resultats = 0;
+
+  $$("#competencesComportementales > div").forEach(catBloc => {
+    const header = catBloc.querySelector(".cat-header");
+    const blocId = header?.dataset.cat;
+    const bloc = $(`#bloc-${blocId}`);
+    if (!bloc) return;
+    const visibleCat = !catSel || blocId === catSel;
+    const items = bloc.querySelectorAll(".competence-item");
+    let anyVisible = false;
+
+    items.forEach(it => {
+      const nom = normaliserTexte(it.dataset.nom || "");
+      const desc = normaliserTexte(it.dataset.description || "");
+      const comportements = normaliserTexte(
+        (dec(it.dataset.comportements) || []).join(" ")
+      );
+      const visibleTxt =
+        !texte ||
+        nom.includes(texte) ||
+        desc.includes(texte) ||
+        comportements.includes(texte);
+      const visible = visibleCat && visibleTxt;
+      it.style.display = visible ? "block" : "none";
+      if (visible) {
+        anyVisible = true;
+        resultats++;
+      }
     });
+
+    catBloc.style.display = anyVisible ? "block" : "none";
+  });
+
+  // Affichage d’un message si aucun résultat
+  const zone = $("#competencesComportementales");
+  if (zone) {
+    let msg = zone.querySelector(".aucun-resultat");
+    if (!msg) {
+      msg = document.createElement("p");
+      msg.className = "aucun-resultat text-gray-500 italic mt-2";
+      zone.appendChild(msg);
+    }
+    msg.textContent =
+      resultats === 0 ? "Aucun résultat ne correspond à votre recherche." : "";
   }
+
+  // Sauvegarde du filtre courant
+  localStorage.setItem(
+    "filtreCompetencesDashboard",
+    JSON.stringify({ texte: texteBrut, categorie: catSel })
+  );
+}
+
 
   if (input && select) {
     input.addEventListener("input", appliquerFiltreCompetences);
     select.addEventListener("change", appliquerFiltreCompetences);
   }
+
+
+// 🔘 Bouton "Effacer le filtre"
+const clearBtn = document.getElementById("clearFiltre");
+if (clearBtn && input && select) {
+  // Afficher/masquer le bouton selon le texte
+  input.addEventListener("input", () => {
+    clearBtn.classList.toggle("hidden", input.value.trim() === "");
+  });
+
+  // Clic pour réinitialiser tout
+  clearBtn.addEventListener("click", () => {
+    input.value = "";
+    select.value = "";
+    clearBtn.classList.add("hidden");
+    localStorage.removeItem("filtreCompetencesDashboard");
+    appliquerFiltreCompetences();
+  });
+
+  // Restauration de l'état (affiche le ❌ si texte présent)
+  const filtreSauvegarde = JSON.parse(localStorage.getItem("filtreCompetencesDashboard") || "{}");
+  if (filtreSauvegarde.texte) clearBtn.classList.remove("hidden");
+}
+
+// 🔄 Bouton global "Réinitialiser tous les filtres"
+const resetBtn = document.getElementById("resetFiltres");
+if (resetBtn && input && select) {
+  resetBtn.addEventListener("click", () => {
+       // 1️⃣ Effacer les champs et la sauvegarde
+    input.value = "";
+    select.value = "";
+    localStorage.removeItem("filtreCompetencesDashboard");
+
+    // 2️⃣ Masquer le bouton ❌ individuel
+    const clearBtn = document.getElementById("clearFiltre");
+    if (clearBtn) clearBtn.classList.add("hidden");
+
+    // 3️⃣ Effacer TOUTES les surbrillances (colonnes + timeline + liens)
+    document.querySelectorAll(`
+      .bg-sky-100, .bg-green-200, .bg-purple-200, .bg-orange-100, 
+      .bg-amber-100, .bg-yellow-100, .bg-pink-100, .bg-pink-50,
+      .border-sky-400, .border-green-500, .border-purple-500,
+      .border-orange-400, .border-amber-400, .border-yellow-400, .border-pink-400
+    `).forEach(el => {
+      el.classList.remove(
+        "bg-sky-100","border-sky-400",
+        "bg-green-200","border-green-500",
+        "bg-purple-200","border-purple-500",
+        "bg-orange-100","border-orange-400",
+        "bg-amber-100","border-amber-400",
+        "bg-yellow-100","border-yellow-400",
+        "bg-pink-100","bg-pink-50","border-pink-400",
+        "highlighted"
+      );
+    });
+
+    // 4️⃣ Supprime explicitement les surbrillances de la timeline
+    $$("#timeline > div").forEach(d =>
+      d.classList.remove(
+        "bg-yellow-100","border-yellow-400",
+        "bg-amber-100","border-amber-400",
+        "bg-pink-50","highlighted"
+      )
+    );
+
+    // 5️⃣ Réinitialise les sélections logiques
+    competencesSelectionnees = [];
+    expertisesSelectionnees = [];
+
+    // 6️⃣ Rafraîchit tous les affichages
+    appliquerFiltreCompetences();
+    renderComportements();
+    renderExpertises();
+    clearTimelineHighlight(); // efface le reste de la timeline
+    resetHighlights();        // efface les liens STAR ↔ comportements
+
+    // 7️⃣ Message visuel
+    const msg = document.createElement("div");
+    msg.textContent = "🔄 Filtres et surbrillances effacés";
+    msg.className = "fixed bottom-3 right-3 bg-green-600 text-white px-3 py-2 rounded shadow text-sm";
+    document.body.appendChild(msg);
+    setTimeout(() => msg.remove(), 1500);
+
+    // 8️⃣ Sauvegarde état vide
+    saveState();
+  });
+}
+
+
+  // 🔁 Restauration du dernier filtre enregistré
+const filtreSauvegarde = JSON.parse(localStorage.getItem("filtreCompetencesDashboard") || "{}");
+if (filtreSauvegarde.texte) input.value = filtreSauvegarde.texte;
+if (filtreSauvegarde.categorie) select.value = filtreSauvegarde.categorie;
+appliquerFiltreCompetences();
+
 }
 
 /* =========================================================
@@ -332,7 +476,7 @@ async function chargerCompetencesTechniques() {
     if (idx === -1) {
       if (expertisesSelectionnees.length < 2) {
         expertisesSelectionnees.push({ nom, titre, depuis, description: desc });
-        btn.classList.add("bg-blue-300");
+        btn.classList.add("bg-green-200","border","border-green-500");
       }
     } else {
       expertisesSelectionnees.splice(idx,1);
@@ -387,7 +531,7 @@ async function chargerCompetencesStrategiques() {
     if (idx === -1) {
       if (expertisesSelectionnees.length < 2) {
         expertisesSelectionnees.push({ nom, titre, depuis, description: desc });
-        btn.classList.add("bg-purple-300");
+       btn.classList.add("bg-purple-200","border","border-purple-500");
       }
     } else {
       expertisesSelectionnees.splice(idx,1);
@@ -523,7 +667,7 @@ async function chargerExemplesSTAR() {
         card.addEventListener("click", (e) => {
           if (e.target.tagName.toLowerCase() === "button") return;
           $$("#exemplesSTAR .selected").forEach(el => el.classList.remove("bg-blue-100","selected"));
-          card.classList.add("bg-blue-100","selected");
+          card.classList.add("bg-orange-100","border","border-orange-400","selected");
         });
         // Focus situation (si #starFocus existe)
         card.querySelector("button").addEventListener("click", (e) => {
@@ -846,4 +990,30 @@ window.addEventListener("DOMContentLoaded", async () => {
   await chargerFormations();
   await chargerExemplesSTAR();
   restoreState();
+});
+
+
+// === Toggle du texte "résultat" au clic sur un fait saillant ===
+document.addEventListener("click", (e) => {
+  const fs = e.target.closest(".fait-sailant");
+  if (!fs) return;
+
+  const alreadyOpen = fs.classList.contains("result-open");
+  // Ferme les autres blocs résultats
+  document.querySelectorAll(".fait-sailant.result-open").forEach(el => {
+    el.classList.remove("result-open");
+    const res = el.querySelector(".resultat-texte");
+    if (res) res.remove();
+  });
+
+  if (alreadyOpen) return;
+
+  const resultatTexte = fs.getAttribute("data-resultat");
+  if (resultatTexte && resultatTexte.trim() !== "") {
+    const p = document.createElement("p");
+    p.className = "resultat-texte mt-1 text-sm text-gray-700 bg-yellow-50 border-l-4 border-yellow-300 pl-2 pr-1 py-1 rounded";
+    p.textContent = resultatTexte;
+    fs.appendChild(p);
+    fs.classList.add("result-open");
+  }
 });

@@ -1,221 +1,416 @@
 [
+{
+  "titre": "1991 – 1998 – Coordonnateur & intégrateur IBM/Microsoft",
+  "details": [
+    "Début de carrière au sein d’une grande chaîne de restaurants exploitant des systèmes IBM AS/400.",
+    "Sous la gouverne du directeur TI, responsable de la coordination technique des équipes internes et du lien avec les fournisseurs, en supervisant la planification et l’exécution des travaux d’intégration.",
+    "Participation aux décisions technologiques (évolutions, achats, maintenance) et recommandation des orientations techniques, assurant la cohérence entre les besoins d’affaires et la faisabilité opérationnelle.",
+    "Transition d’une architecture IBM 5250 vers Windows client-serveur avec introduction d’applications modernes d’inventaire, de point de vente et de reporting.",
+    "Modernisation permettant de réduire les coûts d’exploitation tout en ajoutant de nouvelles fonctionnalités pour les utilisateurs.",
+    "Mise en place de la standardisation des postes de travail (images, scripts, procédures) ainsi que des pratiques d’exploitation et de sauvegarde adaptées aux environnements mixtes AS/400 – Windows.",
+    "Documentation et structuration du support favorisant l’autonomie des équipes régionales et la stabilité des opérations multi-sites.",
+    "Découverte de mes capacités à évoluer, exercer un leadership d’équipe et influencer les orientations technologiques, en conjuguant vision technique, rigueur opérationnelle et accompagnement du changement."
+  ],
+  "faits_sailants": [
+    {
+      "texte": "Modernisation de l’environnement technologique — intégration complète entre les environnements IBM AS/400 et Microsoft, assurant l’interopérabilité entre les systèmes d’inventaire, de facturation et de reporting.",
+      "resultat": "Centralisation des données et diminution significative des tâches manuelles redondantes.",
+      "liens_comportements": ["C26", "C37", "C38"]
+    },
+    {
+      "texte": "Transition vers une architecture client-serveur — pilotage du remplacement progressif des terminaux IBM 5250 par des postes Windows multi-usages intégrant les premières applications client-serveur.",
+      "resultat": "Réduction des coûts d’exploitation, ajout de nouvelles fonctionnalités et amélioration de l’expérience utilisateur.",
+      "liens_comportements": ["C26", "C38"]
+    },
+    {
+      "texte": "Standardisation et outillage des postes — conception d’images système, de scripts et de procédures de déploiement réutilisables, simplifiant l’installation et la maintenance.",
+      "resultat": "Réduction du temps d’installation (de plusieurs jours à quelques heures) et baisse du volume d’incidents.",
+      "liens_comportements": ["C26", "C37"]
+    },
+    {
+      "texte": "Coordination inter-équipes et leadership technique — animation de réunions techniques entre exploitants, développeurs et fournisseurs; accompagnement du changement lors des déploiements multi-sites.",
+      "resultat": "Meilleure communication, adoption rapide des nouvelles technologies et esprit d’équipe renforcé.",
+      "liens_comportements": ["C18", "C17", "C38"]
+    },
+    {
+      "texte": "Rôle de référence technique auprès de la direction — responsable du lien avec les fournisseurs; évaluation et recommandation des évolutions technologiques sous la gouverne du directeur TI.",
+      "resultat": "Décisions technologiques plus alignées sur les besoins d’affaires et anticipation des tendances du marché.",
+      "liens_comportements": ["C18", "C24", "C29"]
+    },
+    {
+      "texte": "Développement personnel et leadership — découverte de mes aptitudes à mobiliser, expliquer et faire progresser une équipe technique.",
+      "resultat": "Affirmation d’un profil de leader technologique capable de faire le pont entre opérations et stratégie.",
+      "liens_comportements": ["C32", "C17", "C18"]
+    }
+  ]
+}
+
+,
+{
+  "titre": "1998 – 2003 – Co-fondateur, formateur certifié Microsoft & consultant en intégration",
+  "details": [
+    "Co-fondateur de la firme de consultation Maximise, spécialisée en formation, intégration et coaching technologique.",
+    "Secrétaire-trésorier responsable des opérations administratives, de la gestion financière et des relations partenaires.",
+    "Livraison de projets et formations dans plus de 50 organisations (distribution, énergie, gouvernement, santé, aéronautique, manufacturier).",
+    "Accompagnement des clients dans la compréhension et l’appropriation des solutions implantées par le coaching en entreprise.",
+    "Expertise consolidée en environnements Microsoft : Windows 2000, Active Directory, Exchange Server.",
+    "Participation à la migration Lotus Notes → Exchange / Active Directory à la RAMQ et à l’intégration des premières cartes à puce avec certificats numériques (projet carte santé).",
+    "Remporté plusieurs appels d’offres majeurs auprès d’organisations de renom (IATA, Cirque du Soleil, etc.).",
+    "Développement d’une approche de vulgarisation et de communication adaptée à chaque public technique ou d’affaires.",
+    "Expérience complète en gestion d’entreprise et leadership d’équipe."
+  ],
+  "faits_sailants": [
+    {
+      "texte": "Fondation et gestion de la firme Maximise — création d’une structure de services en intégration et formation Microsoft, avec gestion administrative et coordination d’équipe.",
+      "resultat": "Mise en place d’une firme reconnue pour la qualité de ses interventions et la solidité de son modèle de gestion.",
+      "liens_comportements": ["C26", "C29", "C17"]
+    },
+    {
+      "texte": "Déploiement et accompagnement multi-secteurs — projets et formations dans plus de 50 organisations de tailles et secteurs variés.",
+      "resultat": "Consolidation d’une expertise étendue et capacité d’adaptation à des contextes d’affaires variés, de la PME au grand groupe.",
+      "liens_comportements": ["C18", "C37", "C38"]
+    },
+    {
+      "texte": "Projet RAMQ — migration Lotus Notes vers Exchange / Active Directory et intégration de cartes à puce avec certificats numériques.",
+      "resultat": "Adoption réussie des technologies Microsoft dans un environnement gouvernemental à haute exigence de sécurité et de fiabilité.",
+      "liens_comportements": ["C26", "C37", "C38"]
+    },
+    {
+      "texte": "Appels d’offres majeurs remportés — coordination et pilotage de propositions gagnantes auprès d’organisations comme IATA et le Cirque du Soleil.",
+      "resultat": "Positionnement de Maximise comme partenaire crédible face à de grandes firmes, expansion du portefeuille clients au Canada.",
+      "liens_comportements": ["C26", "C29", "C24"]
+    },
+    {
+      "texte": "Coaching et transfert de connaissances — accompagnement personnalisé pour aider les clients à comprendre et maîtriser les solutions implantées.",
+      "resultat": "Augmentation notable de l’autonomie des clients et réduction des demandes de support post-implantation.",
+      "liens_comportements": ["C18", "C04", "C05"]
+    },
+    {
+      "texte": "Vulgarisation et communication — traduction de concepts techniques complexes en messages clairs adaptés aux publics d’affaires ou techniques.",
+      "resultat": "Amélioration du dialogue entre les directions et les équipes TI, et meilleure appropriation des technologies implantées.",
+      "liens_comportements": ["C04", "C05", "C18"]
+    },
+    {
+      "texte": "Gestion d’entreprise et leadership — supervision financière et coordination d’équipe au sein de Maximise.",
+      "resultat": "Gestion rigoureuse des ressources et maintien d’une rentabilité stable tout en favorisant la cohésion d’équipe.",
+      "liens_comportements": ["C17", "C26", "C29"]
+    },
+    {
+      "texte": "Développement personnel et vision professionnelle — affirmation d’un leadership fondé sur la clarté, la pédagogie et la recherche d’excellence.",
+      "resultat": "Renforcement d’une posture de leader-pédagogue capable d’accompagner le changement et d’inspirer la confiance.",
+      "liens_comportements": ["C32", "C17", "C38"]
+    }
+  ]
+}
+
+,
   {
-    "titre": "1991 – 1998 – Coordonnateur & intégrateur IBM/Microsoft",
-    "details": [
-      "Début de carrière sur systèmes IBM AS/400, responsable de la coordination des équipes techniques pour une grande chaîne de restaurants.",
-      "Transition vers les technologies Microsoft, avec intégration IBM ↔ Windows et premières solutions client-serveur.",
-      "Développement d’un leadership technique et d’une approche collaborative inter-équipes."
-    ],
-    "faits_sailants": [
-      {
-        "texte": "Intégration des environnements IBM AS/400 et Microsoft.",
-        "liens_comportements": [
-          "C18"
-        ]
-      },
-      {
-        "texte": "Pilotage du remplacement des terminaux IBM par des ordinateurs Windows avec gestion du changement.",
-        "liens_comportements": [
-          "C26"
-        ]
-      },
-      {
-        "texte": "Coordination d’équipes hybrides et amélioration de la productivité.",
-        "liens_comportements": [
-          "C18"
-        ]
-      }
-    ]
-  },
+  "titre": "2003 – 2007 – Chef d’équipe Infrastructures Windows – SAQ",
+  "details": [
+    "Chef d’équipe responsable des infrastructures Windows et des opérations pour un parc de plus de 600 serveurs répartis sur 420 sites.",
+    "Supervision d’une équipe de 7 à 8 analystes, assurant la stabilité, la sécurité et l’évolution des environnements Microsoft de l’organisation.",
+    "Participation à la définition des architectures et des orientations technologiques pour les infrastructures Intel.",
+    "Responsable de la sécurité des environnements Microsoft : certificats ADCS, authentification, chiffrement, Active Directory (350+ DC), proxy et Exchange.",
+    "Implantation d’une structure d’équipe basée sur ITIL, MOF, MS Project et Service Center, réduisant les délais d’intervention de 25 %. ",
+    "Réalisation de projets majeurs : migration vers Windows Server 2003, Exchange 2003, Lightning FAX et consolidation de 30 serveurs.",
+    "Contribution au plan de reprise après sinistre (PRA) et participation aux simulations annuelles externes.",
+    "Gestion des relations avec les fournisseurs stratégiques et coordination inter-équipes.",
+    "Renforcement de la gouvernance opérationnelle, de la performance et de la sécurité des systèmes."
+  ],
+  "faits_sailants": [
+    {
+      "texte": "Encadrement et performance d’équipe — coordination d’une équipe de 7 à 8 analystes responsables des infrastructures Intel et des opérations quotidiennes.",
+      "resultat": "Amélioration du temps d’intervention de 25 % et montée en maturité de l’équipe grâce à l’application d’ITIL, MOF et Service Center.",
+      "liens_comportements": ["C17", "C18", "C26"]
+    },
+    {
+      "texte": "Architecture et orientation technologique — participation à la définition des architectures et orientations pour plus de 600 serveurs répartis sur 420 sites.",
+      "resultat": "Standardisation des environnements et meilleure planification des évolutions technologiques.",
+      "liens_comportements": ["C24", "C26", "C37"]
+    },
+    {
+      "texte": "Sécurité et gouvernance Microsoft — responsable de la sécurité des produits Microsoft, de l’authentification, des certificats ADCS et d’un Active Directory de plus de 350 DC.",
+      "resultat": "Renforcement de la posture de sécurité et du contrôle d’accès à l’échelle organisationnelle.",
+      "liens_comportements": ["C40", "C26", "C37"]
+    },
+    {
+      "texte": "Projets majeurs d’infrastructure — migrations vers Windows 2003 et Exchange 2003, déploiement Lightning FAX et consolidation de 30 serveurs.",
+      "resultat": "Réduction des coûts d’exploitation, amélioration de la fiabilité et optimisation des niveaux de service (SLA).",
+      "liens_comportements": ["C26", "C37", "C38"]
+    },
+    {
+      "texte": "Plan de reprise après sinistre (PRA) — collaboration à la planification et participation aux simulations annuelles de continuité.",
+      "resultat": "Validation de la capacité de reprise et conformité accrue aux exigences de résilience organisationnelle.",
+      "liens_comportements": ["C40", "C26", "C18"]
+    },
+    {
+      "texte": "Gestion de fournisseurs et coordination externe — supervision des relations avec les partenaires et fournisseurs stratégiques.",
+      "resultat": "Alignement accru entre les engagements externes et les objectifs internes de performance et de sécurité.",
+      "liens_comportements": ["C18", "C24", "C29"]
+    },
+    {
+      "texte": "Leadership technique et transversal — point d’ancrage entre la direction, les équipes techniques et les partenaires externes.",
+      "resultat": "Renforcement du climat de collaboration et accélération des décisions dans les projets à haut impact.",
+      "liens_comportements": ["C17", "C18", "C29"]
+    }
+  ]
+}
+,
   {
-    "titre": "1998 – 2003 – Formateur certifié Microsoft/Cisco & consultant en infrastructure des TI",
-    "details": [
-      "Obtention du titre de Microsoft Certified Trainer (MCT) et plus de 30 certifications.",
-      "Participation au Focus Group Microsoft (Seattle) pour le développement de Windows 2000 et Active Directory.",
-      "Consultation pour plus de 50 organisations, incluant la RAMQ, la SAQ, le Cirque du Soleil, et l’Assemblée nationale."
-    ],
-    "faits_sailants": [
-      {
-        "texte": "Introduction d’Active Directory et de Microsoft Exchange dans plusieurs organisations.",
-        "liens_comportements": [
-          "C26"
-        ]
-      },
-      {
-        "texte": "Coordination à la RAMQ du projet Lotus Notes → Exchange et pilote de la carte à puce santé.",
-        "liens_comportements": [
-          "C18"
-        ]
-      },
-      {
-        "texte": "Formations nationales et vulgarisation des technologies Microsoft et Cisco.",
-        "liens_comportements": [
-          "C26"
-        ]
-      }
-    ]
-  },
+  "titre": "2007 – 2009 – Chargé de projets et chef d’équipe – Modernisation RVI/CTI, SETI et ESB – Hydro-Québec",
+  "details": [
+    "Chargé de projets et chef d’équipe au sein du groupe responsable de la modernisation des systèmes RVI/CTI, en collaboration avec plusieurs divisions et partenaires internes.",
+    "Responsable du dossier de consolidation des serveurs de stockage et d’impression (SETI) et collaborateur à la création du Centre de virtualisation (CDV).",
+    "Supervision d’une équipe d’analystes techniques au sein du groupe ESB, assurant la coordination des activités, la gestion des priorités et la mobilisation des ressources.",
+    "Participation aux appels de propositions liés aux solutions bureautiques en collaboration avec la Direction de l’approvisionnement corporatif (DAC).",
+    "Contribution à la sécurisation et à la gestion de la menace pour les postes bureautiques et environnements SETI, en lien avec les équipes Active Directory et sécurité.",
+    "Participation à la rédaction et à la validation de documents techniques corporatifs (P370, H371, H312) et aux processus ITIL et MOF.",
+    "Contribution à la résolution d’incidents majeurs impliquant plusieurs partenaires et systèmes.",
+    "Renforcement des pratiques de gouvernance, de documentation et d’intégration des changements technologiques."
+  ],
+  "faits_sailants": [
+    {
+      "texte": "Modernisation des systèmes RVI/CTI — planification et coordination des activités de modernisation des systèmes de communication intégrée avec plusieurs divisions.",
+      "resultat": "Amélioration de la stabilité et réduction des incidents liés aux systèmes de communication d’entreprise.",
+      "liens_comportements": ["C26", "C18", "C37"]
+    },
+    {
+      "texte": "Projet CONSO – Consolidation SETI et contribution au Centre de virtualisation (CDV) — responsabilité du dossier de consolidation des serveurs de stockage et d’impression et participation à la création du CDV.",
+      "resultat": "Réduction du nombre de serveurs et centralisation des ressources, marquant les premiers jalons de la virtualisation à grande échelle.",
+      "liens_comportements": ["C26", "C37", "C38"]
+    },
+    {
+      "texte": "Gestion et encadrement d’équipe (ESB) — supervision, planification des priorités et mobilisation d’une équipe d’analystes techniques.",
+      "resultat": "Amélioration de la productivité, du transfert de connaissances et de la cohésion d’équipe.",
+      "liens_comportements": ["C17", "C18", "C26"]
+    },
+    {
+      "texte": "Contribution aux appels de propositions — participation, en collaboration avec la DAC, à la préparation et à l’analyse des appels d’offres pour les solutions bureautiques.",
+      "resultat": "Meilleure adéquation entre besoins d’affaires et orientations technologiques retenues.",
+      "liens_comportements": ["C24", "C26", "C29"]
+    },
+    {
+      "texte": "Sécurisation et gestion de la menace — collaboration avec les équipes Active Directory et sécurité pour renforcer la protection des postes et des environnements SETI.",
+      "resultat": "Posture de sécurité renforcée et meilleure coordination entre les équipes TI et sécurité.",
+      "liens_comportements": ["C40", "C18", "C37"]
+    },
+    {
+      "texte": "Vigie technologique et documentation — participation à la rédaction et validation de documents normatifs (P370, H371, H312) et contribution aux processus ITIL et MOF.",
+      "resultat": "Standardisation accrue et harmonisation des pratiques de gestion opérationnelle.",
+      "liens_comportements": ["C26", "C38", "C37"]
+    },
+    {
+      "texte": "Support transversal et gestion des incidents — participation à la résolution d’incidents complexes impliquant plusieurs partenaires et systèmes.",
+      "resultat": "Rétablissement plus rapide des services et amélioration de la communication inter-équipes.",
+      "liens_comportements": ["C18", "C26", "C40"]
+    }
+  ]
+}
+,
   {
-    "titre": "2003 – 2007 – Chef d’équipe – Infrastructures Windows (SAQ)",
-    "details": [
-      "Responsable de l’équipe Windows/Intel à la SAQ, supervisant plus de 350 contrôleurs de domaine.",
-      "Déploiement d’un système d’authentification par carte à puce et modernisation de l’architecture Active Directory."
-    ],
-    "faits_sailants": [
-      {
-        "texte": "Mise en place d’une infrastructure d’identité unifiée et sécurisée.",
-        "liens_comportements": [
-          "C18"
-        ]
-      },
-      {
-        "texte": "Collaboration inter-équipes pour la standardisation des accès.",
-        "liens_comportements": [
-          "C26"
-        ]
-      }
-    ]
-  },
+  "titre": "2009 – 2015 – Intégrateur principal et chef de centre de compétence – Programmes OPTI_CT, ILM et CDV – Hydro-Québec",
+  "details": [
+    "Intégrateur principal pour les programmes OPTI_CT (pérennité du stockage) et ILM (Information Lifecycle Management), puis chef de centre de compétence au Centre de virtualisation (CDV).",
+    "Participation au comité de sélection des fournisseurs (cahier F) et responsable du calcul des coûts induits utilisés pour la recommandation au Comité d’investissement (CI).",
+    "Collaboration matricielle avec les architectes, chargés de projets, finances, contentieux, sécurité et partenaires externes afin d’assurer la cohérence des décisions et la planification intégrée des livrables.",
+    "Révision de clauses contractuelles et gestion d’enjeux techniques, financiers et légaux afin d’assurer la conformité et la pérennité des solutions livrées.",
+    "Chef du Centre de compétence PI : coordination du développement, de la maintenance et de l’exploitation des plateformes client et infonuagiques internes (virtualisation et libre-service).",
+    "Responsable de certains aspects de sécurité des postes de travail et de la sensibilisation à la gouvernance des environnements utilisateurs.",
+    "Introduction d’une culture d’infonuagique et d’agilité au sein des équipes internes, incluant l’amélioration des outils de déploiement et la responsabilisation des ressources.",
+    "Chef de secteur par intérim à plusieurs reprises, impliqué dans la gouvernance technique et la priorisation des activités stratégiques liées à la virtualisation et à la sécurité."
+  ],
+  "faits_sailants": [
+    {
+      "texte": "Participation stratégique au programme OPTI_CT / ILM — contribution au comité de sélection, à l’évaluation des fournisseurs et à la planification intégrée des livrables.",
+      "resultat": "Recommandations solides au Comité d’investissement et alignement optimal entre les objectifs financiers et technologiques.",
+      "liens_comportements": ["C24", "C26", "C18"]
+    },
+    {
+      "texte": "Gestion d’enjeux complexes multi-domaines — identification, évaluation et mitigation de risques techniques, légaux et financiers.",
+      "resultat": "Maintien des échéanciers et des budgets malgré la complexité des environnements et la multiplicité des intervenants.",
+      "liens_comportements": ["C26", "C29", "C24"]
+    },
+    {
+      "texte": "Collaboration matricielle inter-directions — coordination entre architectes, chargés de projets, finances, contentieux et fournisseurs.",
+      "resultat": "Fluidité accrue dans la prise de décision et cohérence entre volets technique, contractuel et financier.",
+      "liens_comportements": ["C18", "C24", "C29"]
+    },
+    {
+      "texte": "Communication et mobilisation — promotion et vulgarisation des projets auprès des unités impactées par différents canaux.",
+      "resultat": "Adhésion renforcée et meilleure compréhension des objectifs de transformation technologique.",
+      "liens_comportements": ["C04", "C05", "C18"]
+    },
+    {
+      "texte": "Chef du Centre de compétence PI (CDV) — coordination de l’équipe responsable des plateformes client, virtualisation et libre-service.",
+      "resultat": "Amélioration de l’efficacité opérationnelle et augmentation de l’autonomie des équipes internes.",
+      "liens_comportements": ["C17", "C26", "C37"]
+    },
+    {
+      "texte": "Culture infonuagique et agilité — introduction des notions de libre-service et de pratiques agiles au sein du CDV.",
+      "resultat": "Adoption progressive d’une culture d’innovation et responsabilisation accrue des ressources.",
+      "liens_comportements": ["C38", "C26", "C17"]
+    },
+    {
+      "texte": "Sécurité et gouvernance des postes de travail — coordination d’activités de sécurité avec les équipes spécialisées.",
+      "resultat": "Renforcement du niveau de protection des environnements utilisateurs et intégration des bonnes pratiques de sécurité.",
+      "liens_comportements": ["C40", "C18", "C37"]
+    },
+    {
+      "texte": "Leadership et rôle intérimaire — remplacement du chef de secteur à plusieurs reprises pour assurer la gouvernance et la priorisation technique.",
+      "resultat": "Maintien de la cohérence opérationnelle et continuité des décisions stratégiques pendant les périodes de transition.",
+      "liens_comportements": ["C17", "C18", "C29"]
+    }
+  ]
+}
+,
+ {
+  "titre": "2016 – 2021 – Conseiller en cybersécurité II / Chargé d’équipe – Journalisation, surveillance et gestion des vulnérabilités – Hydro-Québec",
+  "details": [
+    "Chargé d’équipe de l’équipe de journalisation et surveillance (ArcSight), composée de 5 à 7 personnes, responsable de l’exploitation, de l’abonnement des clients internes et de la stabilité du service.",
+    "A également agi comme gestionnaire intérimaire et chargé d’équipe pour d’autres produits : Nessus, Tripwire, CDVI (outil interne de vigie) et CIGA (abonnement GIA).",
+    "Responsable de la planification, des suivis fournisseurs, de l’évolution technologique et de la contribution aux feuilles de route et trajectoires d’architecture.",
+    "Collaboration étroite avec le centre de surveillance (SOC), les architectes, les chefs de produit et les partenaires internes.",
+    "Participation aux audits internes et externes, et production d’indicateurs et tableaux de bord pour soutenir la conformité et la gouvernance.",
+    "Introduction des méthodes agiles (SCRUM, sprints, post-its physiques) dans les équipes de cybersécurité, en cohérence avec la transformation numérique de la GTN.",
+    "Participation à la cellule de transformation culturelle de la GTN, contribuant à la diffusion des pratiques agiles et collaboratives.",
+    "Soutien aux partenaires internes souhaitant automatiser leur intégration aux services de journalisation et de surveillance."
+  ],
+  "faits_sailants": [
+    {
+      "texte": "Stabilisation du service ArcSight – réduction du nombre de pannes de journalisation grâce à la création de tableaux de bord et à une collaboration accrue avec le SOC.",
+      "resultat": "Diminution notable des incidents non planifiés et amélioration de la fiabilité du service de journalisation.",
+      "liens_comportements": ["C26", "C18", "C40"]
+    },
+    {
+      "texte": "Supervision de plusieurs produits de cybersécurité – Nessus, Tripwire, CDVI et CIGA – assurant leur maintien, leur évolution et la cohérence technologique.",
+      "resultat": "Consolidation des services de sécurité et meilleure coordination interproduits, menant à une efficacité accrue.",
+      "liens_comportements": ["C26", "C29", "C18"]
+    },
+    {
+      "texte": "Participation aux audits internes et externes – coordination de la production d’indicateurs et de tableaux de bord de conformité.",
+      "resultat": "Renforcement de la transparence, amélioration des suivis et réponse plus proactive aux exigences de conformité.",
+      "liens_comportements": ["C26", "C40", "C18"]
+    },
+    {
+      "texte": "Introduction et diffusion des méthodes agiles – mise en place d’un cadre SCRUM avec post-its physiques pour structurer les sprints et prioriser les travaux.",
+      "resultat": "Adoption progressive de la culture agile dans l’unité et augmentation mesurable de l’autonomie et de la motivation des équipes.",
+      "liens_comportements": ["C38", "C17", "C18"]
+    },
+    {
+      "texte": "Participation à la cellule de transformation culturelle de la GTN – contribution active à la diffusion de l’agilité et à la transformation des modes de collaboration.",
+      "resultat": "Accélération du changement culturel et reconnaissance du leadership transformationnel à l’interne.",
+      "liens_comportements": ["C04", "C05", "C18"]
+    },
+    {
+      "texte": "Ouverture des services de journalisation aux partenaires – soutien à l’automatisation de l’intégration et des processus d’abonnement.",
+      "resultat": "Amélioration de l’expérience client interne et intégration plus rapide de nouvelles sources de données dans ArcSight.",
+      "liens_comportements": ["C26", "C29", "C18"]
+    },
+    {
+      "texte": "Encadrement et mobilisation d’équipes multidisciplinaires – supervision, planification et accompagnement du développement des ressources.",
+      "resultat": "Renforcement des compétences collectives et émergence d’équipes plus autonomes et engagées.",
+      "liens_comportements": ["C17", "C18", "C38"]
+    }
+  ]
+}
+,
   {
-    "titre": "2007 – 2009 – Chef d’équipe – Services techniques bureautiques (Hydro-Québec)",
-    "details": [
-      "Responsable de l’équipe des infrastructures Windows (20 000+ postes et serveurs).",
-      "Initiateur de la première vague d’automatisation TI à Hydro-Québec."
-    ],
-    "faits_sailants": [
-      {
-        "texte": "Conception et déploiement d’une image automatisée pour les serveurs Windows.",
-        "liens_comportements": [
-          "C18"
-        ]
-      },
-      {
-        "texte": "Réduction du temps d’installation de plusieurs jours à quelques heures.",
-        "liens_comportements": [
-          "C26"
-        ]
-      },
-      {
-        "texte": "Adoption progressive de l’automatisation par les équipes serveurs.",
-        "liens_comportements": [
-          "C18"
-        ]
-      }
-    ]
-  },
-  {
-    "titre": "2009 – 2015 – Chef d’équipe & intégrateur – Virtualisation et infrastructures (Hydro-Québec)",
-    "details": [
-      "Leadership sur la mise en place du Centre de virtualisation (CDV) – premier cloud interne d’Hydro-Québec.",
-      "Implantation de Puppet pour la gestion de configuration automatisée Linux.",
-      "Participation à plusieurs projets d’envergure (ILM, EMC/Isilon, opTiCT)."
-    ],
-    "faits_sailants": [
-      {
-        "texte": "Introduction des pratiques d’infonuagique et de libre-service.",
-        "liens_comportements": [
-          "C26"
-        ]
-      },
-      {
-        "texte": "Coordination entre architecture, réseau, exploitation et sécurité.",
-        "liens_comportements": [
-          "C18"
-        ]
-      },
-      {
-        "texte": "Contribution aux appels d’offres et à la définition technique des solutions de stockage.",
-        "liens_comportements": [
-          "C26"
-        ]
-      }
-    ]
-  },
-  {
-    "titre": "2016 – 2021 – Chef d’équipe / Conseiller principal – Infrastructures de cybersécurité",
-    "details": [
-      "Transition vers la cybersécurité et prise en charge de l’équipe de journalisation (ArcSight).",
-      "Participation à la planification stratégique et à la transformation culturelle Agile."
-    ],
-    "faits_sailants": [
-      {
-        "texte": "Intégration de près de 200 solutions TI à la plateforme ArcSight.",
-        "liens_comportements": [
-          "C18"
-        ]
-      },
-      {
-        "texte": "Introduction des pratiques Agiles et collaboration à la cellule de transformation culturelle.",
-        "liens_comportements": [
-          "C26"
-        ]
-      },
-      {
-        "texte": "Automatisation progressive des processus de cybersécurité.",
-        "liens_comportements": [
-          "C18"
-        ]
-      }
-    ]
-  },
-  {
-    "titre": "2021 – 2023 – TPO – Gestion des certificats PKI & produits Venafi",
-    "details": [
-      "Prise en charge du service PKI Hydro-Québec et des produits Venafi.",
-      "Modernisation complète des infrastructures de certificats et gouvernance améliorée."
-    ],
-    "faits_sailants": [
-      {
-        "texte": "Structuration du backlog agile et gouvernance produit.",
-        "liens_comportements": [
-          "C26"
-        ]
-      },
-      {
-        "texte": "Déploiement d’une infrastructure PKI résiliente dans les zones protégées contre les rançongiciels.",
-        "liens_comportements": [
-          "C18"
-        ]
-      },
-      {
-        "texte": "Automatisation et libre-service des certificats via Venafi Maestro.",
-        "liens_comportements": [
-          "C26"
-        ]
-      }
-    ]
-  },
-  {
-    "titre": "2023 – Aujourd’hui – Responsable produit d’affaires / Conseiller en cybersécurité II – Identités, annuaires et voûtes",
-    "details": [
-      "Responsable produit pour les équipes Active Directory, Entra ID, ADFS et voûtes (CyberArk, HashiCorp Vault, RSA).",
-      "Supervision des feuilles de route, conformité et trajectoires d’architecture."
-    ],
-    "faits_sailants": [
-      {
-        "texte": "Responsable du carnet de commande des équipes d’annuaires et voûtes.",
-        "liens_comportements": [
-          "C18"
-        ]
-      },
-      {
-        "texte": "Introduction réussie de la culture Agile dans les équipes d’annuaires et de cybersécurité.",
-        "liens_comportements": [
-          "C26"
-        ]
-      },
-      {
-        "texte": "Contribution architecturale au remplacement des clés RSA par les Yubico.",
-        "liens_comportements": [
-          "C18"
-        ]
-      },
-      {
-        "texte": "Collaboration continue avec les architectes d’entreprise et de solution depuis 2017.",
-        "liens_comportements": [
-          "C26"
-        ]
-      }
-    ]
-  }
+  "titre": "2021 – 2023 – Conseiller en cybersécurité II / Technical Product Owner – Cellule ICP et solutions de certificats – Hydro-Québec",
+  "details": [
+    "Technical Product Owner (TPO) de la cellule ICP (Infrastructure à clé publique) responsable des plateformes Microsoft ADCS, Venafi, Entrust et temporairement CyberArk.",
+    "Coordination et alignement avec les équipes Active Directory, Entra ID, Intune, Cloud et sécurité.",
+    "Gestion de l’exploitation, de la maintenance et de l’évolution des solutions de certificats et d’accès privilégiés.",
+    "Mise en place d’un cadre agile SCRUM au sein de l’équipe ICP pour structurer les sprints, les revues et les rétrospectives.",
+    "Promotion de l’automatisation Venafi et valorisation des fonctionnalités avancées par la présentation d’ateliers, de démonstrations et de documents techniques.",
+    "Contribution à la conception et à l’architecture des autorités de certification intégrées aux voûtes RançonGICIELLE.",
+    "Participation à l’appel d’offres et à la conception de la nouvelle solution de certificats cloud déployée à l’échelle corporative.",
+    "Participation à l’appel d’offres du déploiement des clés YubiKey (service PIV) : rétroaction sur le cahier des charges, sélection du produit et décisions stratégiques de remplacement des clés RSA sID800.",
+    "Formation, intégration et accompagnement de nouvelles ressources et de deux stagiaires en cybersécurité, développement de leur autonomie complète sur les solutions de certificats.",
+    "Collaboration continue avec les architectes, le cloud et la sécurité pour assurer la cohérence technique et opérationnelle."
+  ],
+  "faits_sailants": [
+    {
+      "texte": "Transformation agile de la cellule ICP – adoption formelle du cadre SCRUM avec planification, sprints et rétrospectives.",
+      "resultat": "Amélioration du rythme de livraison, meilleure priorisation et mobilisation accrue de l’équipe.",
+      "liens_comportements": ["C38", "C17", "C18"]
+    },
+    {
+      "texte": "Promotion de l’automatisation Venafi – conception et présentation de démonstrations internes pour maximiser l’utilisation des API et des fonctions d’automatisation.",
+      "resultat": "Augmentation du taux d’automatisation et réduction significative des efforts manuels dans la gestion des certificats.",
+      "liens_comportements": ["C26", "C18", "C38"]
+    },
+    {
+      "texte": "Contribution à l’architecture des voûtes RançonGICIELLE – intégration d’autorités de certification sécurisées au sein des environnements critiques.",
+      "resultat": "Renforcement de la résilience et de la sécurité des infrastructures de certificats internes.",
+      "liens_comportements": ["C26", "C40", "C18"]
+    },
+    {
+      "texte": "Participation à l’appel d’offres et conception de la nouvelle solution de certificats cloud.",
+      "resultat": "Livraison d’une architecture moderne soutenant les besoins corporatifs et facilitant l’intégration avec les environnements cloud.",
+      "liens_comportements": ["C26", "C29", "C24"]
+    },
+    {
+      "texte": "Participation stratégique au déploiement des clés YubiKey (service PIV) – rétroaction technique et décisionnelle dans la sélection et la mise en œuvre.",
+      "resultat": "Modernisation du modèle d’authentification et remplacement réussi des clés RSA sID800.",
+      "liens_comportements": ["C26", "C29", "C18"]
+    },
+    {
+      "texte": "Intégration et formation de nouvelles ressources et stagiaires – accompagnement jusqu’à pleine autonomie sur les solutions de certificats.",
+      "resultat": "Développement des compétences internes, transfert de connaissances et consolidation de la relève technique.",
+      "liens_comportements": ["C17", "C18", "C05"]
+    },
+    {
+      "texte": "Collaboration multidisciplinaire – coordination avec les équipes Active Directory, Entra ID, Intune et Cloud.",
+      "resultat": "Amélioration de la cohérence technique et des relations interéquipes dans la gestion des certificats.",
+      "liens_comportements": ["C18", "C26", "C29"]
+    }
+  ]
+}
+,
+ {
+  "titre": "2023 – 2025 – Conseiller en cybersécurité II / Responsable produit d’affaires (RPA) – Écosystème GIA – Hydro-Québec",
+  "details": [
+    "Rôle de Technical Product Owner à l’arrivée en décembre 2023, puis Responsable produit d’affaires (RPA) à partir de 2024.",
+    "Leadership fonctionnel sur trois équipes totalisant 22 personnes : annuaires cloud (7), annuaires sur site (9) et PAM (6).",
+    "Responsable du carnet de commandes GIA couvrant les domaines Active Directory, Entra ID, ForgeRock, ADFS, CyberArk, Vault, RSA et YubiKey.",
+    "Intégration de la trajectoire GIA et de la feuille de route 2024 dans la planification stratégique de la direction de la cybersécurité.",
+    "Coordination entre les directions techniques, la gouvernance, la conformité, l’architecture et les fournisseurs stratégiques.",
+    "Collaboration stratégique avec l’équipe SIGA (orchestrateur d’identités) pour l’harmonisation des parcours d’identité et la cohérence inter-domaines.",
+    "Pilotage et suivi des plans de redressement de conformité liés aux infrastructures d’annuaires.",
+    "Consultation régulière par le chef produit et les architectes d’entreprise pour fournir avis et contribution aux orientations et positionnements technologiques.",
+    "Promotion des pratiques agiles (Scrum, SAFe, Jira Roadmap) et accompagnement des équipes vers une maturité agile avancée."
+  ],
+  "faits_sailants": [
+    {
+      "texte": "Transformation agile complète des équipes GIA – adoption formelle des pratiques Scrum et SAFe, et accompagnement des gestionnaires.",
+      "resultat": "Les équipes GIA sont désormais reconnues comme parmi les plus matures en agilité au sein de la direction de la cybersécurité.",
+      "liens_comportements": ["C18", "C38", "C04"]
+    },
+    {
+      "texte": "Structuration du carnet de commandes JIRA pour l’ensemble du portefeuille GIA (annuaire, fédération, vault, authentification).",
+      "resultat": "Visibilité intégrée sur toutes les activités et priorisation claire selon les besoins de conformité, vulnérabilités et demandes partenaires.",
+      "liens_comportements": ["C26", "C18", "C29"]
+    },
+    {
+      "texte": "Prévention d’une non-conformité majeure en 2023 – conception d’une matrice de redressement en collaboration avec la gouvernance.",
+      "resultat": "Lancement et pilotage du projet de redressement des annuaires (2023–2025) couvrant près de 1 000 améliorations techniques.",
+      "liens_comportements": ["C26", "C29", "C38"]
+    },
+    {
+      "texte": "Collaboration stratégique avec SIGA, orchestrateur des identités, pour l’intégration des trajectoires d’identité et la cohérence inter-domaines.",
+      "resultat": "Renforcement de la synergie entre les unités GIA et SIGA, réduction des doublons et meilleure coordination technique.",
+      "liens_comportements": ["C18", "C26", "C29"]
+    },
+    {
+      "texte": "Influence architecturale transverse – participation à des ateliers avec les architectes et consultation pour avis sur les nouvelles orientations technologiques.",
+      "resultat": "Contribution directe et indirecte aux conceptions et positionnements d’architecture identitaire à l’échelle de l’entreprise.",
+      "liens_comportements": ["C26", "C18", "C40"]
+    },
+    {
+      "texte": "Leadership fonctionnel sur 3 équipes (22 personnes) – coordination des domaines cloud, on-prem et PAM.",
+      "resultat": "Amélioration de la cohésion inter-équipes, alignement des priorités et mobilisation des ressources autour d’une vision commune.",
+      "liens_comportements": ["C18", "C04", "C05"]
+    }
+  ]
+}
 ]
