@@ -3,18 +3,14 @@
 ========================================================= */
 const $  = (sel) => document.querySelector(sel);
 const $$ = (sel) => document.querySelectorAll(sel);
-
 function escapeCSS(s) {
   if (typeof CSS !== "undefined" && typeof CSS.escape === "function") return CSS.escape(s);
   return String(s).replace(/[\0-\x1F\x7F-\uFFFF]/g, (ch) => "\\" + ch.charCodeAt(0).toString(16) + " ");
 }
-
 const sanitizeId = (s="") =>
   s.toString().trim().toLowerCase().replace(/\s+/g,"-").replace(/[^\w-]/g,"");
-
 const enc = (obj) => encodeURIComponent(JSON.stringify(obj ?? []));
 const dec = (str) => { try { return JSON.parse(decodeURIComponent(str || "[]")); } catch { return []; } };
-
 async function loadJSON(url) {
   try {
     const r = await fetch(url, { cache: "no-store" });
@@ -25,19 +21,16 @@ async function loadJSON(url) {
     return null;
   }
 }
-
 /* =========================================================
    État global (sélections + UI)
 ========================================================= */
 let competencesSelectionnees = [];   // [{id, nom, description, comportements[]}]
 let expertisesSelectionnees  = [];   // [{nom, titre, depuis, description}]
-
 /* Zones d’affichage (colonne 1, 2) */
 const col1 = $("#colonne1");
 const col2 = $("#colonne2");
 const exp1 = $("#expertise1");
 const exp2 = $("#expertise2");
-
 /* =========================================================
    Rendu : Détails des comportements (2 colonnes)
 ========================================================= */
@@ -61,7 +54,6 @@ function renderComportements() {
     cible.appendChild(card);
   });
 }
-
 /* =========================================================
    Rendu : Détails des expertises techniques (2 colonnes)
 ========================================================= */
@@ -86,7 +78,6 @@ function renderExpertises() {
     cible.appendChild(card);
   });
 }
-
 /* =========================================================
    Surbrillance du parcours selon expertises (optionnel)
 ========================================================= */
@@ -106,7 +97,6 @@ function recomputeTimelineHighlight() {
   clearTimelineHighlight();
   highlightTimelineByKeywords(expertisesSelectionnees.map(e => e.nom));
 }
-
 /* =========================================================
    Parcours professionnel (parcours.json)
    - Supporte faits_sailants : string OU { texte, liens_comportements }
@@ -115,20 +105,17 @@ async function chargerParcours() {
   const timeline = $("#timeline");
   if (!timeline) return;
   timeline.innerHTML = `<p class="text-gray-500 italic">Chargement du parcours professionnel...</p>`;
-
   const data = await loadJSON("parcours.json");
   if (!data) {
     timeline.innerHTML = `<p class="text-red-500">Erreur de chargement du parcours.</p>`;
     return;
   }
-
   const items = Array.isArray(data) ? data : [];
   timeline.innerHTML = items.map(it => {
     const titre = it.titre || `${it.periode ?? ""} - ${it.role ?? ""}`.replace(/ - $/,"");
     const detailsArr = Array.isArray(it.details) ? it.details : (it.details ? [it.details] : []);
     const faits = Array.isArray(it.faits_sailants) ? it.faits_sailants :
                   Array.isArray(it.faitsSaillants) ? it.faitsSaillants : [];
-
     const faitsNorm = faits.map(f => {
       if (typeof f === "string") return { texte: f, liens_comportements: [], resultat: "" };
       const texte = f.texte ?? f.text ?? "";
@@ -136,7 +123,6 @@ async function chargerParcours() {
       const resultat = f.resultat ?? f.resultant ?? f.résultat ?? "";
       return { texte, liens_comportements: liens, resultat };
     });
-
     return `
       <div class="timeline-card bg-white p-3 rounded shadow-sm border border-gray-200 hover:bg-blue-50 transition">
         <h3 class="font-bold text-blue-700 flex justify-between items-center select-none">
@@ -159,7 +145,6 @@ async function chargerParcours() {
         </div>
       </div>`;
   }).join("");
-
   // Toggle uniquement au clic sur le header (H3), pas sur tout le bloc
   timeline.addEventListener("click", (e) => {
     const header = e.target.closest(".timeline-card > h3");
@@ -173,7 +158,6 @@ async function chargerParcours() {
     saveState();
   });
 }
-
 /* =========================================================
    Compétences comportementales (competences.json)
    + 🔍 Filtrage dynamique par mot-clé et catégorie
@@ -182,45 +166,67 @@ async function chargerCompetencesComportementales() {
   const zone = $("#competencesComportementales");
   if (!zone) return;
   zone.innerHTML = `<p class="text-gray-500 italic">Chargement des compétences comportementales...</p>`;
-
-  const data = await loadJSON("competences.json");
-  if (!data) {
+  // 🔒 On charge 'competences.json' (nom conservé)
+  const raw = await loadJSON("competences.json");
+  if (!raw) {
     zone.innerHTML = `<p class="text-red-500">Erreur de chargement des compétences.</p>`;
     return;
   }
+  // Support des 2 formats : ancien (objet par catégories) OU nouveau (tableau plat)
+  let data = [];
+  if (Array.isArray(raw)) {
+    data = raw;
+  } else if (typeof raw === "object") {
+    Object.keys(raw).forEach(k => {
+      const arr = Array.isArray(raw[k]) ? raw[k] : [];
+      data.push(...arr);
+    });
+  } else {
+    zone.innerHTML = `<p class="text-red-500">Format de données non reconnu.</p>`;
+    return;
+  }
+  // Sélectionne uniquement les compétences non techniques pour cette colonne
+  // Sélectionne uniquement les compétences actives (actif = true)
+const visibles = data.filter(c => c.actif === true);
 
-  const html = Object.keys(data).map(cat => {
-    const arr = Array.isArray(data[cat]) ? data[cat] : [];
-    const actifs = arr.filter(c => ((c.actif ?? c.ACTIF) + "").toLowerCase() === "oui");
-    if (!actifs.length) return "";
-
-    const catId = sanitizeId(cat);
+  // Groupement par categorie + sousCategorie
+  const grouped = {};
+  visibles.forEach(c => {
+    const cat = c.categorie || "Autres";
+    const sous = c.sousCategorie || "";
+    const key = sous ? `${cat} / ${sous}` : cat;
+    if (!grouped[key]) grouped[key] = [];
+    grouped[key].push(c);
+  });
+  // Construction de l’interface
+  const html = Object.entries(grouped).map(([key, arr]) => {
+    const catId = sanitizeId(key);
     return `
       <div class="mb-2 border rounded bg-white shadow-sm">
         <div class="flex justify-between items-center px-3 py-2 cursor-pointer hover:bg-blue-50 cat-header" data-cat="${catId}">
-          <span class="font-semibold text-blue-700">${cat}</span>
+          <span class="font-semibold text-blue-700">${key}</span>
           <span class="text-blue-500">▾</span>
         </div>
         <div id="bloc-${catId}" class="hidden px-3 pb-2">
-          ${actifs.map((c, i) => `
+          ${arr.map(c => `
             <div class="competence-item mb-2 bg-gray-50 p-2 rounded hover:bg-blue-50 cursor-pointer transition"
-                 data-id="${c.id ?? `${catId}-${i}`}"
-                 data-nom="${c.nom ?? "Sans titre"}"
-                 data-description="${(c.description ?? "").replace(/"/g,'&quot;')}"
-                 data-comportements='${enc(c.comportements)}'>
-              <p class="font-medium">${c.nom ?? "Sans titre"}</p>
+                 data-id="${c.id}"
+                 data-nom="${c.nom ?? c.name ?? "Sans titre"}"
+                 data-description="${((c.description ?? c.definition ?? "") + "").replace(/"/g,'&quot;')}"
+                 data-comportements='${enc(c.comportements ?? c.comportementsAttendus ?? [])}'
+                 data-motscles='${enc(c.motsCles ?? [])}'
+                 data-reference="${(c.referencePDF ?? "") + ""}">
+              <p class="font-medium">${c.nom ?? c.name ?? "Sans titre"}</p>
               ${c.description ? `<p class="text-xs text-gray-600">${c.description}</p>` : ""}
+              ${c.sousCategorie ? `<p class="text-[11px] text-gray-400 italic">${c.sousCategorie}</p>` : ""}
             </div>
           `).join("")}
         </div>
       </div>`;
   }).join("");
-
-  zone.innerHTML = html || `<p class="text-gray-400 italic">Aucune compétence active trouvée.</p>`;
-
-  // Délégation : ouvrir/fermer catégories + (dé)sélection items
+  zone.innerHTML = html || `<p class="text-gray-400 italic">Aucune compétence trouvée.</p>`;
+  // === Délégation : ouvrir/fermer catégories et sélectionner compétences ===
   zone.addEventListener("click", (e) => {
-    // Toggle catégorie
     const head = e.target.closest(".cat-header");
     if (head) {
       const bloc = $(`#bloc-${head.dataset.cat}`);
@@ -232,155 +238,107 @@ async function chargerCompetencesComportementales() {
       }
       return;
     }
-
-    // Sélection d'une compétence
     const item = e.target.closest(".competence-item");
     if (!item) return;
     const id = item.dataset.id;
     const nom = item.dataset.nom;
-    const description = item.dataset.description.replace(/&quot;/g,'"');
+    const description = item.dataset.description.replace(/&quot;/g, '"');
     const comportements = dec(item.dataset.comportements);
-
     const idx = competencesSelectionnees.findIndex(x => x.id === id);
     if (idx === -1) {
       if (competencesSelectionnees.length < 2) {
         competencesSelectionnees.push({ id, nom, description, comportements });
         item.classList.add("bg-sky-100","border","border-sky-400");
-
       }
     } else {
       competencesSelectionnees.splice(idx,1);
-      item.classList.remove("bg-blue-100","border","border-blue-400");
+      item.classList.remove("bg-sky-100","border","border-sky-400");
     }
     renderComportements();
     saveState();
   });
-
-  /* === 🔍 Filtrage dynamique === */
-  const input = $("#filtreCompetences");
+  /* === 🔍 Filtrage dynamique (texte + catégorie) === */
+  const input  = $("#filtreCompetences");
   const select = $("#filtreCategorie");
   if (select) {
     select.innerHTML = `<option value="">Toutes les catégories</option>` +
-      Object.keys(data).map(c => `<option value="${sanitizeId(c)}">${c}</option>`).join("");
+      Object.keys(grouped).map(k => `<option value="${sanitizeId(k)}">${k}</option>`).join("");
   }
-
-/* =========================================================
-   🔍 Filtrage amélioré + sauvegarde automatique (localStorage)
-========================================================= */
-function normaliserTexte(texte) {
-  return texte
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .toLowerCase();
-}
-
-function appliquerFiltreCompetences() {
-  const texteBrut = input?.value || "";
-  const texte = normaliserTexte(texteBrut);
-  const catSel = (select?.value || "").trim();
-  let resultats = 0;
-
-  $$("#competencesComportementales > div").forEach(catBloc => {
-    const header = catBloc.querySelector(".cat-header");
-    const blocId = header?.dataset.cat;
-    const bloc = $(`#bloc-${blocId}`);
-    if (!bloc) return;
-    const visibleCat = !catSel || blocId === catSel;
-    const items = bloc.querySelectorAll(".competence-item");
-    let anyVisible = false;
-
-    items.forEach(it => {
-      const nom = normaliserTexte(it.dataset.nom || "");
-      const desc = normaliserTexte(it.dataset.description || "");
-      const comportements = normaliserTexte(
-        (dec(it.dataset.comportements) || []).join(" ")
-      );
-      const visibleTxt =
-        !texte ||
-        nom.includes(texte) ||
-        desc.includes(texte) ||
-        comportements.includes(texte);
-      const visible = visibleCat && visibleTxt;
-      it.style.display = visible ? "block" : "none";
-      if (visible) {
-        anyVisible = true;
-        resultats++;
-      }
+  function normaliserTexte(t) {
+    return (t || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+  }
+  function appliquerFiltreCompetences() {
+    const texteBrut = input?.value || "";
+    const texte = normaliserTexte(texteBrut);
+    const catSel = (select?.value || "").trim();
+    let resultats = 0;
+    $$("#competencesComportementales > div").forEach(catBloc => {
+      const header = catBloc.querySelector(".cat-header");
+      const blocId = header?.dataset.cat;
+      const bloc = $(`#bloc-${blocId}`);
+      if (!bloc) return;
+      const visibleCat = !catSel || blocId === catSel;
+      const items = bloc.querySelectorAll(".competence-item");
+      let anyVisible = false;
+      items.forEach(it => {
+        const nom = normaliserTexte(it.dataset.nom || "");
+        const desc = normaliserTexte(it.dataset.description || "");
+        const comportements = normaliserTexte((dec(it.dataset.comportements) || []).join(" "));
+        const motscles = normaliserTexte((dec(it.dataset.motscles) || []).join(" "));
+        const visibleTxt = !texte || nom.includes(texte) || desc.includes(texte) || comportements.includes(texte) || motscles.includes(texte);
+        const visible = visibleCat && visibleTxt;
+        it.style.display = visible ? "block" : "none";
+        if (visible) { anyVisible = true; resultats++; }
+      });
+      catBloc.style.display = anyVisible ? "block" : "none";
     });
-
-    catBloc.style.display = anyVisible ? "block" : "none";
-  });
-
-  // Affichage d’un message si aucun résultat
-  const zone = $("#competencesComportementales");
-  if (zone) {
+    // Message résultat
     let msg = zone.querySelector(".aucun-resultat");
     if (!msg) {
       msg = document.createElement("p");
       msg.className = "aucun-resultat text-gray-500 italic mt-2";
       zone.appendChild(msg);
     }
-    msg.textContent =
-      resultats === 0 ? "Aucun résultat ne correspond à votre recherche." : "";
+    msg.textContent = resultats === 0 ? "Aucun résultat ne correspond à votre recherche." : "";
+    // Sauvegarde filtre
+    localStorage.setItem("filtreCompetencesDashboard", JSON.stringify({ texte: texteBrut, categorie: catSel }));
   }
-
-  // Sauvegarde du filtre courant
-  localStorage.setItem(
-    "filtreCompetencesDashboard",
-    JSON.stringify({ texte: texteBrut, categorie: catSel })
-  );
-}
-
-
   if (input && select) {
     input.addEventListener("input", appliquerFiltreCompetences);
     select.addEventListener("change", appliquerFiltreCompetences);
   }
-
-
-// 🔘 Bouton "Effacer le filtre"
-const clearBtn = document.getElementById("clearFiltre");
-if (clearBtn && input && select) {
-  // Afficher/masquer le bouton selon le texte
-  input.addEventListener("input", () => {
-    clearBtn.classList.toggle("hidden", input.value.trim() === "");
-  });
-
-  // Clic pour réinitialiser tout
-  clearBtn.addEventListener("click", () => {
-    input.value = "";
-    select.value = "";
-    clearBtn.classList.add("hidden");
-    localStorage.removeItem("filtreCompetencesDashboard");
-    appliquerFiltreCompetences();
-  });
-
-  // Restauration de l'état (affiche le ❌ si texte présent)
-  const filtreSauvegarde = JSON.parse(localStorage.getItem("filtreCompetencesDashboard") || "{}");
-  if (filtreSauvegarde.texte) clearBtn.classList.remove("hidden");
-}
-
-// 🔄 Bouton global "Réinitialiser tous les filtres"
-const resetBtn = document.getElementById("resetFiltres");
-if (resetBtn && input && select) {
-  resetBtn.addEventListener("click", () => {
-       // 1️⃣ Effacer les champs et la sauvegarde
-    input.value = "";
-    select.value = "";
-    localStorage.removeItem("filtreCompetencesDashboard");
-
-    // 2️⃣ Masquer le bouton ❌ individuel
-    const clearBtn = document.getElementById("clearFiltre");
-    if (clearBtn) clearBtn.classList.add("hidden");
-
-    // 3️⃣ Effacer TOUTES les surbrillances (colonnes + timeline + liens)
-    document.querySelectorAll(`
-      .bg-sky-100, .bg-green-200, .bg-purple-200, .bg-orange-100, 
-      .bg-amber-100, .bg-yellow-100, .bg-pink-100, .bg-pink-50,
-      .border-sky-400, .border-green-500, .border-purple-500,
-      .border-orange-400, .border-amber-400, .border-yellow-400, .border-pink-400
-    `).forEach(el => {
-      el.classList.remove(
+  // 🧹 Effacer champ individuel
+  const clearBtn = $("#clearFiltre");
+  if (clearBtn && input) {
+    clearBtn.addEventListener("click", () => {
+      input.value = "";
+      appliquerFiltreCompetences();
+      clearBtn.classList.add("hidden");
+      localStorage.removeItem("filtreCompetencesDashboard");
+    });
+    input.addEventListener("input", () => {
+      clearBtn.classList.toggle("hidden", !input.value.trim());
+    });
+    // Afficher l'icône si texte restauré
+    const mem = JSON.parse(localStorage.getItem("filtreCompetencesDashboard") || "{}");
+    if (mem.texte) clearBtn.classList.remove("hidden");
+  }
+  // 🔄 Reset global
+  const resetBtn = $("#resetFiltres");
+  if (resetBtn) {
+    resetBtn.addEventListener("click", () => {
+      if (input) input.value = "";
+      if (select) select.value = "";
+      localStorage.removeItem("filtreCompetencesDashboard");
+      appliquerFiltreCompetences();
+      clearBtn?.classList.add("hidden");
+      // Effacer surbrillances & sélections (cohérence UI globale)
+      document.querySelectorAll(`
+        .bg-sky-100, .bg-green-200, .bg-purple-200, .bg-orange-100, 
+        .bg-amber-100, .bg-yellow-100, .bg-pink-100, .bg-pink-50,
+        .border-sky-400, .border-green-500, .border-purple-500,
+        .border-orange-400, .border-amber-400, .border-yellow-400, .border-pink-400
+      `).forEach(el => el.classList.remove(
         "bg-sky-100","border-sky-400",
         "bg-green-200","border-green-500",
         "bg-purple-200","border-purple-500",
@@ -389,50 +347,25 @@ if (resetBtn && input && select) {
         "bg-yellow-100","border-yellow-400",
         "bg-pink-100","bg-pink-50","border-pink-400",
         "highlighted"
+      ));
+      $$("#timeline > div").forEach(d =>
+        d.classList.remove("bg-yellow-100","border-yellow-400","bg-amber-100","border-amber-400","bg-pink-50","highlighted")
       );
+      competencesSelectionnees = [];
+      expertisesSelectionnees = [];
+      renderComportements();
+      renderExpertises();
+      clearTimelineHighlight();
+      resetHighlights();
+      saveState();
     });
-
-    // 4️⃣ Supprime explicitement les surbrillances de la timeline
-    $$("#timeline > div").forEach(d =>
-      d.classList.remove(
-        "bg-yellow-100","border-yellow-400",
-        "bg-amber-100","border-amber-400",
-        "bg-pink-50","highlighted"
-      )
-    );
-
-    // 5️⃣ Réinitialise les sélections logiques
-    competencesSelectionnees = [];
-    expertisesSelectionnees = [];
-
-    // 6️⃣ Rafraîchit tous les affichages
-    appliquerFiltreCompetences();
-    renderComportements();
-    renderExpertises();
-    clearTimelineHighlight(); // efface le reste de la timeline
-    resetHighlights();        // efface les liens STAR ↔ comportements
-
-    // 7️⃣ Message visuel
-    const msg = document.createElement("div");
-    msg.textContent = "🔄 Filtres et surbrillances effacés";
-    msg.className = "fixed bottom-3 right-3 bg-green-600 text-white px-3 py-2 rounded shadow text-sm";
-    document.body.appendChild(msg);
-    setTimeout(() => msg.remove(), 1500);
-
-    // 8️⃣ Sauvegarde état vide
-    saveState();
-  });
+  }
+  // Restauration et application initiale
+  const mem = JSON.parse(localStorage.getItem("filtreCompetencesDashboard") || "{}");
+  if (mem.texte && input) input.value = mem.texte;
+  if (mem.categorie && select) select.value = mem.categorie;
+  if (input || select) appliquerFiltreCompetences();
 }
-
-
-  // 🔁 Restauration du dernier filtre enregistré
-const filtreSauvegarde = JSON.parse(localStorage.getItem("filtreCompetencesDashboard") || "{}");
-if (filtreSauvegarde.texte) input.value = filtreSauvegarde.texte;
-if (filtreSauvegarde.categorie) select.value = filtreSauvegarde.categorie;
-appliquerFiltreCompetences();
-
-}
-
 /* =========================================================
    Compétences techniques (competences_techniques.json)
 ========================================================= */
@@ -440,13 +373,11 @@ async function chargerCompetencesTechniques() {
   const zone = $("#competencesTechniques");
   if (!zone) return;
   zone.innerHTML = `<p class="text-gray-500 italic">Chargement des compétences techniques...</p>`;
-
   const data = await loadJSON("competences_techniques.json");
   if (!data) {
     zone.innerHTML = `<p class="text-red-500">Erreur de chargement des compétences techniques.</p>`;
     return;
   }
-
   const arr = Array.isArray(data) ? data : (data.expertises_techniques ?? []);
   zone.innerHTML = arr.map((c, i) => {
     const nom   = c.bouton ?? c.nom ?? `Expertise ${i+1}`;
@@ -462,7 +393,6 @@ async function chargerCompetencesTechniques() {
         ${nom}
       </button>`;
   }).join("");
-
   // Délégation : clic sur un bouton technique
   zone.addEventListener("click", (e) => {
     const btn = e.target.closest(".tech-btn");
@@ -471,7 +401,6 @@ async function chargerCompetencesTechniques() {
     const titre   = btn.dataset.titre.replace(/&quot;/g,'"');
     const depuis  = btn.dataset.depuis.replace(/&quot;/g,'"');
     const desc    = btn.dataset.description.replace(/&quot;/g,'"');
-
     const idx = expertisesSelectionnees.findIndex(x => x.nom === nom);
     if (idx === -1) {
       if (expertisesSelectionnees.length < 2) {
@@ -487,22 +416,18 @@ async function chargerCompetencesTechniques() {
     saveState();
   });
 }
-
 /*=========================================================
    Compétences strategique (competences_techniques.json)
 ========================================================= */
-
 async function chargerCompetencesStrategiques() {
   const zone = $("#competencesStrategiques");
   if (!zone) return;
   zone.innerHTML = `<p class="text-gray-500 italic">Chargement des compétences stratégiques...</p>`;
-
   const data = await loadJSON("competences_strategiques.json");
   if (!data) {
     zone.innerHTML = `<p class="text-red-500">Erreur de chargement des compétences stratégiques.</p>`;
     return;
   }
-
   const arr = Array.isArray(data) ? data : (data.competences_strategiques ?? []);
   zone.innerHTML = arr.map((c, i) => {
     const nom   = c.bouton ?? c.nom ?? `Stratégique ${i+1}`;
@@ -518,7 +443,6 @@ async function chargerCompetencesStrategiques() {
         ${nom}
       </button>`;
   }).join("");
-
   zone.addEventListener("click", (e) => {
     const btn = e.target.closest(".strategique-btn");
     if (!btn) return;
@@ -526,7 +450,6 @@ async function chargerCompetencesStrategiques() {
     const titre   = btn.dataset.titre.replace(/&quot;/g,'"');
     const depuis  = btn.dataset.depuis.replace(/&quot;/g,'"');
     const desc    = btn.dataset.description.replace(/&quot;/g,'"');
-
     const idx = expertisesSelectionnees.findIndex(x => x.nom === nom);
     if (idx === -1) {
       if (expertisesSelectionnees.length < 2) {
@@ -542,8 +465,6 @@ async function chargerCompetencesStrategiques() {
     saveState();
   });
 }
-
-
 /* =========================================================
    Formations & certifications (formations_certifications.json)
 ========================================================= */
@@ -551,13 +472,11 @@ async function chargerFormations() {
   const zone = $("#formations");
   if (!zone) return;
   zone.innerHTML = `<p class="text-gray-500 italic">Chargement des formations...</p>`;
-
   const data = await loadJSON("formations_certifications.json");
   if (!data) {
     zone.innerHTML = `<p class="text-red-500">Erreur de chargement des formations.</p>`;
     return;
   }
-
   zone.innerHTML = data.map(cat => {
     const catId = sanitizeId(cat.categorie || "categorie");
     return `
@@ -578,7 +497,6 @@ async function chargerFormations() {
         </div>
       </div>`;
   }).join("");
-
   // Délégation : open/close catégories + injection vers colonnes de gauche
   zone.addEventListener("click", (e) => {
     const head = e.target.closest(".formation-header");
@@ -593,14 +511,12 @@ async function chargerFormations() {
       }
       return;
     }
-
     const btn = e.target.closest(".formation-btn");
     if (btn) {
       const titre   = btn.dataset.titre.replace(/&quot;/g,'"');
       const periode = btn.dataset.periode.replace(/&quot;/g,'"');
       const details = dec(btn.dataset.details);
       const id = `formation-${sanitizeId(titre)}`;
-
       const existing = competencesSelectionnees.findIndex(x => x.id === id);
       if (existing === -1) {
         if (competencesSelectionnees.length < 2) {
@@ -616,7 +532,6 @@ async function chargerFormations() {
     }
   });
 }
-
 /* =========================================================
    Exemples STAR (star_examples.json avec liens_comportements)
    - Accepte objet par catégories OU tableau plat
@@ -625,15 +540,12 @@ async function chargerExemplesSTAR() {
   const zone = $("#exemplesSTAR");
   if (!zone) return;
   zone.innerHTML = `<p class="text-gray-500 italic">Chargement des exemples STAR...</p>`;
-
   const data = await loadJSON("star_examples.json");
   if (!data) {
     zone.innerHTML = `<p class="text-red-500">Erreur de chargement des exemples STAR.</p>`;
     return;
   }
-
   zone.innerHTML = "";
-
   if (!Array.isArray(data)) {
     // Objet catégorisé
     Object.keys(data).forEach(cat => {
@@ -648,7 +560,6 @@ async function chargerExemplesSTAR() {
         <div id="star-${catId}" class="hidden px-4 pb-2"></div>
       `;
       zone.appendChild(wrap);
-
       const content = wrap.querySelector(`#star-${catId}`);
       (data[cat] || []).forEach(ex => {
         const liens = Array.isArray(ex.liens_comportements) ? ex.liens_comportements : [];
@@ -685,7 +596,6 @@ async function chargerExemplesSTAR() {
         content.appendChild(card);
       });
     });
-
     // Toggle catégories STAR
     zone.addEventListener("click", (e) => {
       const head = e.target.closest(".star-header");
@@ -698,7 +608,6 @@ async function chargerExemplesSTAR() {
       if (arrow) arrow.textContent = bloc.classList.contains("hidden") ? "▾" : "▴";
       saveState();
     });
-
   } else {
     // Tableau plat
     zone.innerHTML = data.map(ex => `
@@ -716,7 +625,6 @@ async function chargerExemplesSTAR() {
         </div>
       </div>
     `).join("");
-
     // Toggle + focus
     zone.addEventListener("click", (e) => {
       const head = e.target.closest("div.star-item");
@@ -745,7 +653,6 @@ async function chargerExemplesSTAR() {
     });
   }
 }
-
 /* =========================================================
    Suppressions (icônes ❌ dans les colonnes de gauche)
 ========================================================= */
@@ -768,7 +675,6 @@ document.addEventListener("click", (e) => {
     saveState();
   }
 });
-
 /* =========================================================
    Ouvrir TOUT par clic sur H2 principaux
 ========================================================= */
@@ -818,12 +724,10 @@ document.addEventListener("click", (e) => {
     saveState();
   }
 });
-
 /* =========================================================
    🔄 Sauvegarde/restauration (localStorage)
 ========================================================= */
 const ETAT_KEY = "etatDashboardEntrevue";
-
 function showSaveIndicator() {
   const el = document.getElementById("saveIndicator");
   if (!el) return;
@@ -831,7 +735,6 @@ function showSaveIndicator() {
   clearTimeout(el._timer);
   el._timer = setTimeout(() => el.classList.add("hidden"), 1000);
 }
-
 function computeSectionsOuvertes() {
   const opened = [];
   document.querySelectorAll('[id^="bloc-"]').forEach(div => { if (!div.classList.contains("hidden")) opened.push(div.id); });
@@ -841,7 +744,6 @@ function computeSectionsOuvertes() {
   document.querySelectorAll('[id^="details-"]').forEach(div => { if (!div.classList.contains("hidden")) opened.push(div.id); });
   return opened;
 }
-
 function saveState() {
   const etat = {
     competences: competencesSelectionnees,
@@ -855,7 +757,6 @@ function saveState() {
     console.warn("Erreur sauvegarde", e);
   }
 }
-
 function openBlockById(id) {
   const bloc = document.getElementById(id);
   if (!bloc) return;
@@ -866,21 +767,16 @@ function openBlockById(id) {
     if (arrow) arrow.textContent = "▴";
   }
 }
-
 function restoreState() {
   let data = null;
   try { data = JSON.parse(localStorage.getItem(ETAT_KEY) || "{}"); } catch {}
   if (!data) return;
-
   competencesSelectionnees = Array.isArray(data.competences) ? data.competences : [];
   expertisesSelectionnees  = Array.isArray(data.expertises)  ? data.expertises  : [];
-
   renderComportements();
   renderExpertises();
   recomputeTimelineHighlight();
-
   (data.sectionsOuvertes || []).forEach(openBlockById);
-
   // Ré-applique l’état visuel sur les listes/boutons source
   competencesSelectionnees.forEach(c => {
     const el = document.querySelector(`.competence-item[data-id="${escapeCSS(c.id)}"]`);
@@ -891,7 +787,6 @@ function restoreState() {
     if (btn) btn.classList.add("bg-blue-300");
   });
 }
-
 /* =========================================================
    🔗 Liaison bidirectionnelle : Compétences ↔ STAR ↔ Parcours
    - Inclut surbrillance du BLOC DE PARCOURS parent
@@ -902,21 +797,16 @@ function resetHighlights() {
     el.classList.remove("highlighted","bg-pink-100","bg-pink-50","border-pink-400")
   );
 }
-
 // Clic sur compétence → STAR + Faits saillants + Bloc parcours
 document.addEventListener("click", (e) => {
   const comp = e.target.closest(".competence-item");
   if (!comp) return;
-
   const compId = comp.dataset.id;
   if (!compId) return;
-
   const wasActive = comp.classList.contains("highlighted");
   resetHighlights();
   if (wasActive) return;
-
   comp.classList.add("highlighted","bg-pink-100","border-pink-400");
-
   // STAR
   $$("#exemplesSTAR .star-card").forEach(star => {
     const liens = star.dataset.liens ? JSON.parse(star.dataset.liens) : [];
@@ -924,7 +814,6 @@ document.addEventListener("click", (e) => {
       star.classList.add("highlighted","bg-pink-100","border-pink-400");
     }
   });
-
   // Parcours → faits saillants + bloc parent
   $$("#timeline .fait-sailant").forEach(fs => {
     const liens = fs.dataset.liens ? JSON.parse(fs.dataset.liens) : [];
@@ -935,50 +824,38 @@ document.addEventListener("click", (e) => {
     }
   });
 });
-
 // Clic sur STAR → compétences
 document.addEventListener("click", (e) => {
   const star = e.target.closest(".star-card");
   if (!star) return;
-
   const liens = star.dataset.liens ? JSON.parse(star.dataset.liens) : [];
   if (!liens.length) return;
-
   const wasActive = star.classList.contains("highlighted");
   resetHighlights();
   if (wasActive) return;
-
   star.classList.add("highlighted","bg-pink-100","border-pink-400");
-
   liens.forEach(cid => {
     const comp = document.querySelector(`.competence-item[data-id="${escapeCSS(cid)}"]`);
     if (comp) comp.classList.add("highlighted","bg-pink-100","border-pink-400");
   });
 });
-
 // Clic sur Fait saillant → compétences + bloc parent
 document.addEventListener("click", (e) => {
   const fs = e.target.closest(".fait-sailant");
   if (!fs) return;
-
   const liens = fs.dataset.liens ? JSON.parse(fs.dataset.liens) : [];
   if (!liens.length) return;
-
   const wasActive = fs.classList.contains("highlighted");
   resetHighlights();
   if (wasActive) return;
-
   fs.classList.add("highlighted","bg-pink-100","border-pink-400");
-
   const parent = fs.closest(".timeline-card");
   if (parent) parent.classList.add("highlighted","bg-pink-50","border-pink-400");
-
   liens.forEach(cid => {
     const comp = document.querySelector(`.competence-item[data-id="${escapeCSS(cid)}"]`);
     if (comp) comp.classList.add("highlighted","bg-pink-100","border-pink-400");
   });
 });
-
 /* =========================================================
    Init
 ========================================================= */
@@ -991,13 +868,10 @@ window.addEventListener("DOMContentLoaded", async () => {
   await chargerExemplesSTAR();
   restoreState();
 });
-
-
 // === Toggle du texte "résultat" au clic sur un fait saillant ===
 document.addEventListener("click", (e) => {
   const fs = e.target.closest(".fait-sailant");
   if (!fs) return;
-
   const alreadyOpen = fs.classList.contains("result-open");
   // Ferme les autres blocs résultats
   document.querySelectorAll(".fait-sailant.result-open").forEach(el => {
@@ -1005,9 +879,7 @@ document.addEventListener("click", (e) => {
     const res = el.querySelector(".resultat-texte");
     if (res) res.remove();
   });
-
   if (alreadyOpen) return;
-
   const resultatTexte = fs.getAttribute("data-resultat");
   if (resultatTexte && resultatTexte.trim() !== "") {
     const p = document.createElement("p");

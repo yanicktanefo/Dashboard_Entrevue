@@ -1,4 +1,19 @@
 {
+  "Vision stratégique et centrée sur le client - Modernisation IAM": [
+    {
+      "titre": "Modernisation stratégique des services d’identité et d’accès FICTIF",
+      "situation": "En 2025, HQ gère environ 30 annuaires ENTREPRISE et plusieurs systèmes I3AAFI (RSA, YubiKey, ADFS, ANCO, Cark, Vault, ADCS). Cette fragmentation nuit à la cohérence (Obj.5), à la posture cyber et au UX.",
+      "tache": "Proposer une vision stratégique et une architecture cible pour moderniser la gestion des identités et des accès en appui au Plan 2035 (agilité, innovation, transparence).",
+      "action": "J’ai conçu une vision « Identity Fabric Zero Trust » basée sur Entra ID en mode hybride, avec fédération unique, MFA passwordless et gouvernance automatisée. J’ai positionné l’identité comme pivot de l’expérience utilisateur et de la confiance organisationnelle.",
+      "resultat": "Si intégré à notre trajectoire, ma proposition serait une transformation d'envergue qui pourrait: réduction de 70 % les annuaires on-prem en 5-7 ans, fourni une expérience d'authentification unifiée et sécurisée, amélioration mesurable de l’expérience client, réduction de la complexité, des coûts, de la surface d'attaque...",
+      "liens_comportements": [
+        "C15",
+        "C02",
+        "C03"
+      ]
+    }
+  ],
+  
   "Gestion d’un projet transversal - Travail d’équipe": [
     {
       "titre": "Gestion d’un projet transversal",

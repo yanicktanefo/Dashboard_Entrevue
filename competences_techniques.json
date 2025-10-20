@@ -1,13 +1,99 @@
 {
   "expertises_techniques": [
-    {
-      "bouton": "GIA",
-      "titre": "Gouvernance et gestion des identités (GIA)",
-      "description": "Conception, intégration et administration d’environnements hybrides d'identité incluant Entra ID, Active Directory (40+ domaines), SIGA, SSO, MFA et FIDO2.",
-      "depuis": 2017,
-      "etat": "validé"
-    },
-    {
+{
+  "bouton": "GIA",
+  "titre": "Gouvernance et gestion des identités (GIA)",
+  "description": "<b>Conception et évolution de l’architecture d’identité</b> : définir les principes, modèles et flux de gestion des identités et des accès dans un écosystème hybride (<b>Entra ID</b>, <b>AD DS</b>, <b>ADFS</b>, <b>B2C</b>), en cohérence avec les orientations d’architecture HQ. <b>Authentification et autorisation</b> : concevoir et intégrer des solutions <b>SSO</b> et <b>MFA</b> avancées (<b>YubiKey</b>, <b>RSA SecurID</b>, <b>FIDO2</b>, <b>WebAuthn</b>), assurer la compatibilité avec les mécanismes de fédération et de délégation d’accès (<b>OIDC</b>, <b>OAuth2</b>, <b>SAML</b>), et participer à la définition de la stratégie d’authentification forte corporative. <b>Synchronisation et intégration hybrides</b> : garantir la cohérence des identités, groupes et attributs entre les environnements <b>cloud</b> et <b>on-premises</b> (<b>Azure AD Connect</b>, <b>Entra Connect</b>, <b>SCIM</b>, intégrations <b>API</b>). <b>Cycle de vie des identités</b> : orchestrer le provisionnement, le déprovisionnement et la gestion des rôles et habilitations selon les processus RH, en automatisant les flux de données et la conformité aux politiques HQ. <b>Gouvernance, conformité et traçabilité</b> : appliquer les encadrements internes (<b>D15</b>, <b>DECI</b>, politiques de sécurité, directives d’accès), gérer la certification périodique des accès, la reddition de conformité et les contrôles d’audit. <b>Sécurité des comptes à privilèges (PAM)</b> : intégrer et gouverner les coffres de mots de passe et sessions privilégiées (<b>CyberArk</b>, <b>BeyondTrust</b>, <b>HashiCorp Vault</b>), en assurant la traçabilité et le cloisonnement des accès administratifs.",
+  "depuis": 2017,
+  "etat": "validé"
+}
+,
+{
+  "bouton": "Infra",
+  "titre": "Fondations techniques",
+  "description": "<b>Services d’annuaire et gestion des domaines</b> : concevoir, administrer et sécuriser les environnements <b>Active Directory</b> sur site et infonuagiques (<b>Entra ID</b>), incluant la gestion des <b>GPO</b>, des <b>ACL</b> et de la délégation d’administration. <b>Infrastructure à clé publique (PKI)</b> : concevoir et gérer les infrastructures de certification (<b>AD CS</b>, <b>Venafi</b>, <b>Entrust</b>), incluant la gestion du cycle de vie des certificats, la révocation et l’automatisation de la distribution. <b>Interopérabilité et intégration</b> : assurer la cohérence et la résilience entre les environnements <b>on-premises</b> et <b>cloud</b>, incluant la synchronisation des identités, des certificats et des journaux. <b>Réseautique et connectivité</b> : concevoir des architectures sécurisées intégrant <b>DNS</b>, <b>DHCP</b>, <b>VPN</b>, <b>pare-feux</b>, <b>DMZ</b> et routage segmenté, selon les encadrements HQ. <b>Virtualisation et stockage</b> : administrer des environnements virtualisés (<b>VMware</b>, <b>vCenter</b>, <b>VxRail</b>) et des infrastructures de stockage (<b>EMC</b>, <b>NetApp</b>), en assurant la performance, la redondance et la reprise d’activité. <b>Surveillance et durcissement</b> : appliquer les pratiques de <b>hardening</b> et de journalisation, configurer la supervision des annuaires, services et certificats selon les politiques de sécurité HQ.",
+  "depuis": 1996,
+  "etat": "validé"
+},
+{
+  "bouton": "Cloud",
+  "titre": "Infonuagique et intégrations hybrides",
+  "description": "<b>Architecture infonuagique hybride</b> : concevoir et intégrer des solutions sécurisées reliant les environnements <b>on-premises</b> et <b>cloud</b> (<b>Azure</b>, <b>AWS</b>, <b>Entra ID</b>), en assurant la cohérence des identités, réseaux et certificats. <b>Sécurité infonuagique</b> : appliquer les encadrements HQ et les bonnes pratiques <b>Zero Trust</b>, configurer les politiques de <b>Conditional Access</b>, les stratégies <b>MFA</b> et la protection des charges infonuagiques. <b>Intégration SaaS et gouvernance des accès</b> : planifier et sécuriser les intégrations avec les applications infonuagiques corporatives (<b>M365</b>, <b>ServiceNow</b>, <b>Venafi</b>), selon les principes de gouvernance et de conformité. <b>Gestion des API et interopérabilité</b> : concevoir et sécuriser les échanges applicatifs via <b>API REST</b> ou <b>Graph</b>, gestion des jetons <b>OAuth2</b>, enregistrement et authentification des applications (<b>App Registrations</b>). <b>Automatisation et supervision infonuagique</b> : déployer des scripts d’automatisation (<b>PowerShell</b>, <b>Azure CLI</b>), configurer la télémétrie et la surveillance centralisée des identités et services hybrides.",
+  "depuis": 2018,
+  "etat": "validé"
+}
+,
+{
+  "bouton": "CyberHQ",
+  "titre": "Cybersécurité et conformité",
+  "description": "<b>Cadres et encadrements HQ</b> : appliquer et interpréter les référentiels internes (<b>D15</b>, <b>DECI</b>, politiques de sécurité), ainsi que les cadres normatifs externes (<b>NERC CIP</b>, <b>ISO 27001</b>, <b>ITIL</b>, <b>CIS</b>) dans la conception et l’évolution des solutions technologiques. <b>Posture de sécurité et Zero Trust</b> : concevoir des architectures conformes aux principes de <b>Zero Trust</b>, au moindre privilège et à la segmentation sécurisée des environnements. <b>Gestion des vulnérabilités et durcissement</b> : planifier et superviser l’application des correctifs et des politiques de <b>hardening</b>, utiliser les outils de détection et d’analyse (<b>Nessus</b>, <b>Tripwire</b>, <b>Qualys</b>) pour assurer la conformité et la remédiation. <b>Audit et journalisation</b> : concevoir des mécanismes de traçabilité et de surveillance à l’aide de solutions <b>SIEM</b> (<b>QRadar</b>, <b>Arcsight</b>, <b>StealthAudit</b>) afin de détecter les anomalies et de soutenir les enquêtes de sécurité. <b>Gestion des risques et conformité opérationnelle</b> : collaborer avec les unités d’affaires pour intégrer la sécurité dans les projets, évaluer les risques résiduels et produire les livrables de conformité (plans de mitigation, rapports d’audit). <b>Sensibilisation et culture sécurité</b> : promouvoir les bonnes pratiques de cybersécurité et la conformité aux politiques internes auprès des équipes techniques et des partenaires d’affaires.",
+  "depuis": 2007,
+  "etat": "validé"
+},
+{
+  "bouton": "Automatisation",
+  "titre": "Automatisation et intégration technique",
+  "description": "<b>Automatisation opérationnelle</b> : concevoir, maintenir et documenter des scripts (<b>PowerShell</b>, <b>Python</b>, <b>Azure CLI</b>) pour la gestion des identités, certificats et annuaires. <b>API et intégration</b> : développer et consommer des <b>REST API</b> pour l’automatisation des processus IAM, PKI, GIA et infonuagiques. <b>Infrastructure as Code (IaC)</b> : standardiser et déployer les configurations infonuagiques et hybrides en suivant des approches <b>Infrastructure as Code</b> et des modèles d’automatisation HQ. <b>Qualité et fiabilité</b> : structurer les scripts, gérer les versions (<b>Git</b>) et appliquer des contrôles de validation et de journalisation.",
+  "depuis": 2016,
+  "etat": "validé"
+},
+{
+  "bouton": "DevOps",
+  "titre": "Pratiques DevOps et intégration continue",
+  "description": "<b>Approche DevOps / DevSecOps</b> : intégrer les pratiques d’automatisation et de sécurité tout au long du cycle de développement, de la conception à la mise en production. <b>Pipelines CI/CD</b> : concevoir et maintenir des chaînes de déploiement automatisées (<b>GitHub Actions</b>, <b>Azure DevOps</b>), incluant la validation de code, la génération d’artefacts et la conformité. <b>Surveillance et rétroaction continue</b> : mettre en place des métriques, journaux et rapports pour mesurer la stabilité, la performance et la conformité des livrables. <b>Culture de collaboration</b> : travailler avec les équipes de développement, d’exploitation et de sécurité selon les principes <b>Agile</b> et <b>DevSecOps</b>, favoriser le partage de connaissances et la réutilisation des composantes.",
+  "depuis": 2018,
+  "etat": "validé"
+},
+{
+  "bouton": "Architecture",
+  "titre": "Architecture et gouvernance technique",
+  "description": "<b>Conception et modélisation d’architectures</b> : élaborer des modèles logiques, fonctionnels et physiques illustrant les interactions entre les composantes technologiques (<b>GIA</b>, <b>PKI</b>, <b>Infra hybride</b>), en appliquant les cadres d’architecture (<b>TOGAF</b>) et les principes HQ. <b>Cadres de référence et conformité</b> : aligner les conceptions sur les référentiels de cybersécurité (<b>NIST CSF 2.0</b>, <b>ISO/IEC 27001</b>) et les principes de <b>Zero Trust Architecture (ZTA)</b>, en assurant la cohérence avec les encadrements internes (<b>D15</b>, <b>DECI</b>) et la trajectoire corporative 2035. <b>Documentation et traçabilité</b> : produire et maintenir les artefacts d’architecture (<b>ArchiMate</b>, <b>Visio</b>, <b>Draw.io</b>), incluant les schémas, flux, RACI et dépendances, en conformité avec les processus <b>ARQ</b> / <b>DRQ</b> et les standards d’architecture HQ. <b>Gouvernance et cohérence d’architecture</b> : participer aux comités d’architecture et de sécurité, valider l’alignement des projets aux standards corporatifs, aux cadres de cybersécurité et aux principes de conception HQ. <b>Alignement stratégique et accompagnement</b> : traduire les besoins d’affaires en orientations technologiques, recommander des trajectoires d’évolution réalistes et soutenir la planification des feuilles de route (3–5 ans) avec une vision d’ensemble sécurisée et durable. <b>Qualité et conformité des livrables</b> : encadrer les architectes et intégrateurs dans la production de livrables conformes aux modèles HQ et aux référentiels reconnus, en évaluant les risques technologiques et la conformité aux cadres NIST/ISO/ZTA avant approbation.",
+  "depuis": 1996,
+  "etat": "validé"
+},
+{
+  "bouton": "Normes_Cyber",
+  "titre": "Normes, cadres de référence et alignement corporatif",
+  "description": "<b>NIST CSF 2.0 (Cybersecurity Framework)</b> : cadre américain structuré autour de six fonctions — <b>Govern</b>, <b>Identify</b>, <b>Protect</b>, <b>Detect</b>, <b>Respond</b> et <b>Recover</b> — visant à améliorer la maturité cyber et la résilience organisationnelle. Il sert de référence pour la posture de cybersécurité et la priorisation des contrôles. <b>ISO/IEC 27001</b> : norme internationale définissant les exigences pour un Système de Management de la Sécurité de l’Information (SMSI). Elle assure la mise en place de processus documentés, d’audits réguliers et d’une amélioration continue de la gouvernance sécurité. <b>Zero Trust Architecture (ZTA)</b> : modèle fondé sur le principe du moindre privilège et la vérification systématique (“never trust, always verify”). Il élimine la confiance implicite sur le réseau et renforce la segmentation, l’authentification adaptative et la supervision. <b>TOGAF (Architecture Framework)</b> : méthodologie d’architecture d’entreprise basée sur le cycle <b>ADM</b> (Architecture Development Method), qui structure la conception, la gouvernance et l’évolution des systèmes selon une approche modulaire et réutilisable. <b>Encadrements et standards Hydro-Québec</b> : <b>D15</b> — Sécurité de l’information ; <b>DECI</b> — Directive d’encadrement de la cybersécurité industrielle ; <b>NERC CIP</b> — Critical Infrastructure Protection ; <b>Comités et gouvernance d’architecture HQ</b> — mécanismes internes d’approbation et de validation des solutions technologiques, assurant la conformité aux principes d’architecture, de sécurité et à la trajectoire 2035 ; Trajectoire corporative 2035.",
+  "depuis": 2016,
+  "etat": "validé"
+},
+{
+  "bouton": "Automat_Infra",
+  "titre": "Automatisation et infrastructure ET Cyber",
+  "description": "<b>Automatisation des opérations d’infrastructure et d’identité</b> : concevoir, maintenir et documenter des scripts d’automatisation (<b>PowerShell</b>, <b>Python</b>, <b>Azure CLI</b>, <b>REST API</b>) pour la gestion des identités, certificats, annuaires et composants infonuagiques. <b>Interopérabilité et intégration sécurisée</b> : développer ou consommer des <b>API REST</b>, <b>Graph API</b> et connecteurs (<b>SCIM</b>, <b>OAuth2</b>, <b>OIDC</b>) afin d’assurer la cohérence et la sécurité des flux entre systèmes (<b>GIA</b>, <b>PKI</b>, <b>Venafi</b>, <b>Entra ID</b>). <b>Infrastructure as Code (IaC)</b> : concevoir des modèles de déploiement automatisés pour les environnements <b>Azure</b>, <b>AWS</b> et hybrides, en intégrant les principes <b>Zero Trust</b> et les contrôles issus du <b>NIST CSF</b>. <b>Standardisation et qualité du code</b> : appliquer les bonnes pratiques de développement (gestion de version <b>Git</b>, validation syntaxique, documentation, journalisation, revue de code) afin de garantir la fiabilité et la traçabilité des automatisations. <b>Observabilité et supervision</b> : intégrer des tableaux de bord et journaux automatisés (<b>Log Analytics</b>, <b>Azure Monitor</b>, <b>App Insights</b>) pour suivre la conformité, les erreurs et la santé des processus automatisés.",
+  "depuis": 2016,
+  "etat": "validé"
+},
+{
+  "bouton": "Leader_Tech",
+  "titre": "Leadership technique contribution d’architecture",
+  "description": "<b>Leadership d’influence</b> : agir comme référence technique et catalyseur entre les équipes de développement, de sécurité, d’exploitation et d’affaires. Promouvoir les meilleures pratiques, soutenir la prise de décision et influencer les orientations technologiques HQ. <b>Accompagnement et mentorat</b> : encadrer les architectes, intégrateurs et analystes dans l’application des principes d’architecture, des normes de sécurité (<b>D15</b>, <b>DECI</b>, <b>NIST</b>, <b>ZTA</b>) et des cadres HQ. <b>Communication et vulgarisation</b> : présenter des orientations techniques complexes à des publics non techniques ; produire des synthèses claires, des fiches décisionnelles et des livrables de gouvernance. <b>Participation aux comités et forums d’architecture</b> : contribuer aux comités de gouvernance (sécurité, identité, infonuagique, infrastructure) et aux revues d’architecture pour assurer la cohérence des trajectoires technologiques. <b>Vision et alignement stratégique</b> : s’assurer que les solutions soutiennent la mission de l’entreprise et la <b>trajectoire corporative 2035</b>, en anticipant les impacts technologiques, réglementaires et organisationnels. <b>Amélioration continue</b> : évaluer la maturité des pratiques d’architecture, recommander des optimisations de processus et assurer la veille sur les nouvelles tendances technologiques et réglementaires.",
+  "depuis": 1998,
+  "etat": "validé"
+},
+{
+  "bouton": "Microsoft",
+  "titre": "Écosystème Microsoft ",
+  "description": "<b>Active Directory (AD DS)</b> : conception, gouvernance et administration d’environnements multi-domaines et multi-forêts. Gestion des stratégies <b>GPO</b>, réplication, délégation et intégration aux services cloud (<b>Entra ID</b>). <b>Azure AD / Entra ID</b> : conception et intégration hybride (<b>AD DS ↔ Entra ID</b>), configuration de la synchronisation, des politiques <b>MFA</b>, <b>Conditional Access</b> et <b>PIM</b>, conformité aux principes <b>Zero Trust</b>. <b>ADFS et fédération d’identités</b> : déploiement, maintenance et migration des services <b>ADFS</b>, <b>OAuth2</b>, <b>OIDC</b> et <b>SAML</b> pour la fédération interne et externe. <b>Exchange Server / Exchange Online</b> : administration et migration d’environnements messagerie (de <b>Exchange 5.5</b> à <b>M365</b>), gestion des connecteurs, des rôles et de la sécurité des boîtes aux lettres. <b>Microsoft SQL Server</b> : support applicatif, sécurité des bases liées à l’identité, intégration AD, maintenance et supervision via <b>SQL Management Studio</b>. <b>Microsoft 365 et sécurité collaborative</b> : gouvernance des accès et des partages (<b>SharePoint</b>, <b>Teams</b>, <b>OneDrive</b>), conformité <b>D15</b>, protection via <b>Defender</b> et <b>Purview</b>. <b>Gestion des postes et identité locale</b> : intégration de <b>Windows Hello for Business</b>, <b>Intune</b>, <b>Autopilot</b> et <b>GPO</b> dans une approche unifiée. <b>Sécurité et supervision</b> : configuration des solutions <b>Defender for Identity</b>, <b>Defender for Endpoint</b>, corrélation et SIEM via <b>Sentinel</b>. <b>Automatisation, IA et intégration avancée</b> : utilisation de <b>PowerShell</b>, <b>Graph API</b>, <b>Azure DevOps</b> et <b>Azure AI Foundry</b> pour automatiser la gestion des identités, licences et journaux, et bâtir des processus d’analyse intelligente.",
+  "depuis": 1996,
+  "etat": "validé"
+},
+{
+  "bouton": "IA Stratégie",
+  "titre": "IA stratégique et gouvernance HQ",
+  "description": "<b>Orientation et priorités</b> : <b>1)</b> SIEM enrichi par l’IA (corrélation, résumés d’incidents Sentinel/Defender, réduction du bruit, MTTR). <b>2)</b> Copilot décisionnel (synthèses, options, impacts, conformité) pour la sécurité et l’architecture. <b>3)</b> UBA (détection de dérives identité) avec garde-fous de confidentialité. <b>Gouvernance, sécurité et conformité</b> : alignement <b>NIST CSF 2.0</b>, <b>ISO/IEC 27001</b>, principes <b>ZTA</b> ; normes HQ <b>D15</b>, <b>DECI</b>, <b>NERC CIP</b> ; souveraineté et classification des données ; <b>évaluation de risque rapide et normée</b> (comparatifs p. ex. MFA) ; guardrails (politiques IA, journalisation, filtrage, validation humaine, gestion des clés/modèles, suivi coût/latence/qualité). <b>Mise en œuvre et exploitation</b> : <b>Azure AI Foundry</b>/<b>Cognitive Services</b>, <b>OpenAI API (GPT)</b>, <b>Copilot</b> ; intégration via <b>Power Automate</b>/<b>Logic Apps</b> et <b>Graph API</b> ; RAG sur contenus HQ, évaluation continue (tests, red-teaming), observabilité (logs, métriques, dérives) ; <b>accélérateur de productivité</b> à tous les niveaux (documentation, corrélation, préparation de décisions, conformité).",
+  "depuis": 2023,
+  "etat": "validé"
+},
+{
+  "bouton": "IA",
+  "titre": "Intelligence artificielle, automatisation cognitive et copilots",
+  "description": "<b>Flux de travail génératifs</b> : concevoir des chaînes <b>Azure AI Foundry</b>/<b>Cognitive Services</b>, <b>OpenAI API (GPT)</b>, <b>Claude</b> et <b>Copilot</b> (M365/Security/GitHub/Power Platform) pour automatiser analyse, synthèse et assistance opérationnelle. <b>Personnalisation et “studios”</b> : configurer des <b>modèles personnalisés</b> et des assistants (policies, outils, données d’entreprise), orchestrer <b>Prompts</b>, <b>Grounding/RAG</b> et <b>évaluations</b> (qualité, sécurité, coûts). <b>Intégration Microsoft</b> : déclencher via <b>Power Automate</b>/<b>Logic Apps</b>, s’appuyer sur <b>Graph API</b> et télémétrie (<b>Sentinel</b>, <b>Log Analytics</b>) pour des cas d’usage identité/sécurité (résumés d’incidents, corrélations, assistants GIA). <b>Sécurité et gouvernance</b> : cadrer l’IA selon <b>D15</b>, <b>DECI</b>, <b>NERC CIP</b>, principes <b>ZTA</b> et alignement <b>NIST CSF 2.0</b>/<b>ISO/IEC 27001</b> (confidentialité, résidences de données, secrets, journalisation). <b>Qualité et exploitation</b> : définir des standards (tests, guardrails, red-teaming), mesurer dérives/coûts/latences, monitorer la valeur métier et la conformité en continu.",
+  "depuis": 2023,
+  "etat": "validé"
+},
+{
       "bouton": "PAM",
       "titre": "Privileged Access Management (PAM)",
       "description": "Déploiement et exploitation de solutions de gestion des accès à privilèges telles que CyberArk, Netwrix, HashiCorp Vault, RSA SecureID et Yubico.",
@@ -21,32 +107,12 @@
       "depuis": 2019,
       "etat": "validé"
     },
-    {
-      "bouton": "InfraHybrid",
-      "titre": "Infrastructures hybrides et intégration cloud",
-      "description": "Orchestration d’environnements cloud et sur site incluant ForgeRock, ADFS et Amazon Managed AD.",
-      "depuis": 2018,
-      "etat": "validé"
-    },
-    {
-      "bouton": "Sécurité",
-      "titre": "Sécurité et conformité",
-      "description": "Application des pratiques et cadres normatifs tels que Nessus, Tripwire, ITIL, NERC et DECI.",
-      "depuis": 2016,
-      "etat": "validé"
-    },
+ 
     {
       "bouton": "IAMFederation",
       "titre": "Fédération d’identités (IAM Federation)",
       "description": "Mise en œuvre de liaisons inter-domaines et d’intégrations SSO via les protocoles SAML, OAuth2 et OpenID Connect.",
       "depuis": 2018,
-      "etat": "à_valider"
-    },
-    {
-      "bouton": "Automatisation",
-      "titre": "Automatisation et intégration (Ansible, Terraform, PowerShell)",
-      "description": "Développement de scripts et d’automatisations pour la gestion des comptes, certificats et configurations d’accès.",
-      "depuis": 2020,
       "etat": "à_valider"
     },
     {

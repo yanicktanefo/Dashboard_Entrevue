@@ -1,688 +1,1245 @@
-{
-  "metadata": {
-    "source": "Répertoire des compétences Hydro-Québec, édition juin 2022",
-    "version": "2022.06",
-    "lang": "fr-CA",
-    "encoding": "UTF-8-BOM",
-    "categories": 4,
-    "competences_total": 42,
-    "derniere_mise_a_jour": "2025-10-05"
-  },
-  "Compétences d’affaires": [
-    {
-      "id": "C01",
-      "nom": "Sens des affaires",
-      "categorie": "01 Compétences d’affaires",
-      "actif": "non",
-      "description": "Capacité de saisir les occasions d’affaires, d’analyser et de gérer les risques.",
-      "comportements": [
-        "Se tient au courant de l’évolution de l’industrie, du marché et de la position de l’entreprise.",
-        "Comprend l’apport que peut avoir son unité quant à l’atteinte des objectifs commerciaux.",
-        "Élabore des stratégies pour acquérir ou conserver un avantage concurrentiel.",
-        "Sait peser le pour et le contre des nouveaux débouchés et projets.",
-        "Est à l’affût des nouveaux créneaux, marchés et partenariats.",
-        "Saisit les bonnes occasions d’affaires lorsqu’elles se présentent."
-      ]
-    },
-    {
-      "id": "C02",
-      "nom": "02 Vision stratégique (diagnostic et enjeux)",
-      "categorie": "Compétences d’affaires",
-      "actif": "oui",
-      "description": "Capacité de saisir la perspective globale et future du contexte d’affaires et d’entreprise et de se focaliser sur les éléments-clés, gages de succès.",
-      "comportements": [
-        "Sait prendre en considération le contexte social, politique, technologique, environnemental, économique et organisationnel de l’entreprise.",
-        "Prévoit les événements, décèle les tendances et les signes avant-coureurs de changements importants.",
-        "Situe son unité dans la chaîne de valeur de l’entreprise.",
-        "Voit les enjeux, les défis et les occasions.",
-        "Comprend ou clarifie la vision, la mission, les valeurs et les orientations stratégiques de l’unité en lien avec celles de l’entreprise et des autres unités.",
-        "Saisit les éléments indispensables et les actions importantes à mettre en place pour assurer le succès présent et futur."
-      ]
-    },
-    {
-      "id": "C03",
-      "nom": "03 Orientation rentabilité",
-      "categorie": "Compétences d’affaires",
-      "actif": "non",
-      "description": "Capacité de comprendre les facteurs déterminant la rentabilité et de tout mettre en œuvre pour l’atteindre.",
-      "comportements": [
-        "Met l’accent sur la rentabilité, le respect des budgets, la réduction des coûts et la croissance des revenus.",
-        "Fixe des objectifs financiers réalistes et fait tout pour les atteindre.",
-        "Cherche à augmenter les profits sans perdre de vue les intérêts des clients ou des autres intervenants.",
-        "Sait comprendre et expliquer la signification et l’incidence des principaux indicateurs de rendement financier.",
-        "Mesure l’importance du rendement à court et à long termes.",
-        "Sait démontrer la rentabilité de chaque projet."
-      ]
-    },
-    {
-      "id": "C04",
-      "nom": "04 Centré sur le client",
-      "categorie": "Compétences d’affaires",
-      "actif": "oui",
-      "description": "S’efforce d’ajuster son travail et ses façons de faire afin de répondre au mieux aux besoins et attentes des clients de l’entreprise, et ce, même sans être en interaction directe avec eux. Ces comportements s’appliquent également aux clients internes.",
-      "comportements": [
-        "Porte attention aux besoins des clients, valide sa compréhension de leurs exigences et attentes.",
-        "Démontre un souci constant de préserver la réputation de l’entreprise et fait la promotion d’Hydro-Québec.",
-        "Est conscient des effets de son travail sur les clients, est courtois avec eux et les oriente vers les ressources appropriées.",
-        "Prévoit les besoins, adapte ses stratégies pour offrir un service ou un produit de qualité qui répond aux attentes des clients et en évalue la satisfaction.",
-        "Agit dans son unité pour corriger les problèmes qui affectent les clients et les escalade au besoin.",
-        "Recommande de nouvelles solutions qui répondent au besoin réel des clients.",
-        "Améliore les façons de faire en continu dans l’objectif de fidéliser les clients."
-      ]
-    },
-    {
-      "id": "C05",
-      "nom": "05 Sens politique",
-      "categorie": "Compétences d’affaires",
-      "actif": "oui",
-      "description": "Compréhension des organisations et des jeux de pouvoir, sensibilité aux réalités des politiques et de la structure dans son organisation et chez les partenaires.",
-      "comportements": [
-        "Comprend les structures officielles et informelles.",
-        "Comprend le climat et la culture de l’organisation.",
-        "S’intéresse au fonctionnement de son organisation, aux rôles et aux interrelations des unités, ainsi qu’aux pratiques formelles et informelles qui y prévalent.",
-        "Comprend les enjeux politiques, les questions sous-jacentes et les rouages politiques internes et externes.",
-        "Comprend les attentes et les réactions possibles de la haute direction.",
-        "Cultive des relations avec les personnes influentes de son entourage, de sa profession ou de son industrie.",
-        "Sait à qui faire appel et comment s’y prendre, utilise les réseaux informels pour faire avancer les choses.",
-        "Manœuvre efficacement dans des contextes politiquement complexes.",
-        "Sait imaginer et prévenir les impacts politiques indésirables."
-      ]
-    },
-    {
-      "id": "C06",
-      "nom": "06 Partenariat d’affaires",
-      "categorie": "Compétences d’affaires",
-      "actif": "non",
-      "description": "Sens de la vente et capacité de développer des ententes client-fournisseur mutuellement avantageuses.",
-      "comportements": [
-        "Développe avec le client une relation qui dispose celui-ci à vouloir faire des affaires.",
-        "Traite les clients, les fournisseurs et les autres intervenants comme des partenaires ayant des intérêts communs.",
-        "Trouve un terrain d’entente pour les groupes potentiellement rivaux afin d’obtenir leur coopération.",
-        "Suscite l’intérêt du client à l’égard des produits et services.",
-        "Présente une offre de service et sait l’adapter en fonction des besoins et des exigences du client.",
-        "Utilise des techniques de vente appropriées à la conclusion d’affaires rentables.",
-        "Obtient l’engagement du client à l’égard de l’entente négociée et a la capacité de conclure une vente avantageuse pour les deux parties."
-      ]
-    },
-    {
-  "id": "C07",
-  "nom": "07 Déploiement des cibles et des objectifs",
-  "categorie": "Compétences d’affaires",
-  "actif": "non",
-  "description": "Capacité d’établir des cibles d’amélioration et des objectifs, de les déployer et de mettre en place les actions requises pour les atteindre.",
-  "comportements": [
-    "Établit les cibles et les objectifs de l’unité.",
-    "Identifie les zones de performance et d’amélioration possibles.",
-    "Établit des priorités à l’intérieur de ces zones, compte tenu de la satisfaction des attentes des clients, de l’actionnaire et des employés.",
-    "Identifie judicieusement les indicateurs selon la disponibilité de l’information et la pertinence des données, compte tenu des cibles prioritaires de l’unité.",
-    "En fonction de la mission spécifique de l’unité, négocie un partage des responsabilités avec les instances administratives concernées.",
-    "Élabore des plans détaillés et réalistes, à court et à long termes, qui permettent d’atteindre les cibles.",
-    "Détermine les étapes de réalisation importantes.",
-    "Visualise les tâches à accomplir, détermine les difficultés et prévoit le temps à y consacrer.",
-    "Prévoit et négocie, s’il y a lieu, les ressources financières, matérielles, humaines et technologiques nécessaires pour atteindre les cibles."
-  ]
-},
-{
-  "id": "C08",
-  "nom": "08 Organisation de l’exécution",
-  "categorie": "Compétences d’affaires",
-  "actif": "non",
-  "description": "Capacité d’organiser le travail pour que chacun soit le plus efficace possible.",
-  "comportements": [
-    "Assure la liaison entre les différentes unités, équipes et personnes participant à la réalisation du travail, afin d’en garantir la progression.",
-    "Gère de nombreuses demandes simultanément sans perdre de vue les objectifs à atteindre.",
-    "S’assure de la disponibilité des ressources nécessaires à la réalisation du travail planifié.",
-    "Sait diviser les tâches de manière que les séquences de travail soient efficaces."
-  ]
-},
-{
-  "id": "C09",
-  "nom": "09 Gestion des processus",
-  "categorie": "Compétences d’affaires",
-  "actif": "non",
-  "description": "Capacité d’identifier les activités à valeur ajoutée et de consacrer les efforts nécessaires pour atteindre le niveau de performance exigé.",
-  "comportements": [
-    "Détermine clairement les produits et services fournis aux clients.",
-    "Classe les produits et services par ordre d’importance, en fonction des besoins des clients, des orientations de l’entreprise, du degré d’amélioration attendu et de son mandat premier.",
-    "Sait repérer les intrants, les activités clés et les extrants du processus, ainsi que le personnel et les fournisseurs qui y prennent part et les lier dans un ordre séquentiel réel.",
-    "S’entend avec les clients à qui sont destinés les produits et services et convient avec eux d’indicateurs permettant de s’assurer que les produits et services sont vraiment performants.",
-    "Conçoit un nouveau processus permettant de fournir un produit ou un service exigé par le client.",
-    "Recueille les données liées aux exigences du client pour évaluer avec précision le rendement du processus, plus particulièrement en ce qui a trait aux activités clés.",
-    "Détermine si un processus est bien géré, détecte les anomalies et les corrige.",
-    "Sait déterminer si les cinq « M » (milieu, main-d’œuvre, matériel, machines, méthode) permettent de concevoir un produit ou un service.",
-    "Réduit les coûts.",
-    "Réduit ou élimine les formalités administratives.",
-    "Détecte les problèmes éventuels et les prévient.",
-    "Réduit les temps de cycle.",
-    "Valorise les produits et services.",
-    "Évalue ces produits et services par rapport à ceux des meilleures entreprises comparables."
-  ]
-},
-{
-  "id": "C10",
-  "nom": "10 Gestion de projets",
-  "categorie": "Compétences d’affaires",
-  "actif": "non",
-  "description": "Capacité de gérer le processus de gestion de projets et d’appliquer, à chaque étape, des connaissances, des outils et des méthodes spécifiques à la gestion de la coordination, du contenu, des délais, des coûts, de la qualité, des ressources humaines, de la communication, des risques et des approvisionnements.",
-  "comportements": [
-    "Démarre le projet et s’y engage.",
-    "Planifie le projet pour élaborer et respecter un schéma exécutable de réalisation des activités prévues.",
-    "Réalise le projet en coordonnant le personnel et les moyens nécessaires à la réalisation du plan.",
-    "Supervise la réalisation pour s’assurer que les objectifs sont atteints en surveillant et mesurant l’avancement des travaux et en prenant les actions correctives si nécessaire.",
-    "Clôture le projet pour formaliser son acceptation et s’assure de sa bonne fin."
-  ]
-},
-{
-  "id": "C11",
-  "nom": "11 Encadrement et mesure",
-  "categorie": "Compétences d’affaires",
-  "actif": "non",
-  "description": "Capacité d’encadrer les employés et de suivre les activités ainsi que d’implanter les processus d’encadrement et de suivi.",
-  "comportements": [
-    "Assure les suivis nécessaires pour garantir l’atteinte des cibles et la réalisation des activités sous sa responsabilité.",
-    "Fait régulièrement le point avec les employés sur la progression des travaux et les résultats obtenus.",
-    "S’assure que les processus de travail, les normes de qualité, les politiques et les modes de fonctionnement sont respectés.",
-    "Organise des réunions de gestion afin de faire le point sur la performance et de maintenir la trajectoire ou de rectifier le tir, s’il y a lieu.",
-    "Sait établir et interpréter des indicateurs de performance et des tableaux de bord pertinents afin de suivre la performance de l’unité.",
-    "Met en place des pratiques qui rendent possible la gestion à distance."
-  ]
-},
-{
-  "id": "C12",
-  "nom": "12 Aligne sur les enjeux importants",
-  "categorie": "Compétences d’affaires",
-  "actif": "non",
-  "description": "Établit des cibles et reste concentré sur ce qui est essentiel, en cohérence avec les priorités et les orientations d’entreprise.",
-  "comportements": [
-    "Communique les objectifs de l’unité et explique leurs contributions aux orientations stratégiques de l’entreprise.",
-    "Comprend l’étendue d’action de son unité et agit en cohérence avec les structures, encadrements et processus transversaux de l’organisation.",
-    "Explique aux employés l’impact de leurs actions sur les autres unités et sur la réalisation des objectifs communs.",
-    "Aligne sur les priorités, détermine les actions importantes à réaliser, encourage le « juste assez » et garde le cap.",
-    "Sait prendre des décisions dans les zones grises et des risques calculés pour faire progresser son unité.",
-    "Suscite et maintient un haut niveau de collaboration entre les équipes malgré les difficultés rencontrées.",
-    "Place l’intérêt de l’organisation au-dessus des intérêts de son unité.",
-    "Démontre le courage d’ajuster le tir et d’expliquer ses choix pour agir en cohérence avec les priorités de l’organisation."
-  ]
-},
-{
-  "id": "C13",
-  "nom": "13 Responsabilise ses employés",
-  "categorie": "Compétences d’affaires",
-  "actif": "non",
-  "description": "Partage les responsabilités avec ses employés et leur accorde de la marge de manœuvre afin qu’ils contribuent pleinement et de façon volontaire.",
-  "comportements": [
-    "Clarifie les rôles de chacun et délègue avec confiance les responsabilités.",
-    "S’assure que les processus de travail, les normes de qualité et les procédures soient bien compris et respectés.",
-    "S’assure que les attentes soient claires, assure un suivi continu et ne laisse pas traîner les situations de faible performance.",
-    "Favorise l’autonomie et l’imputabilité; tient les personnes responsables de leur travail.",
-    "Donne les moyens d’agir, accorde de la latitude dans l’exécution et donne le droit à l’erreur.",
-    "Fait participer les employés à l’identification et à la résolution des problèmes.",
-    "Encourage la prise de décision au bon niveau de responsabilité de l’employé.",
-    "Incite ses employés à exploiter leur plein potentiel en leur offrant des défis stimulants et en leur fournissant les moyens nécessaires."
-  ]
-},
-{
-  "id": "C14",
-  "nom": "14 Reconnaissance",
-  "categorie": "Compétences d’affaires",
-  "actif": "non",
-  "description": "Capacité de reconnaître adéquatement les bons coups et les contributions individuelles et d’équipe.",
-  "comportements": [
-    "Sait reconnaître la contribution de chaque personne, donner un renforcement positif de manière appropriée et récompenser celles et ceux dont la contribution dépasse les attentes.",
-    "Partage le mérite des réussites.",
-    "Assure la visibilité à ses relevants.",
-    "Sait comment valoriser chaque personne face au travail à accomplir."
-  ]
-},
-{
-  "id": "C15",
-  "nom": "15 Habilitation",
-  "categorie": "Compétences d’affaires",
-  "actif": "non",
-  "description": "Capacité de favoriser le développement et le perfectionnement des autres.",
-  "comportements": [
-    "Attribue des mandats favorisant le perfectionnement.",
-    "Prend le temps de conseiller, de donner de la rétroaction, de discuter des comportements à améliorer pour une meilleure performance.",
-    "Fait en sorte que chaque personne élabore et réalise un plan de perfectionnement en relation avec ses objectifs et mandats.",
-    "Encourage ses employés à se fixer des objectifs de carrière réalistes et à faire ce qu’il faut pour les atteindre.",
-    "Identifie la relève.",
-    "Agit, au besoin, comme mentor, coach ou formateur auprès de la relève."
-  ]
-},
-{
-  "id": "C16",
-  "nom": "16 Agit en leader de changement",
-  "categorie": "Compétences d’affaires",
-  "actif": "non",
-  "description": "Inspire et mobilise les employés à s’investir dans l’évolution de l’organisation en donnant l’exemple, en mettant en place les bonnes pratiques et les conditions favorables.",
-  "comportements": [
-    "Saisit les opportunités d’évolution et identifie les besoins d’amélioration.",
-    "S’approprie le changement et son rôle en tant que porteur du changement.",
-    "Explique le besoin d’évoluer, clarifie le sens du changement et communique une vision stimulante des objectifs poursuivis.",
-    "S’assure que les employés comprennent le changement en étant présent sur le terrain et en maintenant un dialogue en continu.",
-    "Fait participer ses employés à la mise en œuvre du changement pour susciter l’adhésion.",
-    "Accompagne son équipe dans la transition en donnant une direction claire et en exerçant un suivi et un soutien sur une base régulière.",
-    "Conduit le changement avec courage et exemplarité.",
-    "Réalise ses activités en ayant une lecture transversale des changements en cours et à venir, et de leurs impacts."
-  ]
-},
-{
-  "id": "C17",
-  "nom": "17 Agit en leader d’équipe",
-  "categorie": "Compétences d’affaires",
-  "actif": "non",
-  "description": "Assure la participation de tous à la réalisation d’objectifs communs en misant sur les forces des personnes et en s’investissant dans leur développement.",
-  "comportements": [
-    "Mobilise les membres de son équipe à contribuer à la réalisation des objectifs communs; encourage le « nous » plutôt que le « je » (une Hydro).",
-    "Constitue des équipes performantes aux profils complémentaires, encourage les résultats et valorise les contributions de tous.",
-    "Accompagne et donne de la rétroaction pour faciliter le travail et favoriser le développement.",
-    "Agit avec authenticité, humilité et bienveillance.",
-    "Favorise l’appartenance, le respect, la confiance et la collaboration; s’assure d’un environnement inclusif, sain et sécuritaire.",
-    "Sait s’adapter aux personnes et au contexte pour mettre en lumière et à contribution le potentiel de chacun.",
-    "Soutient le développement des membres de son équipe, en misant sur les forces et en suggérant des opportunités de développement.",
-    "Agit sur les écarts en s’engageant dans des conversations difficiles ou en prenant des décisions courageuses."
-  ]
-    }
-  ],
-  "Compétences interpersonnelles": [
-    {
-      "id": "C18",
-      "nom": "18 Travaille en équipe",
-      "categorie": "Compétences interpersonnelles",
-      "actif": "oui",
-      "description": "Collabore avec les autres à la réalisation d’objectifs communs, par opposition au fait de travailler seul, en silo ou en compétition avec d’autres.",
-      "comportements": [
-        "Adopte une attitude positive face à l’apport des autres.",
-        "Collabore activement avec les autres, au-delà des unités, pour atteindre les objectifs de l’organisation.",
-        "Communique au bon moment, à ses collègues et à ses partenaires, l’information nécessaire à la poursuite des objectifs communs.",
-        "Encourage les autres à collaborer entre eux et avec les autres unités.",
-        "Participe activement à la résolution des problèmes du groupe.",
-        "Sait obtenir le soutien et la collaboration des autres pour mieux coopérer au sein de l’organisation.",
-        "Est solidaire des décisions d’équipe et de l’organisation.",
-        "Agit dans le meilleur intérêt de l’organisation et pour le bien commun."
-      ]
-    },
-    {
-      "id": "C19",
-      "nom": "19 Agit avec ouverture et bienveillance",
-      "categorie": "Compétences interpersonnelles",
-      "actif": "non",
-      "description": "Capacité d’entretenir de bons rapports avec autrui, d’écouter et de comprendre les réactions des autres et de démontrer de l’ouverture à la diversité des points de vue.",
-      "comportements": [
-        "Démontre un intérêt sincère envers les personnes, leurs réalités et leurs préoccupations.",
-        "Maintient des relations positives avec les autres.",
-        "Accueille le point de vue des autres, adopte une attitude empathique et inclusive.",
-        "Encourage l’expression respectueuse des idées, des opinions et des émotions.",
-        "Démontre de l’ouverture, du respect, de la tolérance et de la patience face aux différences.",
-        "Reconnaît ses préjugés pour prévenir des comportements inappropriés.",
-        "Recherche activement les perspectives différentes, en tirant profit de la richesse et de la diversité des idées.",
-        "Encourage les autres à adopter des comportements favorisant l’inclusion."
-      ]
-    },
-    {
-      "id": "C20",
-      "nom": "20 Négociation et gestion de conflits",
-      "categorie": "Compétences interpersonnelles",
-      "actif": "non",
-      "description": "Capacité d’exercer un effet sur les autres, de négocier et de résoudre des conflits.",
-      "comportements": [
-        "Est consulté par son entourage et est écouté.",
-        "Est capable de faire valoir ses intérêts tout en respectant ceux des autres.",
-        "Fait valoir son point de vue de façon à susciter l’accord des autres.",
-        "Sait obtenir un consensus, conclure un accord gagnant-gagnant.",
-        "Sait exercer une influence par l’entremise des autres.",
-        "Utilise diverses stratégies pour obtenir des concessions, sans provoquer de remous, en maintenant la qualité de la relation.",
-        "Sait concilier les points de vue divergents, apaiser les situations tendues et trouver des compromis acceptables."
-      ]
-    },
-    {
-      "id": "C21",
-      "nom": "21 Authenticité",
-      "categorie": "Compétences interpersonnelles",
-      "actif": "non",
-      "description": "Capacité d’être sincère et naturel dans ses interactions et ses communications.",
-      "comportements": [
-        "Discute franchement des questions délicates.",
-        "Sait exprimer ses convictions profondes.",
-        "Est perçu comme une personne qui établit des rapports sincères avec autrui.",
-        "Est capable de parler franchement de ses faiblesses, de ses limites et de ses erreurs."
-      ]
-    }
+[
+  {
+    "id": "C01",
+    "nom": "01 Sens des affaires",
+    "categorie": "Compétences d’affaires",
+    "sousCategorie": "Stratégie d’affaires",
+    "actif": false,
+    "description": "Capacité de saisir les occasions d’affaires, d’analyser et de gérer les risques.",
+    "comportements": [
+      "Se tient au courant de l’évolution de l’industrie, du marché et de la position de l’entreprise.",
+      "Comprend l’apport que peut avoir son unité quant à l’atteinte des objectifs commerciaux.",
+      "Élabore des stratégies pour acquérir ou conserver un avantage concurrentiel.",
+      "Sait peser le pour et le contre des nouveaux débouchés et projets.",
+      "Est à l’affût des nouveaux créneaux, marchés et partenariats.",
+      "Saisit les bonnes occasions d’affaires lorsqu’elles se présentent."
     ],
-     "Compétences personnelles": [ 
-    {    
-      "id": "C22",
-      "nom": "22 Langage et communication",
-      "categorie": "Compétences personnelles",
-      "actif": "non",
-      "description": "Aptitude à s’exprimer, interpréter et transmettre l’information efficacement selon les situations.",
-      "comportements": [
-        "Présente ses idées de façon claire et concise.",
-        "Emploie un vocabulaire précis et approprié.",
-        "Vulgarise les notions complexes ou techniques.",
-        "Saisit le sens des messages verbaux et le non-verbal.",
-        "Communique l’information pertinente.",
-        "Communique l’information au bon moment.",
-        "Transmet des renseignements factuels, complets et exacts à ses supérieurs, collègues, clients, partenaires, si nécessaire.",
-        "Distingue l’information à diffuser de celle qui doit demeurer confidentielle."
-      ]
-    },
-    {
-      "id": "C23",
-      "nom": "23 Aptitudes cognitives",
-      "categorie": "Compétences personnelles",
-      "actif": "non",
-      "description": "Vivacité, capacité cognitive à traiter des informations complexes et abstraites et capacité d’analyse et de résolution de problèmes.",
-      "comportements": [
-        "Fait preuve de curiosité intellectuelle.",
-        "Sait apprendre.",
-        "Établit des liens entre des situations ou des éléments apparemment sans rapport.",
-        "Établit des liens de cause à effet qui aident à comprendre ou à prévoir les conséquences d’une action ou d’une décision.",
-        "Excelle en résolution de problèmes complexes.",
-        "Comprend rapidement les notions abstraites.",
-        "Prévoit les problèmes potentiels et leurs conséquences négatives, et les traite de façon proactive.",
-        "Utilise diverses techniques d’analyse pour comprendre et évaluer les multiples aspects d’une situation complexe.",
-        "Va au-delà des évidences et envisage les problèmes sous des angles différents; élabore divers scénarios, vérifie des hypothèses et pèse le pour et le contre de chaque solution.",
-        "Recherche et réunit les informations pertinentes.",
-        "Sait distinguer l’information importante des détails superflus et dégager les idées principales ainsi que les lignes directrices."
-      ]
-    }    ,
-    {
-      "id": "C24",
-      "nom": "24 Recommandation et prise de décision",
-      "categorie": "24 Compétences personnelles",
-      "actif": "non",
-      "description": "Capacité à formuler des recommandations et à prendre les bonnes décisions dans son champ d’expertise, basées sur le contexte, les enjeux d’affaires et les orientations stratégiques.",
-      "comportements": [
-        "Prend connaissance de l'ensemble de l'information disponible.",
-        "Analyse une situation sous divers angles; détecte les enjeux stratégiques d’une situation; prend différentes perspectives en considération; tient compte du contexte d’affaires, des points de vue, des idées et des positions significatives d'autrui.",
-        "Identifie et recommande la stratégie la plus appropriée compte tenu du contexte, des enjeux d’affaires, des orientations stratégiques et des intervenants.",
-        "S’attarde aux faits plutôt qu’à ses impressions personnelles, fait la part des choses, fait preuve de réalisme, favorise la logique et le raisonnement.",
-        "Prend des décisions fondées sur l'expertise, l’expérience et le jugement.",
-        "Propose des solutions supérieures à celles qui ont déjà été envisagées.",
-        "Reconnaît le moment opportun pour prendre position ou entreprendre quelque chose.",
-        "Passe à l’action en considérant le contexte et les enjeux d’affaires.",
-        "Sait agir « juste à temps ».",
-        "Est capable de recommander des solutions appropriées et/ou de prendre une décision sous pression.",
-        "Est capable de recommander et/ou de prendre des décisions dans des situations ambiguës, incertaines et difficiles.",
-        "Sait prendre des risques calculés lorsque c’est nécessaire.",
-        "Assume les conséquences de ses actes."
-      ]
-    },
-    {
-      "id": "C25",
-      "nom": "25 Créativité et innovation",
-      "categorie": "25 Compétences personnelles",
-      "actif": "non",
-      "description": "Capacité d’engendrer des idées nouvelles ou inédites et de mettre en œuvre des solutions nouvelles contribuant à l’atteinte des objectifs d’affaires.",
-      "comportements": [
-        "Combine, réorganise et intègre de manière différente les idées et les perspectives.",
-        "Recherche plusieurs points de vue et explore différentes options (« divergence »).",
-        "Sait évaluer et reconnaître les idées les plus prometteuses (« convergence »).",
-        "Sort des sentiers battus et invente de nouvelles façons de faire.",
-        "Recherche à tester et valider les nouvelles idées, puis apporte les améliorations requises pour faciliter la mise en œuvre.",
-        "Intègre de nouvelles approches ou solutions dans les processus.",
-        "Sait prendre les risques appropriés et gérer les imprévus découlant de l’implantation des nouvelles façons de faire.",
-        "Encourage à pousser les idées plus loin et stimule l’expression d’idées nouvelles.",
-        "Soutient les efforts pour mettre en œuvre l’innovation."
-      ]
-    },
-    {
-      "id": "C26",
-      "nom": "26 Agile et orienté vers les résultats",
-      "categorie": "Compétences personnelles",
-      "actif": "non",
-      "description": "Se centre sur l’essentiel afin de livrer les résultats avec vélocité, est proactif et fait avancer les choses.",
-      "comportements": [
-        "Agit proactivement pour livrer les résultats attendus, en investissant ses efforts sur l’essentiel.",
-        "Recherche des solutions pratiques et agit sans délai pour livrer le meilleur service possible à ses partenaires et clients.",
-        "Ajuste le tir en tenant compte des contraintes de temps ou de ressources.",
-        "Cherche à augmenter sa performance en se fixant des objectifs audacieux.",
-        "Ose prendre des risques calculés et passer à l’action.",
-        "Aborde avec courage les situations délicates pour atteindre les résultats attendus.",
-        "Se considère responsable de sa performance, assume l’imputabilité de ses actions et de ses décisions."
-      ]
-    },
-    {
-      "id": "C27",
-      "nom": "27 Gestion du temps et des priorités",
-      "categorie": "Compétences personnelles",
-      "actif": "non",
-      "description": "Capacité d’utiliser judicieusement son temps et celui des autres pour atteindre les objectifs fixés.",
-      "comportements": [
-        "Sait concentrer son action sur les priorités selon l’urgence et l’importance des activités à réaliser.",
-        "Ajuste le tir en tenant compte des contraintes de temps ou de ressources.",
-        "Est capable d’assurer un sain équilibre entre son travail et sa vie privée, sans négliger ou compromettre les objectifs à atteindre.",
-        "Utilise des méthodes de travail efficaces pour accomplir beaucoup, bien et rapidement.",
-        "Prévoit des activités de rechange pour maximiser l’utilisation de son temps en cas d’imprévu."
-      ]
-    },
-    {
-      "id": "C28",
-      "nom": "28 Éthique professionnelle, rigueur, souci de la qualité, de la sécurité et du développement durable",
-      "categorie": "Compétences personnelles",
-      "actif": "non",
-      "description": "Respect du code de conduite de l’entreprise, du code de déontologie de sa profession, des normes de qualité et de sécurité ainsi que des règles d’éthique dans ses rapports avec les autres et dans son travail.",
-      "comportements": [
-       "Garde les confidences qui lui sont faites.",
-        "Traite les gens avec équité, impartialité et justice.",
-        "Respecte les processus de travail établis, ainsi que les principes et les exigences de conformité en matière de qualité et de développement durable qui s’appliquent dans son travail.",
-        "Respecte les principes et les règles de sécurité pour soi-même, les autres employés, les clients et le public.",
-        "Valorise l’amélioration continue et se conforme aux meilleures pratiques.",
-        "A le souci du détail : porte attention aux erreurs, vérifie l’exactitude des données et apporte un soin particulier à la réalisation de chacune des étapes de son travail.",
-        "Respecte le code de conduite de l’entreprise et toutes les règles et pratiques qui en découlent.",
-        "Se conforme au code de déontologie de sa profession.",
-        "Se fixe des normes élevées d’intégrité et de probité.",
-        "Agit en fonction de ces normes et donne l’exemple."
-      ]
-    },
-    {
-      "id": "C29",
-      "nom": "29 Autonomie",
-      "categorie": "Compétences personnelles",
-      "actif": "non",
-      "description": "Capacité d’agir de façon indépendante sans recourir à l’aide des autres.",
-      "comportements": [
-        "Est capable d’agir sans l’approbation d’autrui.",
-        "Est capable de s’autogérer.",
-        "Est capable de passer à l’action sans attendre qu’on lui demande explicitement de le faire.",
-        "N’hésite pas à réaliser un mandat sans soutien.",
-        "Est capable d’assumer ses responsabilités sans soutien."
-      ]
-    },
-    {
-      "id": "C30",
-      "nom": "30 Maîtrise de soi",
-      "categorie": "Compétences personnelles",
-      "actif": "non",
-      "description": "Capacité d’être efficace sous pression, de faire face aux situations inconfortables et de gérer ses émotions.",
-      "comportements": [
-        "Identifie et analyse ses émotions positives et négatives.",
-        "Est capable de composer avec son humeur et ses émotions sans se laisser ébranler ou sans ébranler les autres.",
-        "Sait s’adapter aux imprévus.",
-        "Reste calme dans l’adversité.",
-        "Reste maître de la situation, efficace et rationnel sous pression.",
-        "Reste calme quand les choses se corsent; offre une précieuse collaboration en situation de crise.",
-        "Gère efficacement le stress inhérent au travail.",
-        "Garde la tête froide et prend le recul nécessaire pour faire preuve d’objectivité en tout temps."
-      ]
-    },
-    {
-      "id": "C31",
-      "nom": "31 Confiance en soi",
-      "categorie": "Compétences personnelles",
-      "actif": "non",
-      "description": "Croire en ses capacités d’accomplir une tâche ou de résoudre un problème, se sentir apte à faire face à des situations de plus en plus exigeantes et avoir du courage.",
-      "comportements": [
-        "A de l’aplomb, crée une première impression favorable et laisse une impression de solidité.",
-        "Est capable de faire des gestes impopulaires ou controversés et de trancher, au besoin.",
-        "Est capable d’exprimer son désaccord et d’en assumer les conséquences.",
-        "Accepte de prendre des risques, de s’exposer à des résultats incertains et d’attaquer les problèmes de front.",
-        "Persiste malgré les obstacles et conserve sa motivation en dépit des échecs et des difficultés."
-      ]
-    },
-    {
-      "id": "C32",
-      "nom": "32 Développement et accomplissement professionnel",
-      "categorie": "Compétences personnelles",
-      "actif": "non",
-      "description": "Capacité de se perfectionner et d’améliorer ses compétences et son expertise en utilisant diverses stratégies. Auto-motivation, volonté de réussir et passion pour son métier.",
-      "comportements": [
-        "Aime les nouveaux défis et les responsabilités additionnelles.",
-        "S’engage à fond dans son travail.",
-        "Accepte de travailler fort pour atteindre ses objectifs professionnels et réussir sa carrière.",
-        "Sollicite de la rétroaction à des fins de perfectionnement personnel.",
-        "Reconnaît ses faiblesses, ses limites et ses erreurs.",
-        "Modifie son comportement en fonction de la rétroaction et de ses erreurs ou succès.",
-        "Utilise divers moyens pour développer ses compétences.",
-        "Participe activement à des réseaux internes ou à des rencontres pour partager ses connaissances et contribuer à l’évolution des connaissances dans son domaine d’activité.",
-        "Contribue activement à l’évolution des connaissances dans son métier, son champ de pratique et son domaine d’expertise en participant à des comités ou des réseaux externes."
-      ]
-    },
-    {
-      "id": "C33",
-      "nom": "33 Capacité d’adaptation",
-      "categorie": "Compétences personnelles",
-      "actif": "non",
-      "description": "Capacité de s’ajuster à son environnement avec souplesse, flexibilité et tolérance face à l’incertitude.",
-      "comportements": [
-        "Consulte les autres avant de passer à l’action.",
-        "Est capable d’adapter rapidement ses façons de faire dans des situations nouvelles.",
-        "Sait tirer les leçons de ses succès et échecs et modifier son comportement en conséquence.",
-        "Compose efficacement avec les situations, personnes ou groupes variés.",
-        "Maintient un rythme de travail productif pendant les périodes de transition et d’incertitude.",
-        "Est capable d’être efficace en l’absence de règles ou de marches à suivre claires.",
-       "Est capable de composer avec les paradoxes et contradictions de son environnement."
-      ]
-    }
-  ],
-  "Compétences techniques": [
-    {
-      "id": "C34",
-      "nom": "34 Compétences linguistiques",
-      "categorie": "Compétences techniques",
-      "actif": "non",
-      "description": "Capacité de s’exprimer en anglais ou dans d’autres langues que le français à un niveau approprié, selon les besoins.",
-      "comportements": [
-        "Lit des documents divers (formulaires, notes de service, lettres, rapports).",
-        "Rédige des documents divers, y compris des notes de service, des lettres et des rapports.",
-        "Comprend les messages qui lui sont transmis.",
-        "S’exprime de façon à se faire comprendre sans difficulté."
-      ]
-    },
-    {
-      "id": "C35",
-      "nom": "35 Communication écrite",
-      "categorie": "Compétences techniques",
-      "actif": "non",
-      "description": "Capacité de communiquer par écrit ses idées et l’information de façon à se faire comprendre et en respectant les règles de communication écrite.",
-      "comportements": [
-        "Respecte les règles de syntaxe, de grammaire, d’orthographe et de stylistique.",
-        "Utilise un vocabulaire précis.",
-        "Vulgarise le jargon technique ou scientifique.",
-        "Rédige de façon structurée et logique.",
-        "Sait déterminer s’il convient de résumer des notions ou de les développer en détail.",
-        "Adapte son style d’écriture en fonction du moyen de communication utilisé."
-      ]
-    },
-    {
-      "id": "C36",
-      "nom": "36 Communication d’impact",
-      "categorie": "Compétences techniques",
-      "actif": "non",
-      "description": "Capacité à communiquer efficacement ses idées et à faire valoir son point de vue afin de créer l’impact désiré.",
-      "comportements": [
-        "Est à l’aise de présenter ses idées et sait défendre son point de vue lorsque requis.",
-        "Sait présenter ses idées de façon claire et précise. Synthétise l’information.",
-        "Est capable de communiquer l’information sous diverses formes (présentation, rapport, sommaire exécutif, etc.) et selon les circonstances.",
-        "Sait communiquer l’information au bon moment.",
-        "Est capable d’adapter ses communications à son auditoire (langage, mode de communication, style de communication).",
-        "Tient compte du point de vue de ses interlocuteurs."
-      ]
-    }    ,
-    {
-      "id": "C37",
-      "nom": "37 Maîtrise des technologies de l’information et des communications",
-      "categorie": "Compétences techniques",
-      "actif": "non",
-      "description": "Capacité de suivre l’évolution technologique en matière d’information, d’acquisition et de partage de connaissances et d’informatique.",
-      "comportements": [
-        "Maîtrise le fonctionnement d’un micro-ordinateur.",
-        "Utilise des logiciels et des applications de base nécessaires à l’exercice de ses fonctions : logiciels de traitement de texte et de présentation graphique, systèmes de messagerie électronique, intranet et Internet, systèmes d’information de l’ordinateur central.",
-        "Utilise les nouvelles technologies de l’information et des communications pour augmenter sa productivité personnelle et celle des équipes de travail auxquelles il ou elle appartient.",
-        "Adopte les pratiques et outils de gestion de l’information et des connaissances qui sont requis dans le cadre de son travail."
-      ]
-    },
-    {
-      "id": "C38",
-      "nom": "38 S’engage dans l’évolution",
-      "categorie": "ompétences techniques",
-      "actif": "non",
-      "description": "Questionne le statu quo, propose de nouvelles idées qui améliorent la performance et contribue à mettre en œuvre des solutions innovantes.",
-      "comportements": [
-        "Remet en question le statu quo, reconnaît la valeur des nouvelles idées et participe à l’évolution.",
-        "Consulte ses collègues et est curieux de ce qui se fait ailleurs pour trouver des solutions aux problèmes.",
-        "S’implique dans l’amélioration des pratiques, processus et outils de travail.",
-        "Cherche à pousser les idées plus loin et à générer des solutions novatrices.",
-        "Se donne le droit d’essayer et de faire les choses autrement.",
-        "Assure le partage des améliorations, des nouvelles idées et solutions qui pourraient être utiles pour d’autres et pour le bien commun.",
-        "Cible les occasions d’amélioration qui permettent de mieux faire ensemble et mieux servir la collectivité.",
-        "Contribue à la mise en œuvre des solutions novatrices qui soutiennent l’évolution de l’organisation."
-      ]
-    }    ,
-    {
-      "id": "C39",
-      "nom": "39 Techniques d’animation",
-      "categorie": "Compétences techniques",
-      "actif": "non",
-      "description": "Maîtrise de la conduite de réunions efficaces et productives.",
-      "comportements": [
-        "Précise l’objectif de la rencontre, son déroulement, sa durée et le mode de fonctionnement prévu pour faciliter et orienter le travail du groupe.",
-        "Favorise la progression du travail, tout en tenant compte du rythme des participants.",
-        "Encourage la participation individuelle sans perdre de vue l’objectif à atteindre.",
-        "Intervient pour désamorcer les différends possibles entre les participants et relancer la réunion ou la session de travail.",
-        "Rappelle les participants à l’ordre en cas de digression."
-      ]
-    },
-    {
-      "id": "C40",
-      "nom": "40 Maîtrise du processus de consultation",
-      "categorie": "Compétences techniques",
-      "actif": "non",
-      "description": "Capacité de gérer le processus de consultation et d’appliquer, à chaque étape, des connaissances, des outils et des méthodes spécifiques à la consultation.",
-      "comportements": [
-        "Initie la relation d’affaires, recueille l’information sur la situation à améliorer, clarifie le mandat et élabore une offre de service.",
-        "Transmet l’offre de service correspondant aux attentes du client et s’engage sur la base d’une entente mutuellement satisfaisante. Traite les résistances.",
-        "Réalise la collecte et le traitement des données, pose un diagnostic et recommande les solutions les plus efficaces pour atteindre les résultats désirés.",
-        "Élabore un plan d’action, prévoit un mécanisme de suivi et d’évaluation.",
-        "Met en œuvre les différentes activités et coordonne les ressources et les efforts des intervenants.",
-        "Termine et évalue l’intervention. Évalue avec le client le degré d’atteinte des résultats, l’efficacité du processus, des outils et des méthodes. Évalue la relation consultant-client et examine les points auxquels il faut donner suite."
-      ]
-    }    ,
-    {
-      "id": "C41",
-      "nom": "41 Maîtrise des connaissances organisationnelles",
-      "categorie": "Compétences techniques",
-      "actif": "non",
-      "description": "Connaissance des encadrements et systèmes de l’entreprise et de son unité d’affaires requis dans l’exercice de ses fonctions.",
-      "comportements": [
-        "Possède une connaissance des encadrements administratifs et techniques qu’il faut appliquer régulièrement dans son travail.",
-        "Applique les encadrements avec discernement.",
-        "Utilise les outils et les systèmes de gestion préconisés dans son environnement de travail."
-      ]
-    },
-    {
-      "id": "C42",
-      "nom": "42 Maîtrise des compétences techniques spécifiques liées à l’emploi ou au poste",
-      "categorie": "Compétences techniques",
-      "actif": "non",
-      "description": "Maîtrise de l’ensemble de ses tâches et des savoirs et savoir-faire techniques selon le niveau de performance ou d’expertise requis dans l’exercice de son emploi compte tenu du contexte spécifique de son poste.",
-      "comportements": [
-        "Démontre une maîtrise complète de ses tâches selon le niveau de performance requis.",
-        "Possède les savoirs et savoir-faire techniques spécifiques à son emploi ou poste.",
-        "Adapte son expertise au contexte particulier de son rôle.",
-        "Partage ses connaissances techniques avec ses collègues pour favoriser le développement collectif."
-      ]
-    }
-  ]
-}
+    "motsCles": [
+      "sens",
+      "affaires",
+      "capacité",
+      "saisir",
+      "occasions",
+      "analyser",
+      "gérer",
+      "risques"
+    ],
+    "referencePDF": "Répertoire des compétences HQ 2022"
+  },
+  {
+    "id": "C02",
+    "nom": "02 Vision stratégique (diagnostic et enjeux)",
+    "categorie": "Compétences d’affaires",
+    "sousCategorie": "Stratégie d’affaires",
+    "actif": true,
+    "description": "Capacité de saisir la perspective globale et future du contexte d’affaires et d’entreprise et de se focaliser sur les éléments-clés, gages de succès.",
+    "comportements": [
+      "Sait prendre en considération le contexte social, politique, technologique, environnemental, économique et organisationnel de l’entreprise.",
+      "Prévoit les événements, décèle les tendances et les signes avant-coureurs de changements importants.",
+      "Situe son unité dans la chaîne de valeur de l’entreprise.",
+      "Voit les enjeux, les défis et les occasions.",
+      "Comprend ou clarifie la vision, la mission, les valeurs et les orientations stratégiques de l’unité en lien avec celles de l’entreprise et des autres unités.",
+      "Saisit les éléments indispensables et les actions importantes à mettre en place pour assurer le succès présent et futur."
+    ],
+    "motsCles": [
+      "vision",
+      "stratégique",
+      "diagnostic",
+      "enjeux",
+      "capacité",
+      "saisir",
+      "perspective",
+      "globale",
+      "future",
+      "contexte"
+    ],
+    "referencePDF": "Répertoire des compétences HQ 2022"
+  },
+  {
+    "id": "C03",
+    "nom": "03 Orientation rentabilité",
+    "categorie": "Compétences d’affaires",
+    "sousCategorie": "Stratégie d’affaires",
+    "actif": false,
+    "description": "Capacité de comprendre les facteurs déterminant la rentabilité et de tout mettre en œuvre pour l’atteindre.",
+    "comportements": [
+      "Met l’accent sur la rentabilité, le respect des budgets, la réduction des coûts et la croissance des revenus.",
+      "Fixe des objectifs financiers réalistes et fait tout pour les atteindre.",
+      "Cherche à augmenter les profits sans perdre de vue les intérêts des clients ou des autres intervenants.",
+      "Sait comprendre et expliquer la signification et l’incidence des principaux indicateurs de rendement financier.",
+      "Mesure l’importance du rendement à court et à long termes.",
+      "Sait démontrer la rentabilité de chaque projet."
+    ],
+    "motsCles": [
+      "orientation",
+      "rentabilité",
+      "capacité",
+      "comprendre",
+      "facteurs",
+      "déterminant",
+      "tout",
+      "mettre",
+      "uvre",
+      "pour"
+    ],
+    "referencePDF": "Répertoire des compétences HQ 2022"
+  },
+  {
+    "id": "C04",
+    "nom": "04 Centré sur le client",
+    "categorie": "Compétences d’affaires",
+    "sousCategorie": "Stratégie d’affaires",
+    "actif": true,
+    "description": "S’efforce d’ajuster son travail et ses façons de faire afin de répondre au mieux aux besoins et attentes des clients de l’entreprise, et ce, même sans être en interaction directe avec eux. Ces comportements s’appliquent également aux clients internes.",
+    "comportements": [
+      "Porte attention aux besoins des clients, valide sa compréhension de leurs exigences et attentes.",
+      "Démontre un souci constant de préserver la réputation de l’entreprise et fait la promotion d’Hydro-Québec.",
+      "Est conscient des effets de son travail sur les clients, est courtois avec eux et les oriente vers les ressources appropriées.",
+      "Prévoit les besoins, adapte ses stratégies pour offrir un service ou un produit de qualité qui répond aux attentes des clients et en évalue la satisfaction.",
+      "Agit dans son unité pour corriger les problèmes qui affectent les clients et les escalade au besoin.",
+      "Recommande de nouvelles solutions qui répondent au besoin réel des clients.",
+      "Améliore les façons de faire en continu dans l’objectif de fidéliser les clients."
+    ],
+    "motsCles": [
+      "centré",
+      "client",
+      "efforce",
+      "ajuster",
+      "travail",
+      "façons",
+      "faire",
+      "afin",
+      "répondre",
+      "mieux"
+    ],
+    "referencePDF": "Répertoire des compétences HQ 2022"
+  },
+  {
+    "id": "C05",
+    "nom": "05 Sens politique",
+    "categorie": "Compétences d’affaires",
+    "sousCategorie": "Stratégie d’affaires",
+    "actif": true,
+    "description": "Compréhension des organisations et des jeux de pouvoir, sensibilité aux réalités des politiques et de la structure dans son organisation et chez les partenaires.",
+    "comportements": [
+      "Comprend les structures officielles et informelles.",
+      "Comprend le climat et la culture de l’organisation.",
+      "S’intéresse au fonctionnement de son organisation, aux rôles et aux interrelations des unités, ainsi qu’aux pratiques formelles et informelles qui y prévalent.",
+      "Comprend les enjeux politiques, les questions sous-jacentes et les rouages politiques internes et externes.",
+      "Comprend les attentes et les réactions possibles de la haute direction.",
+      "Cultive des relations avec les personnes influentes de son entourage, de sa profession ou de son industrie.",
+      "Sait à qui faire appel et comment s’y prendre, utilise les réseaux informels pour faire avancer les choses.",
+      "Manœuvre efficacement dans des contextes politiquement complexes.",
+      "Sait imaginer et prévenir les impacts politiques indésirables."
+    ],
+    "motsCles": [
+      "sens",
+      "politique",
+      "compréhension",
+      "organisations",
+      "jeux",
+      "pouvoir",
+      "sensibilité",
+      "réalités",
+      "politiques",
+      "structure"
+    ],
+    "referencePDF": "Répertoire des compétences HQ 2022"
+  },
+  {
+    "id": "C06",
+    "nom": "06 Partenariat d’affaires",
+    "categorie": "Compétences d’affaires",
+    "sousCategorie": "Stratégie d’affaires",
+    "actif": false,
+    "description": "Sens de la vente et capacité de développer des ententes client-fournisseur mutuellement avantageuses.",
+    "comportements": [
+      "Développe avec le client une relation qui dispose celui-ci à vouloir faire des affaires.",
+      "Traite les clients, les fournisseurs et les autres intervenants comme des partenaires ayant des intérêts communs.",
+      "Trouve un terrain d’entente pour les groupes potentiellement rivaux afin d’obtenir leur coopération.",
+      "Suscite l’intérêt du client à l’égard des produits et services.",
+      "Présente une offre de service et sait l’adapter en fonction des besoins et des exigences du client.",
+      "Utilise des techniques de vente appropriées à la conclusion d’affaires rentables.",
+      "Obtient l’engagement du client à l’égard de l’entente négociée et a la capacité de conclure une vente avantageuse pour les deux parties."
+    ],
+    "motsCles": [
+      "partenariat",
+      "affaires",
+      "sens",
+      "vente",
+      "capacité",
+      "développer",
+      "ententes",
+      "client-fournisseur",
+      "mutuellement",
+      "avantageuses"
+    ],
+    "referencePDF": "Répertoire des compétences HQ 2022"
+  },
+  {
+    "id": "C07",
+    "nom": "07 Déploiement des cibles et des objectifs",
+    "categorie": "Compétences d’affaires",
+    "sousCategorie": "Gestion de l’organisation et des activités",
+    "actif": false,
+    "description": "Capacité d’établir des cibles d’amélioration et des objectifs, de les déployer et de mettre en place les actions requises pour les atteindre.",
+    "comportements": [
+      "Établit les cibles et les objectifs de l’unité.",
+      "Identifie les zones de performance et d’amélioration possibles.",
+      "Établit des priorités à l’intérieur de ces zones, compte tenu de la satisfaction des attentes des clients, de l’actionnaire et des employés.",
+      "Identifie judicieusement les indicateurs selon la disponibilité de l’information et la pertinence des données, compte tenu des cibles prioritaires de l’unité.",
+      "En fonction de la mission spécifique de l’unité, négocie un partage des responsabilités avec les instances administratives concernées.",
+      "Élabore des plans détaillés et réalistes, à court et à long termes, qui permettent d’atteindre les cibles.",
+      "Détermine les étapes de réalisation importantes.",
+      "Visualise les tâches à accomplir, détermine les difficultés et prévoit le temps à y consacrer.",
+      "Prévoit et négocie, s’il y a lieu, les ressources financières, matérielles, humaines et technologiques nécessaires pour atteindre les cibles."
+    ],
+    "motsCles": [
+      "déploiement",
+      "cibles",
+      "objectifs",
+      "capacité",
+      "établir",
+      "amélioration",
+      "déployer",
+      "mettre",
+      "place",
+      "actions"
+    ],
+    "referencePDF": "Répertoire des compétences HQ 2022"
+  },
+  {
+    "id": "C08",
+    "nom": "08 Organisation de l’exécution",
+    "categorie": "Compétences d’affaires",
+    "sousCategorie": "Gestion de l’organisation et des activités",
+    "actif": false,
+    "description": "Capacité d’organiser le travail pour que chacun soit le plus efficace possible.",
+    "comportements": [
+      "Assure la liaison entre les différentes unités, équipes et personnes participant à la réalisation du travail, afin d’en garantir la progression.",
+      "Gère de nombreuses demandes simultanément sans perdre de vue les objectifs à atteindre.",
+      "S’assure de la disponibilité des ressources nécessaires à la réalisation du travail planifié.",
+      "Sait diviser les tâches de manière que les séquences de travail soient efficaces."
+    ],
+    "motsCles": [
+      "organisation",
+      "exécution",
+      "capacité",
+      "organiser",
+      "travail",
+      "pour",
+      "chacun",
+      "soit",
+      "plus",
+      "efficace"
+    ],
+    "referencePDF": "Répertoire des compétences HQ 2022"
+  },
+  {
+    "id": "C09",
+    "nom": "09 Gestion des processus",
+    "categorie": "Compétences d’affaires",
+    "sousCategorie": "Gestion de l’organisation et des activités",
+    "actif": false,
+    "description": "Capacité d’identifier les activités à valeur ajoutée et de consacrer les efforts nécessaires pour atteindre le niveau de performance exigé.",
+    "comportements": [
+      "Détermine clairement les produits et services fournis aux clients.",
+      "Classe les produits et services par ordre d’importance, en fonction des besoins des clients, des orientations de l’entreprise, du degré d’amélioration attendu et de son mandat premier.",
+      "Sait repérer les intrants, les activités clés et les extrants du processus, ainsi que le personnel et les fournisseurs qui y prennent part et les lier dans un ordre séquentiel réel.",
+      "S’entend avec les clients à qui sont destinés les produits et services et convient avec eux d’indicateurs permettant de s’assurer que les produits et services sont vraiment performants.",
+      "Conçoit un nouveau processus permettant de fournir un produit ou un service exigé par le client.",
+      "Recueille les données liées aux exigences du client pour évaluer avec précision le rendement du processus, plus particulièrement en ce qui a trait aux activités clés.",
+      "Détermine si un processus est bien géré, détecte les anomalies et les corrige.",
+      "Sait déterminer si les cinq « M » (milieu, main-d’œuvre, matériel, machines, méthode) permettent de concevoir un produit ou un service.",
+      "Réduit les coûts.",
+      "Réduit ou élimine les formalités administratives.",
+      "Détecte les problèmes éventuels et les prévient.",
+      "Réduit les temps de cycle.",
+      "Valorise les produits et services.",
+      "Évalue ces produits et services par rapport à ceux des meilleures entreprises comparables."
+    ],
+    "motsCles": [
+      "gestion",
+      "processus",
+      "capacité",
+      "identifier",
+      "activités",
+      "valeur",
+      "ajoutée",
+      "consacrer",
+      "efforts",
+      "nécessaires"
+    ],
+    "referencePDF": "Répertoire des compétences HQ 2022"
+  },
+  {
+    "id": "C10",
+    "nom": "10 Gestion de projets",
+    "categorie": "Compétences d’affaires",
+    "sousCategorie": "Gestion de l’organisation et des activités",
+    "actif": false,
+    "description": "Capacité de gérer le processus de gestion de projets et d’appliquer, à chaque étape, des connaissances, des outils et des méthodes spécifiques à la gestion de la coordination, du contenu, des délais, des coûts, de la qualité, des ressources humaines, de la communication, des risques et des approvisionnements.",
+    "comportements": [
+      "Démarre le projet et s’y engage.",
+      "Planifie le projet pour élaborer et respecter un schéma exécutable de réalisation des activités prévues.",
+      "Réalise le projet en coordonnant le personnel et les moyens nécessaires à la réalisation du plan.",
+      "Supervise la réalisation pour s’assurer que les objectifs sont atteints en surveillant et mesurant l’avancement des travaux et en prenant les actions correctives si nécessaire.",
+      "Clôture le projet pour formaliser son acceptation et s’assure de sa bonne fin."
+    ],
+    "motsCles": [
+      "gestion",
+      "projets",
+      "capacité",
+      "gérer",
+      "processus",
+      "appliquer",
+      "chaque",
+      "étape",
+      "connaissances",
+      "outils"
+    ],
+    "referencePDF": "Répertoire des compétences HQ 2022"
+  },
+  {
+    "id": "C11",
+    "nom": "11 Encadrement et mesure",
+    "categorie": "Compétences d’affaires",
+    "sousCategorie": "Gestion de l’organisation et des activités",
+    "actif": false,
+    "description": "Capacité d’encadrer les employés et de suivre les activités ainsi que d’implanter les processus d’encadrement et de suivi.",
+    "comportements": [
+      "Assure les suivis nécessaires pour garantir l’atteinte des cibles et la réalisation des activités sous sa responsabilité.",
+      "Fait régulièrement le point avec les employés sur la progression des travaux et les résultats obtenus.",
+      "S’assure que les processus de travail, les normes de qualité, les politiques et les modes de fonctionnement sont respectés.",
+      "Organise des réunions de gestion afin de faire le point sur la performance et de maintenir la trajectoire ou de rectifier le tir, s’il y a lieu.",
+      "Sait établir et interpréter des indicateurs de performance et des tableaux de bord pertinents afin de suivre la performance de l’unité.",
+      "Met en place des pratiques qui rendent possible la gestion à distance."
+    ],
+    "motsCles": [
+      "encadrement",
+      "mesure",
+      "capacité",
+      "encadrer",
+      "employés",
+      "suivre",
+      "activités",
+      "ainsi",
+      "implanter",
+      "processus"
+    ],
+    "referencePDF": "Répertoire des compétences HQ 2022"
+  },
+  {
+    "id": "C12",
+    "nom": "12 Aligne sur les enjeux importants",
+    "categorie": "Compétences d’affaires",
+    "sousCategorie": "Gestion des équipes et des personnes",
+    "actif": false,
+    "description": "Établit des cibles et reste concentré sur ce qui est essentiel, en cohérence avec les priorités et les orientations d’entreprise.",
+    "comportements": [
+      "Communique les objectifs de l’unité et explique leurs contributions aux orientations stratégiques de l’entreprise.",
+      "Comprend l’étendue d’action de son unité et agit en cohérence avec les structures, encadrements et processus transversaux de l’organisation.",
+      "Explique aux employés l’impact de leurs actions sur les autres unités et sur la réalisation des objectifs communs.",
+      "Aligne sur les priorités, détermine les actions importantes à réaliser, encourage le « juste assez » et garde le cap.",
+      "Sait prendre des décisions dans les zones grises et des risques calculés pour faire progresser son unité.",
+      "Suscite et maintient un haut niveau de collaboration entre les équipes malgré les difficultés rencontrées.",
+      "Place l’intérêt de l’organisation au-dessus des intérêts de son unité.",
+      "Démontre le courage d’ajuster le tir et d’expliquer ses choix pour agir en cohérence avec les priorités de l’organisation."
+    ],
+    "motsCles": [
+      "aligne",
+      "enjeux",
+      "importants",
+      "établit",
+      "cibles",
+      "reste",
+      "concentré",
+      "essentiel",
+      "cohérence",
+      "avec"
+    ],
+    "referencePDF": "Répertoire des compétences HQ 2022"
+  },
+  {
+    "id": "C13",
+    "nom": "13 Responsabilise ses employés",
+    "categorie": "Compétences d’affaires",
+    "sousCategorie": "Gestion des équipes et des personnes",
+    "actif": false,
+    "description": "Partage les responsabilités avec ses employés et leur accorde de la marge de manœuvre afin qu’ils contribuent pleinement et de façon volontaire.",
+    "comportements": [
+      "Clarifie les rôles de chacun et délègue avec confiance les responsabilités.",
+      "S’assure que les processus de travail, les normes de qualité et les procédures soient bien compris et respectés.",
+      "S’assure que les attentes soient claires, assure un suivi continu et ne laisse pas traîner les situations de faible performance.",
+      "Favorise l’autonomie et l’imputabilité; tient les personnes responsables de leur travail.",
+      "Donne les moyens d’agir, accorde de la latitude dans l’exécution et donne le droit à l’erreur.",
+      "Fait participer les employés à l’identification et à la résolution des problèmes.",
+      "Encourage la prise de décision au bon niveau de responsabilité de l’employé.",
+      "Incite ses employés à exploiter leur plein potentiel en leur offrant des défis stimulants et en leur fournissant les moyens nécessaires."
+    ],
+    "motsCles": [
+      "responsabilise",
+      "employés",
+      "partage",
+      "responsabilités",
+      "avec",
+      "leur",
+      "accorde",
+      "marge",
+      "uvre",
+      "afin"
+    ],
+    "referencePDF": "Répertoire des compétences HQ 2022"
+  },
+  {
+    "id": "C14",
+    "nom": "14 Reconnaissance",
+    "categorie": "Compétences d’affaires",
+    "sousCategorie": "Gestion des équipes et des personnes",
+    "actif": false,
+    "description": "Capacité de reconnaître adéquatement les bons coups et les contributions individuelles et d’équipe.",
+    "comportements": [
+      "Sait reconnaître la contribution de chaque personne, donner un renforcement positif de manière appropriée et récompenser celles et ceux dont la contribution dépasse les attentes.",
+      "Partage le mérite des réussites.",
+      "Assure la visibilité à ses relevants.",
+      "Sait comment valoriser chaque personne face au travail à accomplir."
+    ],
+    "motsCles": [
+      "reconnaissance",
+      "capacité",
+      "reconnaître",
+      "adéquatement",
+      "bons",
+      "coups",
+      "contributions",
+      "individuelles",
+      "équipe"
+    ],
+    "referencePDF": "Répertoire des compétences HQ 2022"
+  },
+  {
+    "id": "C15",
+    "nom": "15 Habilitation",
+    "categorie": "Compétences d’affaires",
+    "sousCategorie": "Gestion des équipes et des personnes",
+    "actif": false,
+    "description": "Capacité de favoriser le développement et le perfectionnement des autres.",
+    "comportements": [
+      "Attribue des mandats favorisant le perfectionnement.",
+      "Prend le temps de conseiller, de donner de la rétroaction, de discuter des comportements à améliorer pour une meilleure performance.",
+      "Fait en sorte que chaque personne élabore et réalise un plan de perfectionnement en relation avec ses objectifs et mandats.",
+      "Encourage ses employés à se fixer des objectifs de carrière réalistes et à faire ce qu’il faut pour les atteindre.",
+      "Identifie la relève.",
+      "Agit, au besoin, comme mentor, coach ou formateur auprès de la relève."
+    ],
+    "motsCles": [
+      "habilitation",
+      "capacité",
+      "favoriser",
+      "développement",
+      "perfectionnement",
+      "autres"
+    ],
+    "referencePDF": "Répertoire des compétences HQ 2022"
+  },
+  {
+    "id": "C16",
+    "nom": "16 Agit en leader de changement",
+    "categorie": "Compétences d’affaires",
+    "sousCategorie": "Gestion des équipes et des personnes",
+    "actif": false,
+    "description": "Inspire et mobilise les employés à s’investir dans l’évolution de l’organisation en donnant l’exemple, en mettant en place les bonnes pratiques et les conditions favorables.",
+    "comportements": [
+      "Saisit les opportunités d’évolution et identifie les besoins d’amélioration.",
+      "S’approprie le changement et son rôle en tant que porteur du changement.",
+      "Explique le besoin d’évoluer, clarifie le sens du changement et communique une vision stimulante des objectifs poursuivis.",
+      "S’assure que les employés comprennent le changement en étant présent sur le terrain et en maintenant un dialogue en continu.",
+      "Fait participer ses employés à la mise en œuvre du changement pour susciter l’adhésion.",
+      "Accompagne son équipe dans la transition en donnant une direction claire et en exerçant un suivi et un soutien sur une base régulière.",
+      "Conduit le changement avec courage et exemplarité.",
+      "Réalise ses activités en ayant une lecture transversale des changements en cours et à venir, et de leurs impacts."
+    ],
+    "motsCles": [
+      "agit",
+      "leader",
+      "changement",
+      "inspire",
+      "mobilise",
+      "employés",
+      "investir",
+      "dans",
+      "évolution",
+      "organisation"
+    ],
+    "referencePDF": "Répertoire des compétences HQ 2022"
+  },
+  {
+    "id": "C17",
+    "nom": "17 Agit en leader d’équipe",
+    "categorie": "Compétences d’affaires",
+    "sousCategorie": "Gestion des équipes et des personnes",
+    "actif": false,
+    "description": "Assure la participation de tous à la réalisation d’objectifs communs en misant sur les forces des personnes et en s’investissant dans leur développement.",
+    "comportements": [
+      "Mobilise les membres de son équipe à contribuer à la réalisation des objectifs communs; encourage le « nous » plutôt que le « je » (une Hydro).",
+      "Constitue des équipes performantes aux profils complémentaires, encourage les résultats et valorise les contributions de tous.",
+      "Accompagne et donne de la rétroaction pour faciliter le travail et favoriser le développement.",
+      "Agit avec authenticité, humilité et bienveillance.",
+      "Favorise l’appartenance, le respect, la confiance et la collaboration; s’assure d’un environnement inclusif, sain et sécuritaire.",
+      "Sait s’adapter aux personnes et au contexte pour mettre en lumière et à contribution le potentiel de chacun.",
+      "Soutient le développement des membres de son équipe, en misant sur les forces et en suggérant des opportunités de développement.",
+      "Agit sur les écarts en s’engageant dans des conversations difficiles ou en prenant des décisions courageuses."
+    ],
+    "motsCles": [
+      "agit",
+      "leader",
+      "équipe",
+      "assure",
+      "participation",
+      "tous",
+      "réalisation",
+      "objectifs",
+      "communs",
+      "misant"
+    ],
+    "referencePDF": "Répertoire des compétences HQ 2022"
+  },
+  {
+    "id": "C18",
+    "nom": "18 Travaille en équipe",
+    "categorie": "Compétences interpersonnelles",
+    "sousCategorie": "Interrelations",
+    "actif": true,
+    "description": "Collabore avec les autres à la réalisation d’objectifs communs, par opposition au fait de travailler seul, en silo ou en compétition avec d’autres.",
+    "comportements": [
+      "Adopte une attitude positive face à l’apport des autres.",
+      "Collabore activement avec les autres, au-delà des unités, pour atteindre les objectifs de l’organisation.",
+      "Communique au bon moment, à ses collègues et à ses partenaires, l’information nécessaire à la poursuite des objectifs communs.",
+      "Encourage les autres à collaborer entre eux et avec les autres unités.",
+      "Participe activement à la résolution des problèmes du groupe.",
+      "Sait obtenir le soutien et la collaboration des autres pour mieux coopérer au sein de l’organisation.",
+      "Est solidaire des décisions d’équipe et de l’organisation.",
+      "Agit dans le meilleur intérêt de l’organisation et pour le bien commun."
+    ],
+    "motsCles": [
+      "travaille",
+      "équipe",
+      "collabore",
+      "avec",
+      "autres",
+      "réalisation",
+      "objectifs",
+      "communs",
+      "opposition",
+      "fait"
+    ],
+    "referencePDF": "Répertoire des compétences HQ 2022"
+  },
+  {
+    "id": "C19",
+    "nom": "19 Agit avec ouverture et bienveillance",
+    "categorie": "Compétences interpersonnelles",
+    "sousCategorie": "Interrelations",
+    "actif": false,
+    "description": "Capacité d’entretenir de bons rapports avec autrui, d’écouter et de comprendre les réactions des autres et de démontrer de l’ouverture à la diversité des points de vue.",
+    "comportements": [
+      "Démontre un intérêt sincère envers les personnes, leurs réalités et leurs préoccupations.",
+      "Maintient des relations positives avec les autres.",
+      "Accueille le point de vue des autres, adopte une attitude empathique et inclusive.",
+      "Encourage l’expression respectueuse des idées, des opinions et des émotions.",
+      "Démontre de l’ouverture, du respect, de la tolérance et de la patience face aux différences.",
+      "Reconnaît ses préjugés pour prévenir des comportements inappropriés.",
+      "Recherche activement les perspectives différentes, en tirant profit de la richesse et de la diversité des idées.",
+      "Encourage les autres à adopter des comportements favorisant l’inclusion."
+    ],
+    "motsCles": [
+      "agit",
+      "avec",
+      "ouverture",
+      "bienveillance",
+      "capacité",
+      "entretenir",
+      "bons",
+      "rapports",
+      "autrui",
+      "écouter"
+    ],
+    "referencePDF": "Répertoire des compétences HQ 2022"
+  },
+  {
+    "id": "C20",
+    "nom": "20 Négociation et gestion de conflits",
+    "categorie": "Compétences interpersonnelles",
+    "sousCategorie": "Interrelations",
+    "actif": false,
+    "description": "Capacité d’exercer un effet sur les autres, de négocier et de résoudre des conflits.",
+    "comportements": [
+      "Est consulté par son entourage et est écouté.",
+      "Est capable de faire valoir ses intérêts tout en respectant ceux des autres.",
+      "Fait valoir son point de vue de façon à susciter l’accord des autres.",
+      "Sait obtenir un consensus, conclure un accord gagnant-gagnant.",
+      "Sait exercer une influence par l’entremise des autres.",
+      "Utilise diverses stratégies pour obtenir des concessions, sans provoquer de remous, en maintenant la qualité de la relation.",
+      "Sait concilier les points de vue divergents, apaiser les situations tendues et trouver des compromis acceptables."
+    ],
+    "motsCles": [
+      "négociation",
+      "gestion",
+      "conflits",
+      "capacité",
+      "exercer",
+      "effet",
+      "autres",
+      "négocier",
+      "résoudre"
+    ],
+    "referencePDF": "Répertoire des compétences HQ 2022"
+  },
+  {
+    "id": "C21",
+    "nom": "21 Authenticité",
+    "categorie": "Compétences interpersonnelles",
+    "sousCategorie": "Interrelations",
+    "actif": false,
+    "description": "Capacité d’être sincère et naturel dans ses interactions et ses communications.",
+    "comportements": [
+      "Discute franchement des questions délicates.",
+      "Sait exprimer ses convictions profondes.",
+      "Est perçu comme une personne qui établit des rapports sincères avec autrui.",
+      "Est capable de parler franchement de ses faiblesses, de ses limites et de ses erreurs."
+    ],
+    "motsCles": [
+      "authenticité",
+      "capacité",
+      "être",
+      "sincère",
+      "naturel",
+      "dans",
+      "interactions",
+      "communications"
+    ],
+    "referencePDF": "Répertoire des compétences HQ 2022"
+  },
+  {
+    "id": "C22",
+    "nom": "22 Langage et communication",
+    "categorie": "Compétences personnelles",
+    "sousCategorie": "Capacités intellectuelles",
+    "actif": false,
+    "description": "Aptitude à s’exprimer, interpréter et transmettre l’information efficacement selon les situations.",
+    "comportements": [
+      "Présente ses idées de façon claire et concise.",
+      "Emploie un vocabulaire précis et approprié.",
+      "Vulgarise les notions complexes ou techniques.",
+      "Saisit le sens des messages verbaux et le non-verbal.",
+      "Communique l’information pertinente.",
+      "Communique l’information au bon moment.",
+      "Transmet des renseignements factuels, complets et exacts à ses supérieurs, collègues, clients, partenaires, si nécessaire.",
+      "Distingue l’information à diffuser de celle qui doit demeurer confidentielle."
+    ],
+    "motsCles": [
+      "langage",
+      "communication",
+      "aptitude",
+      "exprimer",
+      "interpréter",
+      "transmettre",
+      "information",
+      "efficacement",
+      "selon",
+      "situations"
+    ],
+    "referencePDF": "Répertoire des compétences HQ 2022"
+  },
+  {
+    "id": "C23",
+    "nom": "23 Aptitudes cognitives",
+    "categorie": "Compétences personnelles",
+    "sousCategorie": "Capacités intellectuelles",
+    "actif": false,
+    "description": "Vivacité, capacité cognitive à traiter des informations complexes et abstraites et capacité d’analyse et de résolution de problèmes.",
+    "comportements": [
+      "Fait preuve de curiosité intellectuelle.",
+      "Sait apprendre.",
+      "Établit des liens entre des situations ou des éléments apparemment sans rapport.",
+      "Établit des liens de cause à effet qui aident à comprendre ou à prévoir les conséquences d’une action ou d’une décision.",
+      "Excelle en résolution de problèmes complexes.",
+      "Comprend rapidement les notions abstraites.",
+      "Prévoit les problèmes potentiels et leurs conséquences négatives, et les traite de façon proactive.",
+      "Utilise diverses techniques d’analyse pour comprendre et évaluer les multiples aspects d’une situation complexe.",
+      "Va au-delà des évidences et envisage les problèmes sous des angles différents; élabore divers scénarios, vérifie des hypothèses et pèse le pour et le contre de chaque solution.",
+      "Recherche et réunit les informations pertinentes.",
+      "Sait distinguer l’information importante des détails superflus et dégager les idées principales ainsi que les lignes directrices."
+    ],
+    "motsCles": [
+      "aptitudes",
+      "cognitives",
+      "vivacité",
+      "capacité",
+      "cognitive",
+      "traiter",
+      "informations",
+      "complexes",
+      "abstraites",
+      "analyse"
+    ],
+    "referencePDF": "Répertoire des compétences HQ 2022"
+  },
+  {
+    "id": "C24",
+    "nom": "24 Recommandation et prise de décision",
+    "categorie": "Compétences personnelles",
+    "sousCategorie": "Capacités intellectuelles",
+    "actif": false,
+    "description": "Capacité à formuler des recommandations et à prendre les bonnes décisions dans son champ d’expertise, basées sur le contexte, les enjeux d’affaires et les orientations stratégiques.",
+    "comportements": [
+      "Prend connaissance de l'ensemble de l'information disponible.",
+      "Analyse une situation sous divers angles; détecte les enjeux stratégiques d’une situation; prend différentes perspectives en considération; tient compte du contexte d’affaires, des points de vue, des idées et des positions significatives d'autrui.",
+      "Identifie et recommande la stratégie la plus appropriée compte tenu du contexte, des enjeux d’affaires, des orientations stratégiques et des intervenants.",
+      "S’attarde aux faits plutôt qu’à ses impressions personnelles, fait la part des choses, fait preuve de réalisme, favorise la logique et le raisonnement.",
+      "Prend des décisions fondées sur l'expertise, l’expérience et le jugement.",
+      "Propose des solutions supérieures à celles qui ont déjà été envisagées.",
+      "Reconnaît le moment opportun pour prendre position ou entreprendre quelque chose.",
+      "Passe à l’action en considérant le contexte et les enjeux d’affaires.",
+      "Sait agir « juste à temps ».",
+      "Est capable de recommander des solutions appropriées et/ou de prendre une décision sous pression.",
+      "Est capable de recommander et/ou de prendre des décisions dans des situations ambiguës, incertaines et difficiles.",
+      "Sait prendre des risques calculés lorsque c’est nécessaire.",
+      "Assume les conséquences de ses actes."
+    ],
+    "motsCles": [
+      "recommandation",
+      "prise",
+      "décision",
+      "capacité",
+      "formuler",
+      "recommandations",
+      "prendre",
+      "bonnes",
+      "décisions",
+      "dans"
+    ],
+    "referencePDF": "Répertoire des compétences HQ 2022"
+  },
+  {
+    "id": "C25",
+    "nom": "25 Créativité et innovation",
+    "categorie": "Compétences personnelles",
+    "sousCategorie": "Capacités intellectuelles",
+    "actif": false,
+    "description": "Capacité d’engendrer des idées nouvelles ou inédites et de mettre en œuvre des solutions nouvelles contribuant à l’atteinte des objectifs d’affaires.",
+    "comportements": [
+      "Combine, réorganise et intègre de manière différente les idées et les perspectives.",
+      "Recherche plusieurs points de vue et explore différentes options (« divergence »).",
+      "Sait évaluer et reconnaître les idées les plus prometteuses (« convergence »).",
+      "Sort des sentiers battus et invente de nouvelles façons de faire.",
+      "Recherche à tester et valider les nouvelles idées, puis apporte les améliorations requises pour faciliter la mise en œuvre.",
+      "Intègre de nouvelles approches ou solutions dans les processus.",
+      "Sait prendre les risques appropriés et gérer les imprévus découlant de l’implantation des nouvelles façons de faire.",
+      "Encourage à pousser les idées plus loin et stimule l’expression d’idées nouvelles.",
+      "Soutient les efforts pour mettre en œuvre l’innovation."
+    ],
+    "motsCles": [
+      "créativité",
+      "innovation",
+      "capacité",
+      "engendrer",
+      "idées",
+      "nouvelles",
+      "inédites",
+      "mettre",
+      "uvre",
+      "solutions"
+    ],
+    "referencePDF": "Répertoire des compétences HQ 2022"
+  },
+  {
+    "id": "C26",
+    "nom": "26 Agile et orienté vers les résultats",
+    "categorie": "Compétences personnelles",
+    "sousCategorie": "Gestion de sa contribution",
+    "actif": false,
+    "description": "Se centre sur l’essentiel afin de livrer les résultats avec vélocité, est proactif et fait avancer les choses.",
+    "comportements": [
+      "Agit proactivement pour livrer les résultats attendus, en investissant ses efforts sur l’essentiel.",
+      "Recherche des solutions pratiques et agit sans délai pour livrer le meilleur service possible à ses partenaires et clients.",
+      "Ajuste le tir en tenant compte des contraintes de temps ou de ressources.",
+      "Cherche à augmenter sa performance en se fixant des objectifs audacieux.",
+      "Ose prendre des risques calculés et passer à l’action.",
+      "Aborde avec courage les situations délicates pour atteindre les résultats attendus.",
+      "Se considère responsable de sa performance, assume l’imputabilité de ses actions et de ses décisions."
+    ],
+    "motsCles": [
+      "agile",
+      "orienté",
+      "vers",
+      "résultats",
+      "centre",
+      "essentiel",
+      "afin",
+      "livrer",
+      "avec",
+      "vélocité"
+    ],
+    "referencePDF": "Répertoire des compétences HQ 2022"
+  },
+  {
+    "id": "C27",
+    "nom": "27 Gestion du temps et des priorités",
+    "categorie": "Compétences personnelles",
+    "sousCategorie": "Gestion de sa contribution",
+    "actif": false,
+    "description": "Capacité d’utiliser judicieusement son temps et celui des autres pour atteindre les objectifs fixés.",
+    "comportements": [
+      "Sait concentrer son action sur les priorités selon l’urgence et l’importance des activités à réaliser.",
+      "Ajuste le tir en tenant compte des contraintes de temps ou de ressources.",
+      "Est capable d’assurer un sain équilibre entre son travail et sa vie privée, sans négliger ou compromettre les objectifs à atteindre.",
+      "Utilise des méthodes de travail efficaces pour accomplir beaucoup, bien et rapidement.",
+      "Prévoit des activités de rechange pour maximiser l’utilisation de son temps en cas d’imprévu."
+    ],
+    "motsCles": [
+      "gestion",
+      "temps",
+      "priorités",
+      "capacité",
+      "utiliser",
+      "judicieusement",
+      "celui",
+      "autres",
+      "pour",
+      "atteindre"
+    ],
+    "referencePDF": "Répertoire des compétences HQ 2022"
+  },
+  {
+    "id": "C28",
+    "nom": "28 Éthique professionnelle, rigueur, souci de la qualité, de la sécurité et du développement durable",
+    "categorie": "Compétences personnelles",
+    "sousCategorie": "Gestion de sa contribution",
+    "actif": false,
+    "description": "Respect du code de conduite de l’entreprise, du code de déontologie de sa profession, des normes de qualité et de sécurité ainsi que des règles d’éthique dans ses rapports avec les autres et dans son travail.",
+    "comportements": [
+      "Garde les confidences qui lui sont faites.",
+      "Traite les gens avec équité, impartialité et justice.",
+      "Respecte les processus de travail établis, ainsi que les principes et les exigences de conformité en matière de qualité et de développement durable qui s’appliquent dans son travail.",
+      "Respecte les principes et les règles de sécurité pour soi-même, les autres employés, les clients et le public.",
+      "Valorise l’amélioration continue et se conforme aux meilleures pratiques.",
+      "A le souci du détail : porte attention aux erreurs, vérifie l’exactitude des données et apporte un soin particulier à la réalisation de chacune des étapes de son travail.",
+      "Respecte le code de conduite de l’entreprise et toutes les règles et pratiques qui en découlent.",
+      "Se conforme au code de déontologie de sa profession.",
+      "Se fixe des normes élevées d’intégrité et de probité.",
+      "Agit en fonction de ces normes et donne l’exemple."
+    ],
+    "motsCles": [
+      "éthique",
+      "professionnelle",
+      "rigueur",
+      "souci",
+      "qualité",
+      "sécurité",
+      "développement",
+      "durable",
+      "respect",
+      "code"
+    ],
+    "referencePDF": "Répertoire des compétences HQ 2022"
+  },
+  {
+    "id": "C29",
+    "nom": "29 Autonomie",
+    "categorie": "Compétences personnelles",
+    "sousCategorie": "Gestion de soi",
+    "actif": false,
+    "description": "Capacité d’agir de façon indépendante sans recourir à l’aide des autres.",
+    "comportements": [
+      "Est capable d’agir sans l’approbation d’autrui.",
+      "Est capable de s’autogérer.",
+      "Est capable de passer à l’action sans attendre qu’on lui demande explicitement de le faire.",
+      "N’hésite pas à réaliser un mandat sans soutien.",
+      "Est capable d’assumer ses responsabilités sans soutien."
+    ],
+    "motsCles": [
+      "autonomie",
+      "capacité",
+      "agir",
+      "façon",
+      "indépendante",
+      "sans",
+      "recourir",
+      "aide",
+      "autres"
+    ],
+    "referencePDF": "Répertoire des compétences HQ 2022"
+  },
+  {
+    "id": "C30",
+    "nom": "30 Maîtrise de soi",
+    "categorie": "Compétences personnelles",
+    "sousCategorie": "Gestion de soi",
+    "actif": false,
+    "description": "Capacité d’être efficace sous pression, de faire face aux situations inconfortables et de gérer ses émotions.",
+    "comportements": [
+      "Identifie et analyse ses émotions positives et négatives.",
+      "Est capable de composer avec son humeur et ses émotions sans se laisser ébranler ou sans ébranler les autres.",
+      "Sait s’adapter aux imprévus.",
+      "Reste calme dans l’adversité.",
+      "Reste maître de la situation, efficace et rationnel sous pression.",
+      "Reste calme quand les choses se corsent; offre une précieuse collaboration en situation de crise.",
+      "Gère efficacement le stress inhérent au travail.",
+      "Garde la tête froide et prend le recul nécessaire pour faire preuve d’objectivité en tout temps."
+    ],
+    "motsCles": [
+      "maîtrise",
+      "capacité",
+      "être",
+      "efficace",
+      "sous",
+      "pression",
+      "faire",
+      "face",
+      "situations",
+      "inconfortables"
+    ],
+    "referencePDF": "Répertoire des compétences HQ 2022"
+  },
+  {
+    "id": "C31",
+    "nom": "31 Confiance en soi",
+    "categorie": "Compétences personnelles",
+    "sousCategorie": "Gestion de soi",
+    "actif": false,
+    "description": "Croire en ses capacités d’accomplir une tâche ou de résoudre un problème, se sentir apte à faire face à des situations de plus en plus exigeantes et avoir du courage.",
+    "comportements": [
+      "A de l’aplomb, crée une première impression favorable et laisse une impression de solidité.",
+      "Est capable de faire des gestes impopulaires ou controversés et de trancher, au besoin.",
+      "Est capable d’exprimer son désaccord et d’en assumer les conséquences.",
+      "Accepte de prendre des risques, de s’exposer à des résultats incertains et d’attaquer les problèmes de front.",
+      "Persiste malgré les obstacles et conserve sa motivation en dépit des échecs et des difficultés."
+    ],
+    "motsCles": [
+      "confiance",
+      "croire",
+      "capacités",
+      "accomplir",
+      "tâche",
+      "résoudre",
+      "problème",
+      "sentir",
+      "apte",
+      "faire"
+    ],
+    "referencePDF": "Répertoire des compétences HQ 2022"
+  },
+  {
+    "id": "C32",
+    "nom": "32 Développement et accomplissement professionnel",
+    "categorie": "Compétences personnelles",
+    "sousCategorie": "Gestion de soi",
+    "actif": false,
+    "description": "Capacité de se perfectionner et d’améliorer ses compétences et son expertise en utilisant diverses stratégies. Auto-motivation, volonté de réussir et passion pour son métier.",
+    "comportements": [
+      "Aime les nouveaux défis et les responsabilités additionnelles.",
+      "S’engage à fond dans son travail.",
+      "Accepte de travailler fort pour atteindre ses objectifs professionnels et réussir sa carrière.",
+      "Sollicite de la rétroaction à des fins de perfectionnement personnel.",
+      "Reconnaît ses faiblesses, ses limites et ses erreurs.",
+      "Modifie son comportement en fonction de la rétroaction et de ses erreurs ou succès.",
+      "Utilise divers moyens pour développer ses compétences.",
+      "Participe activement à des réseaux internes ou à des rencontres pour partager ses connaissances et contribuer à l’évolution des connaissances dans son domaine d’activité.",
+      "Contribue activement à l’évolution des connaissances dans son métier, son champ de pratique et son domaine d’expertise en participant à des comités ou des réseaux externes."
+    ],
+    "motsCles": [
+      "développement",
+      "accomplissement",
+      "professionnel",
+      "capacité",
+      "perfectionner",
+      "améliorer",
+      "compétences",
+      "expertise",
+      "utilisant",
+      "diverses"
+    ],
+    "referencePDF": "Répertoire des compétences HQ 2022"
+  },
+  {
+    "id": "C33",
+    "nom": "33 Capacité d’adaptation",
+    "categorie": "Compétences personnelles",
+    "sousCategorie": "Gestion de soi",
+    "actif": false,
+    "description": "Capacité de s’ajuster à son environnement avec souplesse, flexibilité et tolérance face à l’incertitude.",
+    "comportements": [
+      "Consulte les autres avant de passer à l’action.",
+      "Est capable d’adapter rapidement ses façons de faire dans des situations nouvelles.",
+      "Sait tirer les leçons de ses succès et échecs et modifier son comportement en conséquence.",
+      "Compose efficacement avec les situations, personnes ou groupes variés.",
+      "Maintient un rythme de travail productif pendant les périodes de transition et d’incertitude.",
+      "Est capable d’être efficace en l’absence de règles ou de marches à suivre claires.",
+      "Est capable de composer avec les paradoxes et contradictions de son environnement."
+    ],
+    "motsCles": [
+      "capacité",
+      "adaptation",
+      "ajuster",
+      "environnement",
+      "avec",
+      "souplesse",
+      "flexibilité",
+      "tolérance",
+      "face",
+      "incertitude"
+    ],
+    "referencePDF": "Répertoire des compétences HQ 2022"
+  },
+  {
+    "id": "C34",
+    "nom": "34 Compétences linguistiques",
+    "categorie": "Compétences techniques",
+    "sousCategorie": "Générales",
+    "actif": false,
+    "description": "Capacité de s’exprimer en anglais ou dans d’autres langues que le français à un niveau approprié, selon les besoins.",
+    "comportements": [
+      "Lit des documents divers (formulaires, notes de service, lettres, rapports).",
+      "Rédige des documents divers, y compris des notes de service, des lettres et des rapports.",
+      "Comprend les messages qui lui sont transmis.",
+      "S’exprime de façon à se faire comprendre sans difficulté."
+    ],
+    "motsCles": [
+      "compétences",
+      "linguistiques",
+      "capacité",
+      "exprimer",
+      "anglais",
+      "dans",
+      "autres",
+      "langues",
+      "français",
+      "niveau"
+    ],
+    "referencePDF": "Répertoire des compétences HQ 2022"
+  },
+  {
+    "id": "C35",
+    "nom": "35 Communication écrite",
+    "categorie": "Compétences techniques",
+    "sousCategorie": "Générales",
+    "actif": false,
+    "description": "Capacité de communiquer par écrit ses idées et l’information de façon à se faire comprendre et en respectant les règles de communication écrite.",
+    "comportements": [
+      "Respecte les règles de syntaxe, de grammaire, d’orthographe et de stylistique.",
+      "Utilise un vocabulaire précis.",
+      "Vulgarise le jargon technique ou scientifique.",
+      "Rédige de façon structurée et logique.",
+      "Sait déterminer s’il convient de résumer des notions ou de les développer en détail.",
+      "Adapte son style d’écriture en fonction du moyen de communication utilisé."
+    ],
+    "motsCles": [
+      "communication",
+      "écrite",
+      "capacité",
+      "communiquer",
+      "écrit",
+      "idées",
+      "information",
+      "façon",
+      "faire",
+      "comprendre"
+    ],
+    "referencePDF": "Répertoire des compétences HQ 2022"
+  },
+  {
+    "id": "C36",
+    "nom": "36 Communication d’impact",
+    "categorie": "Compétences techniques",
+    "sousCategorie": "Générales",
+    "actif": false,
+    "description": "Capacité à communiquer efficacement ses idées et à faire valoir son point de vue afin de créer l’impact désiré.",
+    "comportements": [
+      "Est à l’aise de présenter ses idées et sait défendre son point de vue lorsque requis.",
+      "Sait présenter ses idées de façon claire et précise. Synthétise l’information.",
+      "Est capable de communiquer l’information sous diverses formes (présentation, rapport, sommaire exécutif, etc.) et selon les circonstances.",
+      "Sait communiquer l’information au bon moment.",
+      "Est capable d’adapter ses communications à son auditoire (langage, mode de communication, style de communication).",
+      "Tient compte du point de vue de ses interlocuteurs."
+    ],
+    "motsCles": [
+      "communication",
+      "impact",
+      "capacité",
+      "communiquer",
+      "efficacement",
+      "idées",
+      "faire",
+      "valoir",
+      "point",
+      "afin"
+    ],
+    "referencePDF": "Répertoire des compétences HQ 2022"
+  },
+  {
+    "id": "C37",
+    "nom": "37 Maîtrise des technologies de l’information et des communications",
+    "categorie": "Compétences techniques",
+    "sousCategorie": "Générales",
+    "actif": false,
+    "description": "Capacité de suivre l’évolution technologique en matière d’information, d’acquisition et de partage de connaissances et d’informatique.",
+    "comportements": [
+      "Maîtrise le fonctionnement d’un micro-ordinateur.",
+      "Utilise des logiciels et des applications de base nécessaires à l’exercice de ses fonctions : logiciels de traitement de texte et de présentation graphique, systèmes de messagerie électronique, intranet et Internet, systèmes d’information de l’ordinateur central.",
+      "Utilise les nouvelles technologies de l’information et des communications pour augmenter sa productivité personnelle et celle des équipes de travail auxquelles il ou elle appartient.",
+      "Adopte les pratiques et outils de gestion de l’information et des connaissances qui sont requis dans le cadre de son travail."
+    ],
+    "motsCles": [
+      "maîtrise",
+      "technologies",
+      "information",
+      "communications",
+      "capacité",
+      "suivre",
+      "évolution",
+      "technologique",
+      "matière",
+      "acquisition"
+    ],
+    "referencePDF": "Répertoire des compétences HQ 2022"
+  },
+  {
+    "id": "C38",
+    "nom": "38 S’engage dans l’évolution",
+    "categorie": "Compétences techniques",
+    "sousCategorie": "Générales",
+    "actif": false,
+    "description": "Questionne le statu quo, propose de nouvelles idées qui améliorent la performance et contribue à mettre en œuvre des solutions innovantes.",
+    "comportements": [
+      "Remet en question le statu quo, reconnaît la valeur des nouvelles idées et participe à l’évolution.",
+      "Consulte ses collègues et est curieux de ce qui se fait ailleurs pour trouver des solutions aux problèmes.",
+      "S’implique dans l’amélioration des pratiques, processus et outils de travail.",
+      "Cherche à pousser les idées plus loin et à générer des solutions novatrices.",
+      "Se donne le droit d’essayer et de faire les choses autrement.",
+      "Assure le partage des améliorations, des nouvelles idées et solutions qui pourraient être utiles pour d’autres et pour le bien commun.",
+      "Cible les occasions d’amélioration qui permettent de mieux faire ensemble et mieux servir la collectivité.",
+      "Contribue à la mise en œuvre des solutions novatrices qui soutiennent l’évolution de l’organisation."
+    ],
+    "motsCles": [
+      "engage",
+      "dans",
+      "évolution",
+      "questionne",
+      "statu",
+      "propose",
+      "nouvelles",
+      "idées",
+      "améliorent",
+      "performance"
+    ],
+    "referencePDF": "Répertoire des compétences HQ 2022"
+  },
+  {
+    "id": "C39",
+    "nom": "39 Techniques d’animation",
+    "categorie": "Compétences techniques",
+    "sousCategorie": "Compétences liées à des rôles spécifiques",
+    "actif": false,
+    "description": "Maîtrise de la conduite de réunions efficaces et productives.",
+    "comportements": [
+      "Précise l’objectif de la rencontre, son déroulement, sa durée et le mode de fonctionnement prévu pour faciliter et orienter le travail du groupe.",
+      "Favorise la progression du travail, tout en tenant compte du rythme des participants.",
+      "Encourage la participation individuelle sans perdre de vue l’objectif à atteindre.",
+      "Intervient pour désamorcer les différends possibles entre les participants et relancer la réunion ou la session de travail.",
+      "Rappelle les participants à l’ordre en cas de digression."
+    ],
+    "motsCles": [
+      "techniques",
+      "animation",
+      "maîtrise",
+      "conduite",
+      "réunions",
+      "efficaces",
+      "productives"
+    ],
+    "referencePDF": "Répertoire des compétences HQ 2022"
+  },
+  {
+    "id": "C40",
+    "nom": "40 Maîtrise du processus de consultation",
+    "categorie": "Compétences techniques",
+    "sousCategorie": "Compétences liées à des rôles spécifiques",
+    "actif": false,
+    "description": "Capacité de gérer le processus de consultation et d’appliquer, à chaque étape, des connaissances, des outils et des méthodes spécifiques à la consultation.",
+    "comportements": [
+      "Initie la relation d’affaires, recueille l’information sur la situation à améliorer, clarifie le mandat et élabore une offre de service.",
+      "Transmet l’offre de service correspondant aux attentes du client et s’engage sur la base d’une entente mutuellement satisfaisante. Traite les résistances.",
+      "Réalise la collecte et le traitement des données, pose un diagnostic et recommande les solutions les plus efficaces pour atteindre les résultats désirés.",
+      "Élabore un plan d’action, prévoit un mécanisme de suivi et d’évaluation.",
+      "Met en œuvre les différentes activités et coordonne les ressources et les efforts des intervenants.",
+      "Termine et évalue l’intervention. Évalue avec le client le degré d’atteinte des résultats, l’efficacité du processus, des outils et des méthodes. Évalue la relation consultant-client et examine les points auxquels il faut donner suite."
+    ],
+    "motsCles": [
+      "maîtrise",
+      "processus",
+      "consultation",
+      "capacité",
+      "gérer",
+      "appliquer",
+      "chaque",
+      "étape",
+      "connaissances",
+      "outils"
+    ],
+    "referencePDF": "Répertoire des compétences HQ 2022"
+  },
+  {
+    "id": "C41",
+    "nom": "41 Maîtrise des connaissances organisationnelles",
+    "categorie": "Compétences techniques",
+    "sousCategorie": "Compétences liées aux activités et tâches spécifiques au métier, à l’emploi ou au poste",
+    "actif": false,
+    "description": "Connaissance des encadrements et systèmes de l’entreprise et de son unité d’affaires requis dans l’exercice de ses fonctions.",
+    "comportements": [
+      "Possède une connaissance des encadrements administratifs et techniques qu’il faut appliquer régulièrement dans son travail.",
+      "Applique les encadrements avec discernement.",
+      "Utilise les outils et les systèmes de gestion préconisés dans son environnement de travail."
+    ],
+    "motsCles": [
+      "maîtrise",
+      "connaissances",
+      "organisationnelles",
+      "connaissance",
+      "encadrements",
+      "systèmes",
+      "entreprise",
+      "unité",
+      "affaires",
+      "requis"
+    ],
+    "referencePDF": "Répertoire des compétences HQ 2022"
+  },
+  {
+    "id": "C42",
+    "nom": "42 Maîtrise des compétences techniques spécifiques liées à l’emploi ou au poste",
+    "categorie": "Compétences techniques",
+    "sousCategorie": "Compétences liées aux activités et tâches spécifiques au métier, à l’emploi ou au poste",
+    "actif": false,
+    "description": "Maîtrise de l’ensemble de ses tâches et des savoirs et savoir-faire techniques selon le niveau de performance ou d’expertise requis dans l’exercice de son emploi compte tenu du contexte spécifique de son poste.",
+    "comportements": [
+      "Démontre une maîtrise complète de ses tâches selon le niveau de performance requis.",
+      "Possède les savoirs et savoir-faire techniques spécifiques à son emploi ou poste.",
+      "Adapte son expertise au contexte particulier de son rôle.",
+      "Partage ses connaissances techniques avec ses collègues pour favoriser le développement collectif."
+    ],
+    "motsCles": [
+      "maîtrise",
+      "compétences",
+      "techniques",
+      "spécifiques",
+      "liées",
+      "emploi",
+      "poste",
+      "ensemble",
+      "tâches",
+      "savoirs"
+    ],
+    "referencePDF": "Répertoire des compétences HQ 2022"
+  }
+]
