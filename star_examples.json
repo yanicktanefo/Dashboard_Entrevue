@@ -13,7 +13,34 @@
       ]
     }
   ],
-  
+  "Influence et sens politique - MFA stratégique": [
+  {
+    "titre": "Conduite d’une initiative MFA sensible FIDO vs HELLO",
+    "situation": "Le dossier d’évolution de l’authentification multifacteur créait des divergences entre plusieurs unités (Cyber, GTN, intégrateurs et clients internes), avec des orientations contradictoires et un fort enjeu politique.",
+    "tache": "Clarifier le rôle de mes équipes et rétablir une vision commune alignée sur la gouvernance cybersécurité et le plan 2035.",
+    "action": "J’ai validé les attentes de la direction, consulté les clients et intégrateurs pour comprendre leurs besoins, analysé les référentiels d’architecture, puis proposé que nos équipes jouent un rôle de coordination. J’ai privilégié une approche progressive et inclusive, expliquant les risques d’aller trop vite ou trop lentement, en ramenant la discussion sur les impacts réels (coûts, UX, exploitation).",
+    "resultat": "Les échanges ont permis de désamorcer les tensions et d’obtenir un consensus pour avancer par étapes. Le dossier MFA a obtenu le feu vert avec un alignement clair entre les parties prenantes et une progression maîtrisée.",
+    "liens_comportements": [
+      "C05",
+      "C02",
+      "C18"
+    ]
+  }
+ ],
+ "Influence et sens politique - Consensus AWS Managed AD": [
+  {
+    "titre": "Consensus interunités sur AWS Managed AD",
+    "situation": "L’utilisation d’AWS Managed AD générait des tensions entre les équipes de cybersécurité, de gouvernance, de conformité et les clients internes, avec des positions divergentes sur la trajectoire et les exigences MFA.",
+    "tache": "Ramener une compréhension commune et favoriser un consensus entre acteurs tout en respectant la stratégie de réduction d’annuaires et la posture de sécurité HQ.",
+    "action": "J’ai cartographié les positions des différentes équipes, organisé des rencontres, écouté les besoins et proposé une approche en deux volets : tactique (déblocage immédiat des projets critiques) et stratégique (vision commune à moyen terme). J’ai utilisé des faits techniques concrets, comme la possibilité d’intégrer Kerberos, pour rapprocher les positions et maintenir un dialogue constructif.",
+    "resultat": "Plusieurs projets bloqués ont pu avancer, les parties prenantes partagent désormais une compréhension commune et le climat interunités s’est apaisé, favorisant la collaboration durable.",
+    "liens_comportements": [
+      "C05",
+      "C18",
+      "C02"
+    ]
+  }
+],
   "Gestion d’un projet transversal - Travail d’équipe": [
     {
       "titre": "Gestion d’un projet transversal",
